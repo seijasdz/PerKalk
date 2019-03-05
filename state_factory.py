@@ -28,9 +28,27 @@ class StateFactory:
             self.columns.append(column)
 
     def make_zones(self):
+        def check_next(row, col):
+            if col >= len(self.columns):
+                return 'X'
+            if self.columns[col]['type'] == StateFactory.MAIN_STATE:
+                if self.columns[col]['info']['content'][row] != '-':
+                    return self.columns[col]['type'], self.columns[col]['info']['content'][row]
+                else:
+                    return StateFactory.DELETE_STATE, '-'
+            elif self.columns[col]['type'] == StateFactory.INSERT_STATE:
+                if self.columns[col]['info']['content'][row] == '-':
+                    return check_next(row, col + 1)
+                else:
+                    return self.columns[col]['type'], self.columns[col]['info']['content'][row]
+
         for idx, col in enumerate(self.columns):
             if col['type'] == StateFactory.INSERT_STATE and\
                     (not idx or idx and self.columns[idx - 1]['type'] != StateFactory.INSERT_STATE):
+                for row, elem in enumerate(col['info']['content']):
+                    print(col, check_next(row, idx + 1))
+
+
 
 
     def makeold(self):

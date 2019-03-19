@@ -6,3 +6,4 @@
 **/*.fasta
 **/*.dnd
 **/*.txt
+**/__pycache__

@@ -70,7 +70,7 @@ class Zone:
                                                          'm_st_' + str(self.idx))
             if self.counts['-']:
                 print('agregado delete')
-                self.states['main'] = self.model.add_state(None, 'd_st_' + str(self.idx))
+                self.states['delete'] = self.model.add_state(None, 'd_st_' + str(self.idx))
             for tr in self.trans:
                 if tr[4] == StateFactory.INSERT:
                     if tr[2] == '-':
@@ -115,9 +115,12 @@ class StateFactory:
     MAIN = 1
     DELETE = 2
 
-    def __init__(self, model, prev, next):
+    def __init__(self, model, previous_states, next_states):
         self.columns = []
         self.zones = []
+        self.model = model
+        self.previous_states = previous_states
+        self.next_states = next_states
         self.model = model
 
     def add_info(self, info):
@@ -174,6 +177,16 @@ class StateFactory:
         for zone in self.zones:
             zone.calc_trans_probs()
 
+    def make_weave_states(self):
+        first_zone = self.zones[0]
+
+
+
+        for idx, zone in enumerate(self.zones):
+            print('in zone', idx)
+            for key, state in zone.states.items():
+                print(key, state)
+
 
 
 
@@ -184,18 +197,30 @@ aln_file_name = file_name + '.aln'
 with open(aln_file_name) as aln_file:
     for line in aln_file:
         if 'CLUSTAL' not in line and len(line) > 1 and line[0] != ' ':
-            lines.append(list(line[16:-1]))
-            print(list(line[16:-1]))
+            thisline = list(line[16:-1])
+            thisline.insert(0, 'A')
+            lines.append(thisline)
+            print(thisline)
 
 array = numpy.array(lines, numpy.unicode_)
 ref = array[:, 0]
 
 rows = array.shape[0]
 print('rows', rows)
+print(['A']*rows)
+
+def same_dist():
+    return DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25})
+
 
 counts = []
 model = ModelWrapper()
-st_fac = StateFactory(model, None, None)
+background_state = model.add_state(same_dist(), 'bk')
+
+model.model.add_transition(model.model.start, background_state, 0.5)
+model.model.add_transition(background_state, background_state, 0.9)
+
+st_fac = StateFactory(model, [(background_state, 0.1), (model.model.start, 0.5)], [(background_state, 1)])
 
 for col_content in array.T:
     count = (dict(zip(*numpy.unique(col_content, return_counts=True))))
@@ -209,4 +234,4 @@ for col_content in array.T:
     st_fac.add_info(info)
 
 st_fac.make_zones()
-
+st_fac.make_weave_states()

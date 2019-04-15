@@ -29,6 +29,10 @@ class Zone:
             self.nucleotides_total = self.nucleotides_total + 1
         self.counts[nucleotide] = self.counts[nucleotide] + 1
 
+    def add_counts(self, nucleotides):
+        for nuc in nucleotides:
+            self.add_count(nuc)
+
     def add_transition(self, trans):
         self.trans.add(trans)
 
@@ -46,16 +50,21 @@ class Zone:
         total_main_trans = 0
         total_delete_trans = 0
 
+        def cond_add_state(id, dist, name):
+            if self.model:
+                self.states[id] = self.model.add_state(dist, name)
+
         self.emission_probabilities = {
-            'A': self.counts['A'] / self.nucleotides_total,
-            'C': self.counts['C'] / self.nucleotides_total,
-            'G': self.counts['G'] / self.nucleotides_total,
-            'T': self.counts['T'] / self.nucleotides_total,
+            'A': self.counts['A'] / self.nucleotides_total if self.nucleotides_total else 0,
+            'C': self.counts['C'] / self.nucleotides_total if self.nucleotides_total else 0,
+            'G': self.counts['G'] / self.nucleotides_total if self.nucleotides_total else 0,
+            'T': self.counts['T'] / self.nucleotides_total if self.nucleotides_total else 0,
         }
         print(self.emission_probabilities)
 
         if self.type == StateFactory.INSERT:
-            self.states['insert'] = self.model.add_state(DiscreteDistribution(self.emission_probabilities),
+
+            cond_add_state('insert', DiscreteDistribution(self.emission_probabilities),
                                                          'i_st_' + str(self.idx))
             for tr in self.trans:
                 if tr[4] == StateFactory.INSERT:
@@ -66,11 +75,10 @@ class Zone:
                     insert_to_delete = insert_to_delete + 1
 
         elif self.type == StateFactory.MAIN:
-            self.states['main'] = self.model.add_state(DiscreteDistribution(self.emission_probabilities),
+            cond_add_state('main', DiscreteDistribution(self.emission_probabilities),
                                                          'm_st_' + str(self.idx))
             if self.counts['-']:
-                print('agregado delete')
-                self.states['delete'] = self.model.add_state(None, 'd_st_' + str(self.idx))
+                cond_add_state('delete', None, 'd_st_' + str(self.idx))
             for tr in self.trans:
                 if tr[4] == StateFactory.INSERT:
                     if tr[2] == '-':
@@ -98,9 +106,9 @@ class Zone:
             'insert_to_self': insert_to_self / total_trans if self.type == StateFactory.INSERT else 0,
             'insert_to_main': insert_to_main / total_trans if self.type == StateFactory.INSERT else 0,
             'insert_to_delete': insert_to_delete / total_trans if self.type == StateFactory.INSERT else 0,
-            'main_to_insert': main_to_insert / total_main_trans if self.type == StateFactory.MAIN else 0,
-            'main_to_main': main_to_main / total_main_trans if self.type == StateFactory.MAIN else 0,
-            'main_to_del': main_to_del / total_main_trans if self.type == StateFactory.MAIN else 0,
+            'main_to_insert': main_to_insert / total_main_trans if self.type == StateFactory.MAIN and total_main_trans else 0,
+            'main_to_main': main_to_main / total_main_trans if self.type == StateFactory.MAIN and total_main_trans else 0,
+            'main_to_del': main_to_del / total_main_trans if self.type == StateFactory.MAIN and total_main_trans else 0,
             'del_to_insert': del_to_insert / total_delete_trans if total_delete_trans else 0,
             'del_to_main': del_to_main / total_delete_trans if total_delete_trans else 0,
             'del_to_del': del_to_del / total_delete_trans if total_delete_trans else 0,
@@ -121,7 +129,6 @@ class StateFactory:
         self.model = model
         self.previous_states = previous_states
         self.next_states = next_states
-        self.model = model
 
     def add_info(self, info):
         if info['count']['-'] >= len(info['content']) / 2:
@@ -152,6 +159,16 @@ class StateFactory:
                 else:
                     return self.columns[col]['type'], self.columns[col]['info']['content'][row], col
 
+        first_zone = Zone(StateFactory.MAIN, None, None)
+        first_zone.add_counts(['A', 'A', 'A'])
+
+        for row, element in enumerate(self.columns[0]['info']['content']):
+            trans = check_next(row, 0)
+            first_zone.add_transition((row, trans[2], element, trans[1], trans[0]))
+
+        self.zones.append(first_zone)
+
+
         for idx, col in enumerate(self.columns):
             if col['type'] == StateFactory.INSERT:
                 if not idx or idx and self.columns[idx - 1]['type'] != StateFactory.INSERT:
@@ -178,14 +195,10 @@ class StateFactory:
             zone.calc_trans_probs()
 
     def make_weave_states(self):
-        first_zone = self.zones[0]
-
-
-
         for idx, zone in enumerate(self.zones):
-            print('in zone', idx)
-            for key, state in zone.states.items():
-                print(key, state)
+                print('in zone', idx)
+                for key, state in zone.states.items():
+                    print(key, state)
 
 
 
@@ -198,7 +211,6 @@ with open(aln_file_name) as aln_file:
     for line in aln_file:
         if 'CLUSTAL' not in line and len(line) > 1 and line[0] != ' ':
             thisline = list(line[16:-1])
-            thisline.insert(0, 'A')
             lines.append(thisline)
             print(thisline)
 
@@ -207,7 +219,6 @@ ref = array[:, 0]
 
 rows = array.shape[0]
 print('rows', rows)
-print(['A']*rows)
 
 def same_dist():
     return DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25})

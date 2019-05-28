@@ -1,6 +1,8 @@
 from collections import deque
-before = 20
-after = 20
+import numpy
+
+before = 3
+after = 7
 size = before + after
 file = 'test'
 filename = file + '.txt'
@@ -12,6 +14,8 @@ count_t = [0] * size
 
 deck = deque(size*[0], size)
 
+list_of_decks = []
+
 with open(filename) as file_obj:
     with open(file + '.f', 'w') as out_file_obj:
         for line in file_obj:
@@ -21,6 +25,9 @@ with open(filename) as file_obj:
                     if deck[-after] == 'p':
                         examples = examples + 1
                         print(deck)
+                        llist = list(deck)
+                        llist.remove('p')
+                        list_of_decks.append(llist)
                         out_file_obj.write('> seq' + str(examples) + '\n')
                         for idx, val in enumerate(deck):
                             if val != 'p':
@@ -39,6 +46,10 @@ print(count_a)
 print(count_c)
 print(count_g)
 print(count_t)
+
+array_line = numpy.array(list_of_decks, numpy.unicode)
+print(array_line.shape)
+print(array_line)
 
 final_percent = [{}]*size
 

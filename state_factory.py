@@ -215,10 +215,10 @@ with open(aln_file_name) as aln_file:
             print(thisline)
 
 array = numpy.array(lines, numpy.unicode_)
-ref = array[:, 0]
 
 rows = array.shape[0]
 print('rows', rows)
+
 
 def same_dist():
     return DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25})

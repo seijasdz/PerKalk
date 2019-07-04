@@ -39,7 +39,7 @@ with open(filename) as file_obj:
                             if val == 'a':
                                 count_a[idx] = count_a[idx] + 1
                             elif val == 'c':
-                                count_c[idx] = count_c[idx] + 1
+             T                   count_c[idx] = count_c[idx] + 1
                             elif val == 'g':
                                 count_g[idx] = count_g[idx] + 1
                             elif val == 't':

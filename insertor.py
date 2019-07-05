@@ -2,13 +2,13 @@ import numpy
 
 
 example = [
-    ['-', 'a', 'a', 'a', 'a'],
-    ['-', 'a', 'a', 'a', 'a'],
-    ['-', '-', 'a', 'a', 'a'],
-    ['-', 'a', 'a', 'a', 'a'],
-    ['a', '-', 'a', 'a', 'a'],
-    ['-', 'a', 'a', 'a', 'a'],
-    ['a', 'a', 'a', 'a', 'a'],
+    ['-', 'a', 'a', '-', 'a'],
+    ['-', 'a', 'a', 'a', '-'],
+    ['-', '-', 'a', '-', '-'],
+    ['-', 'a', 'a', 'a', '-'],
+    ['a', '-', 'a', '-', '-'],
+    ['-', 'a', 'a', '-', '-'],
+    ['a', 'a', 'a', '-', 'a'],
 ]
 
 data_matrix = numpy.array(example, numpy.unicode_)
@@ -45,11 +45,44 @@ def column_clasify(matrix):
     return classified
 
 
+def insertion_zone(classified, index):
+    zone = {
+        'type': 'insert',
+        'columns': []
+    }
+    while index < len(classified):
+        if classified[index].type != 'insert':
+            break
+        zone['columns'].append(classified[index])
+        index = index + 1
+    return [zone]
+
+def main_zone(data):
+    zones = []
+    m_zone = {
+        'type': 'main',
+        'columns': [data]
+    }
+    zones.append(m_zone)
+    if data.counts['-']:
+        print('eli')
+        e_zone = {
+            'type': 'elimination',
+            'columns': [data]
+        }
+        zones.append(e_zone)
+    return zones
+
+
 def create_zones(classified):
     zones = []
-    for index, column in enumerate(classified):
-
-
+    for index, data in enumerate(classified):
+        print(data.type)
+        if data.type == 'insert' and (not index or index and classified[index - 1].type != 'insert'):
+            zones.append(insertion_zone(classified, index))
+        elif data.type == 'main':
+            zones.append(main_zone(data))
+    print(zones)
 
 
 classified_columns = column_clasify(data_matrix)

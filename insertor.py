@@ -55,35 +55,62 @@ def insertion_zone(classified, index):
             break
         zone['columns'].append(classified[index])
         index = index + 1
-    return [zone]
+    return zone
 
 def main_zone(data):
-    zones = []
+    group = {
+        'type': 'main',
+    }
     m_zone = {
         'type': 'main',
         'columns': [data]
     }
-    zones.append(m_zone)
+    group['main'] = m_zone
     if data.counts['-']:
-        print('eli')
         e_zone = {
             'type': 'elimination',
             'columns': [data]
         }
-        zones.append(e_zone)
-    return zones
+        group['elimination'] = e_zone
+    return group
 
 
 def create_zones(classified):
     zones = []
     for index, data in enumerate(classified):
-        print(data.type)
         if data.type == 'insert' and (not index or index and classified[index - 1].type != 'insert'):
             zones.append(insertion_zone(classified, index))
         elif data.type == 'main':
             zones.append(main_zone(data))
-    print(zones)
+    return zones
 
 
-classified_columns = column_clasify(data_matrix)
-create_zones(classified_columns)
+def make_insert(zone):
+    print('haciendo insert')
+    print(zone)
+    return {}
+
+
+def make_main(zone):
+    print('haciendo main')
+    return {}
+
+
+def states(zone):
+    if zone['type'] == 'main':
+        return make_main(zone)
+    elif zone['type'] == 'insert':
+        return make_insert(zone)
+
+
+def group_states(zones):
+    grouped = []
+    for index, subzones in enumerate(zones):
+        group = states(subzones)
+        grouped.append(group)
+    return grouped
+
+
+v_columns = column_clasify(data_matrix)
+v_zones = create_zones(v_columns)
+v_grouped_states = group_states(v_zones)

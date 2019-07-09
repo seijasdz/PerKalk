@@ -157,6 +157,8 @@ def add_states(model, grouped_states):
 
 
 def next_state(group_index, element_index, grouped_states, end_state):
+    if group_index >= len(grouped_states):
+        return end_state
     this_group = grouped_states[group_index]
     if this_group['type'] == 'main':
         element = this_group['zone']['column'].elements[element_index]
@@ -171,9 +173,7 @@ def next_state(group_index, element_index, grouped_states, end_state):
             element = column.elements[element_index]
             if element != '-':
                 return this_group['insert_state']
-        if group_index + 1 < len(grouped_states):
-            return next_state(group_index + 1, element_index, grouped_states, end_state)
-        return end_state
+        return next_state(group_index + 1, element_index, grouped_states, end_state)
 
 
 def to_first(start_state, first_gstate, end_state, grouped_states):
@@ -210,6 +210,12 @@ def from_main(index, end_state, grouped_states):
         'states': {},
     }
 
+    delete_trans = {
+        'start': init_state['delete_state'],
+        'total': 0,
+        'states': {}
+    }
+
     for el_index, el in enumerate(elements):
         next_s = next_state(index + 1, el_index, grouped_states, end_state)
         if el != '-':
@@ -223,21 +229,57 @@ def from_main(index, end_state, grouped_states):
             else:
                 main_trans['states'][next_s.name]['count'] += 1
         else:
-            print('coming soon')
+            delete_trans['total'] += 1
+            if next_s.name not in delete_trans['states']:
+                delete_trans['total'] += 1
+                delete_trans['states'][next_s.name] = {
+                    'count': 2,
+                    # 'state': next_s,
+                }
+            else:
+                main_trans['states'][next_s.name]['count'] += 1
 
-    print(main_trans)
+    return main_trans, delete_trans
 
 
+def from_insert(index, end_state, grouped_states):
+    group = grouped_states[index]
+    columns = group['zone']['columns'];
+    trans = {
+        'start': group['insert_state'],
+        'total': 0,
+        'states': {},
+    }
+    for column in columns:
+        for el_index, el in enumerate(column.elements):
+            next_s = next_state(index + 1, el_index, grouped_states, end_state)
 
+            if el != '-':
+                trans['total'] += 1
+                if next_s.name not in trans['states']:
+                    trans['total'] += 1
+                    trans['states'][next_s.name] = {
+                        'count': 2,
+                        #'state': next_s,
+                    }
+                else:
+                    trans['states'][next_s.name]['count'] += 1
+
+    print(trans)
+    return trans
 
 
 def transitions(model, start_state, end_state, grouped_states):
     states_from_start = to_first(start_state, grouped_states[0], end_state, grouped_states)
+    all_trans = [states_from_start]
     for index, gstate in enumerate(grouped_states):
         if gstate['type'] == 'main':
-            transitions = from_main(index, end_state, grouped_states)
+            trans = from_main(index, end_state, grouped_states)
+            for t in trans:
+                all_trans.append(t)
         else:
-            print('i')
+            trans = from_insert(index, end_state, grouped_states)
+            all_trans.append(trans)
 
 v_columns = column_clasify(data_matrix)
 

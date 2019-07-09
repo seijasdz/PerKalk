@@ -4,13 +4,13 @@ from pomegranate import DiscreteDistribution
 from pomegranate import HiddenMarkovModel
 
 example = [
-    ['-', 'a', 'a', '-', 'a'],
-    ['-', 'a', 'a', 'a', 'a'],
-    ['-', '-', 'a', '-', '-'],
-    ['-', 'a', 'a', 'a', '-'],
-    ['a', '-', 'a', '-', '-'],
-    ['-', 'a', 'a', '-', '-'],
-    ['a', 'a', 'a', '-', '-'],
+    ['-', 'a', 'a', '-', 'a', 'a'],
+    ['-', 'a', 'a', 'a', 'a', '-'],
+    ['-', '-', 'a', '-', '-', '-'],
+    ['-', 'a', 'a', 'a', '-', '-'],
+    ['a', '-', 'a', '-', '-', 't'],
+    ['-', 'a', 'a', '-', '-', '-'],
+    ['a', 'a', 'a', '-', '-', '-'],
 ]
 
 data_matrix = numpy.array(example, numpy.unicode_)
@@ -156,7 +156,7 @@ def add_states(model, grouped_states):
             model.add_state(group['insert_state'])
 
 
-def next_state(group_index, element_index, grouped_states, end_state):
+def next_state(group_index, element_index, grouped_states, end_state, column_number=0):
     if group_index >= len(grouped_states):
         return end_state
     this_group = grouped_states[group_index]
@@ -169,10 +169,11 @@ def next_state(group_index, element_index, grouped_states, end_state):
 
     elif this_group['type'] == 'insert':
         columns = this_group['zone']['columns']
-        for column in columns:
-            element = column.elements[element_index]
-            if element != '-':
-                return this_group['insert_state']
+        for index, column in enumerate(columns):
+            if index >= column_number:
+                element = column.elements[element_index]
+                if element != '-':
+                    return this_group['insert_state']
         return next_state(group_index + 1, element_index, grouped_states, end_state)
 
 
@@ -237,7 +238,7 @@ def from_main(index, end_state, grouped_states):
                     # 'state': next_s,
                 }
             else:
-                main_trans['states'][next_s.name]['count'] += 1
+                delete_trans['states'][next_s.name]['count'] += 1
 
     return main_trans, delete_trans
 
@@ -250,9 +251,9 @@ def from_insert(index, end_state, grouped_states):
         'total': 0,
         'states': {},
     }
-    for column in columns:
+    for col_index, column in enumerate(columns):
         for el_index, el in enumerate(column.elements):
-            next_s = next_state(index + 1, el_index, grouped_states, end_state)
+            next_s = next_state(index, el_index, grouped_states, end_state, col_index + 1)
 
             if el != '-':
                 trans['total'] += 1
@@ -264,8 +265,6 @@ def from_insert(index, end_state, grouped_states):
                     }
                 else:
                     trans['states'][next_s.name]['count'] += 1
-
-    print(trans)
     return trans
 
 
@@ -280,6 +279,7 @@ def transitions(model, start_state, end_state, grouped_states):
         else:
             trans = from_insert(index, end_state, grouped_states)
             all_trans.append(trans)
+    print(all_trans)
 
 v_columns = column_clasify(data_matrix)
 

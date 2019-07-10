@@ -5,8 +5,9 @@ from scipy.stats import chisquare
 from pomegranate import HiddenMarkovModel
 from pomegranate import DiscreteDistribution
 from pomegranate import State
+from insertor import insert_delete_main_hmm
 
-before = 3
+before = 20
 after = 7
 size = before + after
 file = 'duplexW_EI'
@@ -39,7 +40,7 @@ with open(filename) as file_obj:
                             if val == 'a':
                                 count_a[idx] = count_a[idx] + 1
                             elif val == 'c':
-             T                   count_c[idx] = count_c[idx] + 1
+                                count_c[idx] = count_c[idx] + 1
                             elif val == 'g':
                                 count_g[idx] = count_g[idx] + 1
                             elif val == 't':
@@ -287,6 +288,11 @@ for i, s in enumerate(seq):
     empar.append((seq[i], hm_model.states[hmm_predictions[i]].name))
 print(len(hm_model.states), hm_model.states[19])
 print(empar)
+
+
+second_model = insert_delete_main_hmm(og_matrix)
+print(second_model.states)
+
 
 #for idx, val in enumerate(final_percent):
 #    final_percent[idx] = {

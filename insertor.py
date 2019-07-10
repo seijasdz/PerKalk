@@ -1,4 +1,5 @@
 import numpy
+import time
 from pomegranate import State
 from pomegranate import DiscreteDistribution
 from pomegranate import HiddenMarkovModel
@@ -283,45 +284,43 @@ def calculate_transitions(start_state, end_state, grouped_states):
 
 def apply_transitions(model, transitions):
     for tran in transitions:
-        print(tran['start'])
+        #print(tran)
         for key, state_data in tran['states'].items():
             trans_prob = state_data['count'] / tran['total']
             model.add_transition(tran['start'], state_data['state'], trans_prob)
 
 
-v_columns = column_clasify(data_matrix)
+def insert_delete_main_hmm(data_matrix):
+    v_columns = column_clasify(data_matrix)
+    v_zones = create_zones(v_columns)
+    v_grouped_states = group_states(v_zones, 'test')
+    v_model = HiddenMarkovModel()
+    v_first_state = State(None, name='ali_start')
+    v_last_state = State(None, name='ali_end')
+    v_model.add_state(v_first_state)
+    v_model.add_transition(v_model.start, v_first_state, 1)
+    v_model.add_state(v_last_state)
+    add_states(v_model, v_grouped_states)
+    v_trans = calculate_transitions(v_first_state, v_last_state, v_grouped_states)
+    apply_transitions(v_model, v_trans)
+    v_model.bake()
+    return  v_model
 
-v_zones = create_zones(v_columns)
 
-v_grouped_states = group_states(v_zones, 'test')
+#print(v_model.states)
+#a = 'a'
+#c = 'c'
+#g = 'g'
+#t = 't'
+#seq = numpy.array([a, g, t, a, a, a, a,a,a])
+#hmm_predictions = v_model.predict(seq, algorithm='viterbi')
 
-v_model = HiddenMarkovModel()
-v_first_state = State(None, name='ali_start')
-v_last_state = State(None, name='ali_end')
-
-v_model.add_state(v_first_state)
-v_model.add_transition(v_model.start, v_first_state, 1)
-v_model.add_state(v_last_state)
-
-add_states(v_model, v_grouped_states)
-v_trans = calculate_transitions(v_first_state, v_last_state, v_grouped_states)
-
-apply_transitions(v_model, v_trans)
-
-v_model.bake()
-a = 'a'
-c = 'c'
-g = 'g'
-t = 't'
-seq = numpy.array([a, g, t, a, a, a, a,a,a])
-hmm_predictions = v_model.predict(seq, algorithm='viterbi')
-
-empar = []
+#empar = []
 #for i, s in enumerate(seq):
-#    empar.append((seq[i], v_model.states[hmm_predictions[i]].name))
+    empar.append((seq[i], v_model.states[hmm_predictions[i]].name))
 
 #print(empar)
 
-for pre in hmm_predictions:
-    print(pre)
-    print(v_model.states[pre].name)
+#for pre in hmm_predictions:
+#    print(pre)
+#    print(v_model.states[pre].name)

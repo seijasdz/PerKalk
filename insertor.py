@@ -4,13 +4,13 @@ from pomegranate import DiscreteDistribution
 from pomegranate import HiddenMarkovModel
 
 example = [
-    ['-', 'a', 'a', '-', 'a', 'a'],
-    ['-', 'a', 'a', 'a', 'a', '-'],
-    ['-', '-', 'a', '-', '-', '-'],
-    ['-', 'a', 'a', 'a', '-', '-'],
-    ['a', '-', 'a', '-', '-', 't'],
-    ['-', 'a', 'a', '-', '-', '-'],
-    ['a', 'a', 'a', '-', '-', '-'],
+    ['-', 'a', 'g', 't', 'a', 'a', 'a'],
+    ['-', 'a', 'g', 't', 'a', '-', 'a'],
+    ['-', 'a', 'g', 't', '-', '-', 'a'],
+    ['-', 'a', 'g', 't', '-', '-', 'a'],
+    ['a', 'a', 'g', 't', '-', 't', 'a'],
+    ['a', '-', 'g', 't', '-', '-', 'a'],
+    ['a', 'a', 'g', 't', '-', '-', 'a'],
 ]
 
 data_matrix = numpy.array(example, numpy.unicode_)
@@ -82,18 +82,17 @@ def create_zones(classified):
 
 
 def make_insert(zone, name):
-    emission = {
-        'a': 1,
-        'c': 1,
-        'g': 1,
-        't': 1,
-    }
-    total = 4
+    emission = {}
+    total = 0
     for column in zone['columns']:
         for el in column.elements:
             if el != '-':
-                emission[el] = emission[el] + 1
-                total = total + 1
+                if el not in emission:
+                    emission[el] = 2
+                    total += 2
+                else:
+                    emission[el] += 1
+                    total += 1
     for key in emission:
         emission[key] = emission[key] / total
     # print(emission)
@@ -106,17 +105,16 @@ def make_insert(zone, name):
 
 
 def make_main(zone, name):
-    emission = {
-        'a': 1,
-        'c': 1,
-        'g': 1,
-        't': 1,
-    }
-    total = 4
+    emission = {}
+    total = 0
     for el in zone['column'].elements:
         if el != '-':
-            emission[el] = emission[el] + 1
-            total = total + 1
+            if el not in emission:
+                emission[el] = 2
+                total += 2
+            else:
+                emission[el] += 1
+                total += 1
 
     for key in emission:
         emission[key] = emission[key] / total
@@ -193,7 +191,7 @@ def to_first(start_state, first_gstate, end_state, grouped_states):
             next_states['total'] += 1
             next_states['states'][next_s.name] = {
                 'count': 1,
-                # 'state': next_s,
+                'state': next_s,
             }
         else:
             next_states['total'] += 1
@@ -214,7 +212,7 @@ def from_main(index, end_state, grouped_states):
     delete_trans = {
         'start': init_state['delete_state'],
         'total': 0,
-        'states': {}
+        'states': {},
     }
 
     for el_index, el in enumerate(elements):
@@ -225,7 +223,7 @@ def from_main(index, end_state, grouped_states):
                 main_trans['total'] += 1
                 main_trans['states'][next_s.name] = {
                     'count': 2,
-                    # 'state:' next_s,
+                    'state': next_s,
                 }
             else:
                 main_trans['states'][next_s.name]['count'] += 1
@@ -235,7 +233,7 @@ def from_main(index, end_state, grouped_states):
                 delete_trans['total'] += 1
                 delete_trans['states'][next_s.name] = {
                     'count': 2,
-                    # 'state': next_s,
+                    'state': next_s,
                 }
             else:
                 delete_trans['states'][next_s.name]['count'] += 1
@@ -261,25 +259,35 @@ def from_insert(index, end_state, grouped_states):
                     trans['total'] += 1
                     trans['states'][next_s.name] = {
                         'count': 2,
-                        #'state': next_s,
+                        'state': next_s,
                     }
                 else:
                     trans['states'][next_s.name]['count'] += 1
     return trans
 
 
-def transitions(model, start_state, end_state, grouped_states):
+def calculate_transitions(start_state, end_state, grouped_states):
     states_from_start = to_first(start_state, grouped_states[0], end_state, grouped_states)
     all_trans = [states_from_start]
     for index, gstate in enumerate(grouped_states):
         if gstate['type'] == 'main':
             trans = from_main(index, end_state, grouped_states)
             for t in trans:
-                all_trans.append(t)
+                if t['start']:
+                    all_trans.append(t)
         else:
             trans = from_insert(index, end_state, grouped_states)
             all_trans.append(trans)
-    print(all_trans)
+    return all_trans
+
+
+def apply_transitions(model, transitions):
+    for tran in transitions:
+        print(tran['start'])
+        for key, state_data in tran['states'].items():
+            trans_prob = state_data['count'] / tran['total']
+            model.add_transition(tran['start'], state_data['state'], trans_prob)
+
 
 v_columns = column_clasify(data_matrix)
 
@@ -292,9 +300,28 @@ v_first_state = State(None, name='ali_start')
 v_last_state = State(None, name='ali_end')
 
 v_model.add_state(v_first_state)
+v_model.add_transition(v_model.start, v_first_state, 1)
 v_model.add_state(v_last_state)
 
 add_states(v_model, v_grouped_states)
-transitions(v_model,v_first_state, v_last_state, v_grouped_states)
+v_trans = calculate_transitions(v_first_state, v_last_state, v_grouped_states)
 
+apply_transitions(v_model, v_trans)
 
+v_model.bake()
+a = 'a'
+c = 'c'
+g = 'g'
+t = 't'
+seq = numpy.array([a, g, t, a, a, a, a,a,a])
+hmm_predictions = v_model.predict(seq, algorithm='viterbi')
+
+empar = []
+#for i, s in enumerate(seq):
+#    empar.append((seq[i], v_model.states[hmm_predictions[i]].name))
+
+#print(empar)
+
+for pre in hmm_predictions:
+    print(pre)
+    print(v_model.states[pre].name)

@@ -7,7 +7,7 @@ from pomegranate import DiscreteDistribution
 from pomegranate import State
 from insertor import insert_delete_main_hmm
 
-before = 20
+before = 10
 after = 7
 size = before + after
 file = 'duplexW_EI'

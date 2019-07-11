@@ -304,23 +304,15 @@ def insert_delete_main_hmm(data_matrix):
     v_trans = calculate_transitions(v_first_state, v_last_state, v_grouped_states)
     apply_transitions(v_model, v_trans)
     v_model.bake()
-    return  v_model
+    return v_model
 
 
-#print(v_model.states)
-#a = 'a'
-#c = 'c'
-#g = 'g'
-#t = 't'
-#seq = numpy.array([a, g, t, a, a, a, a,a,a])
-#hmm_predictions = v_model.predict(seq, algorithm='viterbi')
+def insert_delete_main_hmm2(model, first_state, last_state, seq_matrix, name):
+    columns = column_clasify(seq_matrix)
+    zones = create_zones(columns)
+    grouped_states = group_states(zones, name)
+    add_states(model, grouped_states)
+    trans = calculate_transitions(first_state, last_state, grouped_states)
+    apply_transitions(model, trans)
 
-#empar = []
-#for i, s in enumerate(seq):
-    empar.append((seq[i], v_model.states[hmm_predictions[i]].name))
 
-#print(empar)
-
-#for pre in hmm_predictions:
-#    print(pre)
-#    print(v_model.states[pre].name)

@@ -7,8 +7,8 @@ from pomegranate import DiscreteDistribution
 from pomegranate import State
 from insertor import insert_delete_main_hmm
 
-before = 10
-after = 7
+before = 5
+after = 5
 size = before + after
 file = 'duplexW_EI'
 filename = file + '.txt'
@@ -29,7 +29,6 @@ with open(filename) as file_obj:
                     deck.append(ch)
                     if deck[-after] == 'p':
                         examples = examples + 1
-
                         llist = list(deck)
                         llist.remove('p')
                         list_of_decks.append(llist)

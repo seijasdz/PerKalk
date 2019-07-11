@@ -125,7 +125,7 @@ def make_main(zone, name):
         'emission': emission,
         'zone': zone,
         'main_state': State(DiscreteDistribution(emission), name='main ' + name),
-        'delete_state': State(None, name='delete ' + name) if zone['delete'] else None
+        'delete_state': State(None, name='none delete ' + name) if zone['delete'] else None
     }
 
 
@@ -150,6 +150,7 @@ def add_states(model, grouped_states):
         if 'main_state' in group:
             model.add_state(group['main_state'])
         if 'delete_state' in group and group['delete_state']:
+            # print('adding state', group['delete_state'].name)
             model.add_state(group['delete_state'])
         if 'insert_state' in group:
             model.add_state(group['insert_state'])
@@ -284,7 +285,6 @@ def calculate_transitions(start_state, end_state, grouped_states):
 
 def apply_transitions(model, transitions):
     for tran in transitions:
-        #print(tran)
         for key, state_data in tran['states'].items():
             trans_prob = state_data['count'] / tran['total']
             model.add_transition(tran['start'], state_data['state'], trans_prob)
@@ -316,3 +316,44 @@ def insert_delete_main_hmm2(model, first_state, last_state, seq_matrix, name):
     apply_transitions(model, trans)
 
 
+class HMMWrapper:
+    def __init__(self):
+        self.model = HiddenMarkovModel()
+        self.start = self.model.start
+        self.end = self.model.end
+        self.states_before_bake = []
+        self.states = None
+
+    def add_state(self, state):
+        self.states_before_bake.append(state)
+        self.model.add_state(state)
+
+    def add_transition(self, start_state, end_state, prob):
+        # print('adding from', start_state.name, 'to', end_state.name, prob)
+        self.model.add_transition(start_state, end_state, prob)
+
+    def bake(self):
+        starter_states = []
+
+        for state in self.states_before_bake:
+            if 'none' not in state.name:
+                starter_states.append(state)
+
+        starter_prob = 1.0 / len(starter_states)
+
+        for state in starter_states:
+            self.add_transition(self.start, state, starter_prob)
+
+        self.model.bake()
+        self.states = self.model.states
+
+    def make_states_from_alignment(self, first_state, last_state, seq_matrix, name):
+        columns = column_clasify(seq_matrix)
+        zones = create_zones(columns)
+        grouped_states = group_states(zones, name)
+        add_states(self, grouped_states)
+        trans = calculate_transitions(first_state, last_state, grouped_states)
+        apply_transitions(self, trans)
+
+    def predict(self, *args, **kwargs):
+        return self.model.predict(*args, **kwargs)

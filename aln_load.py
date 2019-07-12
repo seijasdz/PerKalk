@@ -30,7 +30,7 @@ a = 'a'
 c = 'c'
 g = 'g'
 t = 't'
-seq = numpy.array(['a', 'g', 't', 'c', 't', 'g', 'g', 't', 'a', 'a', 'c', 'a', 'g', 'a', 'c', 'g', 't'])
+seq = numpy.array(['t', 'a', 'a', 'a', 'c', 'g'])
 print(len(seq))
 hmm_predictions = model.predict(seq, algorithm='viterbi')
 

@@ -1,9 +1,4 @@
 **/venv
 **/.idea
 **/.directory
-**/*.aln
-**/*.f
-**/*.fasta
-**/*.dnd
-**/*.txt
 **/__pycache__

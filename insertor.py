@@ -324,8 +324,8 @@ class HMMWrapper:
         self.states_before_bake = []
         self.states = None
 
-    def add_state(self, state):
-        self.states_before_bake.append(state)
+    def add_state(self, state, start_prob=0):
+        self.states_before_bake.append((state, start_prob))
         self.model.add_state(state)
 
     def add_transition(self, start_state, end_state, prob):
@@ -333,15 +333,21 @@ class HMMWrapper:
         self.model.add_transition(start_state, end_state, prob)
 
     def bake(self):
-        starter_states = []
-
+        starter_states_no_prob = []
+        free_start_prob = 1.0
         for state in self.states_before_bake:
-            if 'none' not in state.name:
-                starter_states.append(state)
+            if 'none' not in state[0].name:
+                if not state[1]:
+                    starter_states_no_prob.append(state)
+                else:
+                    free_start_prob -= state[1]
+                    print('asignado ' + str(state[1]) + ' a ' + state[0].name)
+                    self.add_transition(self.start, state[0], state[1])
 
-        starter_prob = 1.0 / len(starter_states)
-
-        for state in starter_states:
+        len_no_prob = len(starter_states_no_prob)
+        starter_prob = free_start_prob / len_no_prob
+        print(len_no_prob, starter_prob)
+        for state in starter_states_no_prob:
             self.add_transition(self.start, state, starter_prob)
 
         self.model.bake()

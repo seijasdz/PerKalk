@@ -153,6 +153,7 @@ def add_states(model, grouped_states):
             # print('adding state', group['delete_state'].name)
             model.add_state(group['delete_state'])
         if 'insert_state' in group:
+            #print(group)
             model.add_state(group['insert_state'])
 
 

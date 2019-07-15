@@ -24,7 +24,7 @@ def load_to_fit(filename):
     with open(filename) as file_handle:
         for line in file_handle:
             if line[0] != '>':
-                lines.append(line[0:-1])
+                lines.append('acgt' + line[0:-1])
 
     return lines
 

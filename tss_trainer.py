@@ -12,7 +12,7 @@ start_tss = State(None, name='none start tss')
 
 model = HMMWrapper()
 
-model.add_state(background_state, 0.9)
+model.add_state(background_state)
 model.add_state(start_tss, 0.1)
 
 model.add_transition(model.start, background_state, 1.0)
@@ -27,7 +27,7 @@ a = 'a'
 c = 'c'
 g = 'g'
 t = 't'
-seq = numpy.array(['a', 'g', 't', 'c', 't', 'c', 'a', 'c', 't', 'c', 'c', 'g', 't', 'c', 't', 'g', 'a', 'a', 't', 't', 'c', 'c', 't', 'c', 't', 'c', 'c', 'g', 't', 'c', 't', 'c', 'c', 'c', 't', 'c', 'c', 'c', 'a', 'c', 'c', 'c', 'c', 'g', 'g', 'c', 'c', 'g', 't', 'c', 't', 'a', 't', 'g', 'c', 't', 'c', 'c', 'a', 'g', 'g', 'c', 'c', 'c', 't', 'c', 't', 'c', 'c', 't', 'c', 'g', 'c', 'g', 'g'])
+seq = numpy.array(['g', 'a', 't', 'c', 'a', 't', 'g', 'c', 'c', 'c', 'a', 't', 'c', 't', 'c', 'a', 'c', 'g', 'c', 'c', 'a', 'g', 'g', 'g', 'g', 'g', 'c', 'g', 'g', 'a'])
 print(len(seq))
 hmm_predictions = model.predict(seq, algorithm='viterbi')
 
@@ -39,6 +39,10 @@ model.model.fit(load_to_fit('TSS.f'))
 
 print(len(seq))
 hmm_predictions = model.predict(seq, algorithm='viterbi')
+
+logp, path = model.model.viterbi(seq)
+
+print(logp, path)
 
 for pre in hmm_predictions:
     print(model.states[pre].name)

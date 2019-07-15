@@ -2,7 +2,7 @@ import numpy
 from pomegranate import State
 from pomegranate import DiscreteDistribution
 from insertor import HMMWrapper
-
+from gene_sample_extractor import seqs_from
 
 def matrixer(filename):
     to_matrix = []
@@ -38,16 +38,13 @@ coding_region1 = State(DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't
 coding_region2 = State(DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25}), name='coding region 2')
 coding_region3 = State(DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25}), name='coding region 3')
 stop_codon_region_state = State(None, name='none_stop_codon_state')
-
 donor_start = State(None, name='none donor region')
 donor_type0_start = State(None, name='none donor0 region start')
 donor_type1_start = State(None, name='none donor1 region start')
 donor_type2_start = State(None, name='none donor2 region start')
-
 interior_intron0 = State(DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25}), name='interior_intron0')
 interior_intron1 = State(DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25}), name='interior_intron1')
 interior_intron2 = State(DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25}), name='interior_intron2')
-
 acceptor0_start = State(None, name='none acceptor0 region start')
 acceptor1_start = State(None, name='none acceptor1 region start')
 acceptor2_start = State(None, name='none acceptor2 region start')
@@ -62,27 +59,33 @@ model.add_state(coding_region2)
 model.add_state(coding_region3)
 model.add_state(stop_codon_region_state)
 model.add_state(donor_start)
+model.add_state(donor_type0_start)
+model.add_state(donor_type1_start)
+model.add_state(donor_type2_start)
 model.add_state(interior_intron0)
 model.add_state(interior_intron1)
 model.add_state(interior_intron2)
+model.add_state(acceptor0_start)
+model.add_state(acceptor1_start)
+model.add_state(acceptor2_start)
 
 
-model.add_transition(background_state, background_state, 0.9)
-model.add_transition(background_state, start_codon_region_state, 0.1)
+model.add_transition(background_state, background_state, 0.99)
+model.add_transition(background_state, start_codon_region_state, 0.01)
 model.add_transition(coding_region1, coding_region2, 1.0)
 model.add_transition(coding_region2, coding_region3, 1.0)
 model.add_transition(coding_region3, coding_region1, 0.8)
-model.add_transition(coding_region3, stop_codon_region_state, 0.1)
-model.add_transition(coding_region3, donor_start, 0.1)
+model.add_transition(coding_region3, stop_codon_region_state, 0.01)
+model.add_transition(coding_region3, donor_start, 0.19)
 model.add_transition(donor_start, donor_type0_start, 0.34)
 model.add_transition(donor_start, donor_type1_start, 0.33)
 model.add_transition(donor_start, donor_type2_start, 0.33)
-model.add_transition(interior_intron0, interior_intron0, 0.9)
-model.add_transition(interior_intron0, acceptor0_start, 0.1)
-model.add_transition(interior_intron1, interior_intron1, 0.9)
-model.add_transition(interior_intron1, acceptor1_start, 0.1)
-model.add_transition(interior_intron2, interior_intron2, 0.9)
-model.add_transition(interior_intron2, acceptor2_start, 0.1)
+model.add_transition(interior_intron0, interior_intron0, 0.95)
+model.add_transition(interior_intron0, acceptor0_start, 0.05)
+model.add_transition(interior_intron1, interior_intron1, 0.95)
+model.add_transition(interior_intron1, acceptor1_start, 0.05)
+model.add_transition(interior_intron2, interior_intron2, 0.95)
+model.add_transition(interior_intron2, acceptor2_start, 0.05)
 
 
 model.make_states_from_alignment(start_codon_region_state, coding_region1, start_cds_matrix, 'start codon region ')
@@ -103,12 +106,21 @@ a = 'a'
 c = 'c'
 g = 'g'
 t = 't'
-seq = numpy.array([a,t,a,c,g,a,c,a,c,t,g,g,a,a,a,a,g,g,a,c,a,a,a,c,t,a,t,a,a,a,g,a,c,a,g,t,a,a,a,a,a,g,a,t,c,a,g,t,g,g,t,t,a,t,c,t,t,t,g,c,a,g,a,c,g,c,c,a,c,c,a,t,c,a,c,t,g,t,g,a,g,c,c,c,t,g,t,a,c,t,a,t,c,a,g,c,c,'t', 'a', 'c', 't', 't', 'c', 'c', 'a', 't', 'g', 'g', 'g', 'g',   'a','a','a','c','g','t', 'g', 'g', 'g', 'g', 't', 'g', 'a', 'g', 't', 'c', 'a', 't','g','a','g',    'c', 't', 't', 'g', 't', 'c', 't', 't', 'c', 'g', 'a', 'c', 't', 't', 'c', 'a', 'a', 'g', 'g', 't', 'g',  'a','c','t','a','a','a',     'a', 't', 'c', 't', 'g', 'a', 'g', 'g', 'c', 't', 'c', 't', 'g' ])
+s = seqs_from('example_seq.ebi')[1]
+
+seqx = list(s[36000: 46000])
+print(seqx)
+print(len(s))
+seq = numpy.array(seqx)
 print(len(seq))
 hmm_predictions = model.predict(seq, algorithm='viterbi')
 
+count = 0
 for pre in hmm_predictions:
-    print(model.states[pre].name)
+    if 'none' not in model.states[pre].name and 'None' not in model.states[pre].name and 'back' not in model.states[pre].name:
+        print(model.states[pre].name)
+        print(count, seq[count])
+        count += 1
 
 
 def not_founder(states1, states2):

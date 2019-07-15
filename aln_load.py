@@ -84,6 +84,7 @@ model.add_transition(interior_intron1, acceptor1_start, 0.1)
 model.add_transition(interior_intron2, interior_intron2, 0.9)
 model.add_transition(interior_intron2, acceptor2_start, 0.1)
 
+
 model.make_states_from_alignment(start_codon_region_state, coding_region1, start_cds_matrix, 'start codon region ')
 model.make_states_from_alignment(stop_codon_region_state, background_state, stop_cds_matrix, 'stop codon region ')
 
@@ -118,6 +119,10 @@ def not_founder(states1, states2):
                 found = True
         if not found:
             print(state1.name)
+
+
+with open('out.txt', 'w') as out_file:
+    out_file.write(model.model.to_json())
 
 # print(len(model.states_before_bake))
 # print(model.states)

@@ -1,0 +1,158 @@
+> seq1
+tgtgatttcaactatacgacattctggaaaaggacaaact
+> seq2
+gaggaaaccgggtaagatgtgtgaagcagtcggctatacc
+> seq3
+aaaaggcaatttccttcctcttttctaatttggctctgga
+> seq4
+caggggaagacggtgctcgccttgacagaagctgtctatc
+> seq5
+ggtgaagcagcggcgttttcggcgactttcccgatcgcca
+> seq6
+gacggctgcggcggggctaggagctcgtttttctccccgc
+> seq7
+taaagggcccaggctcagggagctccatacctgcacacct
+> seq8
+gggtggagcgtcccgagacccgaaaacccagggcagagtg
+> seq9
+taaagggcccaggctcagggagctccatacctgcacacct
+> seq10
+gaaaattcaagttctttgaaaattagaaataataactcag
+> seq11
+tttttctttcctcatagttcagtgtcttcaaccaaccatg
+> seq12
+tttcagatccggctaacgagctcatatctccctcattatg
+> seq13
+ccattcctcactacttgctgaattactcaaagtcactatg
+> seq14
+acatgtggcaagttctcctacactgtgatttggaaaaatg
+> seq15
+gaaaattcaagttctttgaaaattagaaataataactcag
+> seq16
+tttttctttcctcatagttcagtgtcttcaaccaaccatg
+> seq17
+tttcagatccggctaacgagctcatatctccctcattatg
+> seq18
+ccattcctcactacttgctgaattactcaaagtcactatg
+> seq19
+acatgtggcaagttctcctacactgtgatttggaaaaatg
+> seq20
+agcggaacggagacacggtggccgggccgaaaacgtcaca
+> seq21
+tcgcgggggcggggctcgggaaagacccgtgccagcgggc
+> seq22
+gcccctccctcatgagtgctgagcccaagggccaggctgt
+> seq23
+cgtgggtcccggaagctctgttctgcgggtggccgctcgc
+> seq24
+agcggaacggagacacggtggccgggccgaaaacgtcaca
+> seq25
+gccccacgggccggtggggagcgcgtgtctgggtcacatg
+> seq26
+tcgcgggggcggggctcgggaaagacccgtgccagcgggc
+> seq27
+gcccctccctcatgagtgctgagcccaagggccaggctgt
+> seq28
+tgctggacgtcgggagcgctggcctctgctctgctgattt
+> seq29
+tcactccgtctgaattcctctccgtctccctcccaccccg
+> seq30
+gcggccagggaaagcgcgtggagagccgaaaggtgcggtg
+> seq31
+ggctgtgggttccctctgagatcagtgcggagctgtcaaa
+> seq32
+aagagtaaaactccgtctaaaaaaaaagaaaaaaaaggac
+> seq33
+cattatgacttgactcagctgggaaccacgagaggacgag
+> seq34
+ggtgcacgccctggggtggggcttcttcgggaagccgggg
+> seq35
+gcagttggagaccaggtcctgccctgttagcctttctgta
+> seq36
+tggccaacaccccctgtaaggccacaggagaggaacagga
+> seq37
+gagcgccgcccggccgggcgtgcccccgcgccccaagcat
+> seq38
+ctgcttggcttctggcccccttatctgcccccgccccacg
+> seq39
+tactcgtcctggccgcagagtcagcgtctccggagcgcct
+> seq40
+agtcatggatgaataattacgtctgtggttttctatggag
+> seq41
+attttaaatctatatatagagatatctttgtcagcattgc
+> seq42
+ggcggcgccccaggctgcagtgttccgggagctgggttat
+> seq43
+ctgtaaggcgagcgcggcgcgggggatggaagcaggcgcc
+> seq44
+tggcatccccctcaaggcctggctccatgattctgagagg
+> seq45
+agtcatggatgaataattacgtctgtggttttctatggag
+> seq46
+ctctgtgtatttaagagctcttttgccagtgagcccagta
+> seq47
+tgggcctataaaagctgccacaagacgccaaggccacaag
+> seq48
+ggcggcgccccaggctgcagtgttccgggagctgggttat
+> seq49
+ctgtaaggcgagcgcggcgcgggggatggaagcaggcgcc
+> seq50
+tggcatccccctcaaggcctggctccatgattctgagagg
+> seq51
+tggaacacagagcgcggccgggacaaaggggcaggccaga
+> seq52
+ccaggcagaaccgcggttctagtctcccagctccagctcg
+> seq53
+ccaggcagaaccgcggttctagtctcccagctccagctcg
+> seq54
+cctgcttcgcaccccatgcgcctaaccacaaggttccctc
+> seq55
+tctcccaggtcccagctggggctgacgtcgtcctggtgtg
+> seq56
+aggagggatacaaatagtgccgacggctgggggccctgtc
+> seq57
+gcgcgaggctgggaccggcggaaggggcgtggcctgcaga
+> seq58
+gcgcgaggctgggaccggcggaaggggcgtggcctgcaga
+> seq59
+tgaggggtgcggatccgggccccccagcctgcgaagcgca
+> seq60
+tgaggggtgcggatccgggccccccagcctgcgaagcgca
+> seq61
+cctgcttcgcaccccatgcgcctaaccacaaggttccctc
+> seq62
+cctgcttcgcaccccatgcgcctaaccacaaggttccctc
+> seq63
+tttcctttcatcttcgctgtggcagacgtttctatttatc
+> seq64
+aaagaaccaggaaacagcacatgatctgttggaaggaggc
+> seq65
+gcgggagctgcgggattccggcttcaggggcggggcaccg
+> seq66
+ccgttgccaggatgtgacgccactgacttgcgcattggag
+> seq67
+gcccggatgtgacgccactgacttgcgcattggaggtcag
+> seq68
+gcggtctcccggacgacgcggaggggtccgcgctgcaccg
+> seq69
+cggccgcgtgaccgcactgcagagagcggctgcgagcagg
+> seq70
+cgcttcctgccgcggggcctgaggcgcctgacgctgcacc
+> seq71
+cgcttcctgccgcggggcctgaggcgcctgacgctgcacc
+> seq72
+cacccggggttccggtggcgttaggctgcagcagtggcgc
+> seq73
+cccgccctctccgccgctagccaatcctcgcgttgatgac
+> seq74
+gggcggggcgcgcgcggctcccgcgcacggattcttcctg
+> seq75
+ccatctcacgccagggggcggaacttcctgcagcctctct
+> seq76
+cacccggggttccggtggcgttaggctgcagcagtggcgc
+> seq77
+gtgctgagatcacaggcgtgagccacggcactccgccgca
+> seq78
+gggcggggcgcgcgcggctcccgcgcacggattcttcctg
+> seq79
+ccatctcacgccagggggcggaacttcctgcagcctctct

@@ -1,0 +1,5101 @@
+{
+    "class" : "HiddenMarkovModel",
+    "name" : "None",
+    "start" : {
+        "class" : "State",
+        "distribution" : null,
+        "name" : "None-start",
+        "weight" : 1.0
+    },
+    "end" : {
+        "class" : "State",
+        "distribution" : null,
+        "name" : "None-end",
+        "weight" : 1.0
+    },
+    "states" : [
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "str",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.25,
+                        "c" : 0.25,
+                        "g" : 0.25,
+                        "t" : 0.25
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "background",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "str",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.25,
+                        "c" : 0.25,
+                        "g" : 0.25,
+                        "t" : 0.25
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "coding region 1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "str",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.25,
+                        "c" : 0.25,
+                        "g" : 0.25,
+                        "t" : 0.25
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "coding region 2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "str",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.25,
+                        "c" : 0.25,
+                        "g" : 0.25,
+                        "t" : 0.25
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "coding region 3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.2845528455284553,
+                        "c" : 0.3170731707317073,
+                        "t" : 0.24390243902439024,
+                        "a" : 0.15447154471544716
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert acceptor type0 region0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.08695652173913043,
+                        "t" : 0.17391304347826086,
+                        "c" : 0.43478260869565216,
+                        "g" : 0.30434782608695654
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert acceptor type0 region22",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.18888888888888888,
+                        "t" : 0.2111111111111111,
+                        "c" : 0.28888888888888886,
+                        "g" : 0.3111111111111111
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert acceptor type1 region0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.2,
+                        "c" : 0.4666666666666667,
+                        "g" : 0.3333333333333333
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert acceptor type1 region24",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.14414414414414414,
+                        "g" : 0.27927927927927926,
+                        "c" : 0.2972972972972973,
+                        "t" : 0.27927927927927926
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert acceptor type2 region0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.2857142857142857,
+                        "c" : 0.38095238095238093,
+                        "t" : 0.19047619047619047,
+                        "g" : 0.14285714285714285
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert acceptor type2 region23",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.3333333333333333,
+                        "a" : 0.3333333333333333,
+                        "g" : 0.3333333333333333
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert donor type0 region0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.21428571428571427,
+                        "t" : 0.42857142857142855,
+                        "c" : 0.35714285714285715
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert donor type0 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.5714285714285714,
+                        "c" : 0.21428571428571427,
+                        "g" : 0.21428571428571427
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert donor type1 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.5555555555555556,
+                        "c" : 0.4444444444444444
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert donor type2 region13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.4,
+                        "a" : 0.28,
+                        "t" : 0.12,
+                        "c" : 0.2
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert start codon region 0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 1.0
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert start codon region 15",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.34285714285714286,
+                        "g" : 0.3142857142857143,
+                        "c" : 0.17142857142857143,
+                        "t" : 0.17142857142857143
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert stop codon region 0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.1875,
+                        "a" : 0.28125,
+                        "g" : 0.21875,
+                        "t" : 0.3125
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "insert stop codon region 15",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "str",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.25,
+                        "c" : 0.25,
+                        "g" : 0.25,
+                        "t" : 0.25
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "interior_intron0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "str",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.25,
+                        "c" : 0.25,
+                        "g" : 0.25,
+                        "t" : 0.25
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "interior_intron1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "str",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.25,
+                        "c" : 0.25,
+                        "g" : 0.25,
+                        "t" : 0.25
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "interior_intron2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.17535545023696683,
+                        "c" : 0.2890995260663507,
+                        "a" : 0.11848341232227488,
+                        "t" : 0.41706161137440756
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.47692307692307695,
+                        "t" : 0.28205128205128205,
+                        "g" : 0.16923076923076924,
+                        "a" : 0.07179487179487179
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.4788732394366197,
+                        "a" : 0.0892018779342723,
+                        "t" : 0.3755868544600939,
+                        "g" : 0.056338028169014086
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.3864734299516908,
+                        "c" : 0.4492753623188406,
+                        "a" : 0.06280193236714976,
+                        "g" : 0.10144927536231885
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.41379310344827586,
+                        "t" : 0.43349753694581283,
+                        "a" : 0.06896551724137931,
+                        "g" : 0.08374384236453201
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.145,
+                        "c" : 0.305,
+                        "a" : 0.305,
+                        "g" : 0.245
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region14",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.7857142857142857,
+                        "t" : 0.18095238095238095,
+                        "a" : 0.03333333333333333
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region15",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.9771689497716894,
+                        "c" : 0.0228310502283105
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region16",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.9817351598173516,
+                        "g" : 0.0182648401826484
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region17",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.9441860465116279,
+                        "a" : 0.04186046511627907,
+                        "c" : 0.013953488372093023
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region18",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.10407239819004525,
+                        "g" : 0.5429864253393665,
+                        "a" : 0.27601809954751133,
+                        "t" : 0.07692307692307693
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region19",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.3515981735159817,
+                        "g" : 0.1552511415525114,
+                        "c" : 0.3333333333333333,
+                        "a" : 0.1598173515981735
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.33031674208144796,
+                        "c" : 0.19457013574660634,
+                        "a" : 0.27149321266968324,
+                        "g" : 0.20361990950226244
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region20",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.2318181818181818,
+                        "c" : 0.23636363636363636,
+                        "t" : 0.2863636363636364,
+                        "a" : 0.24545454545454545
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region21",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.3926940639269406,
+                        "a" : 0.091324200913242,
+                        "t" : 0.4155251141552511,
+                        "g" : 0.1004566210045662
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.4343891402714932,
+                        "g" : 0.2171945701357466,
+                        "t" : 0.28054298642533937,
+                        "a" : 0.06787330316742081
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region4",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.44954128440366975,
+                        "a" : 0.05963302752293578,
+                        "c" : 0.3486238532110092,
+                        "g" : 0.14220183486238533
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region5",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.11764705882352941,
+                        "t" : 0.3755656108597285,
+                        "c" : 0.39819004524886875,
+                        "a" : 0.1085972850678733
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.4470046082949309,
+                        "c" : 0.39631336405529954,
+                        "a" : 0.08294930875576037,
+                        "g" : 0.07373271889400922
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region7",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.3888888888888889,
+                        "t" : 0.4398148148148148,
+                        "g" : 0.125,
+                        "a" : 0.046296296296296294
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region8",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.3584905660377358,
+                        "c" : 0.4669811320754717,
+                        "g" : 0.13679245283018868,
+                        "a" : 0.03773584905660377
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type0 region9",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.323943661971831,
+                        "t" : 0.36619718309859156,
+                        "g" : 0.15492957746478872,
+                        "a" : 0.15492957746478872
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.37209302325581395,
+                        "c" : 0.44651162790697674,
+                        "g" : 0.13023255813953488,
+                        "a" : 0.05116279069767442
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.10849056603773585,
+                        "c" : 0.46226415094339623,
+                        "t" : 0.33490566037735847,
+                        "g" : 0.09433962264150944
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.5,
+                        "g" : 0.0794392523364486,
+                        "a" : 0.07009345794392523,
+                        "t" : 0.35046728971962615
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.46543778801843316,
+                        "a" : 0.07834101382488479,
+                        "g" : 0.06451612903225806,
+                        "t" : 0.391705069124424
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.28837209302325584,
+                        "g" : 0.24651162790697675,
+                        "a" : 0.29767441860465116,
+                        "t" : 0.16744186046511628
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region14",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.7594339622641509,
+                        "t" : 0.16981132075471697,
+                        "a" : 0.07075471698113207
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region15",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.944954128440367,
+                        "c" : 0.03211009174311927,
+                        "g" : 0.022935779816513763
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region16",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.9861111111111112,
+                        "g" : 0.013888888888888888
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region17",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.9318181818181818,
+                        "a" : 0.05,
+                        "t" : 0.01818181818181818
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region18",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.5454545454545454,
+                        "c" : 0.11363636363636363,
+                        "a" : 0.2636363636363636,
+                        "t" : 0.07727272727272727
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region19",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.35,
+                        "t" : 0.34545454545454546,
+                        "g" : 0.1590909090909091,
+                        "a" : 0.14545454545454545
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.18099547511312217,
+                        "a" : 0.27149321266968324,
+                        "c" : 0.21266968325791855,
+                        "t" : 0.334841628959276
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region20",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.24434389140271492,
+                        "t" : 0.27601809954751133,
+                        "a" : 0.23529411764705882,
+                        "g" : 0.24434389140271492
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region21",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.31797235023041476,
+                        "g" : 0.2626728110599078,
+                        "t" : 0.20276497695852536,
+                        "a" : 0.21658986175115208
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region22",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.24651162790697675,
+                        "t" : 0.28837209302325584,
+                        "a" : 0.26046511627906976,
+                        "g" : 0.20465116279069767
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region23",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.37104072398190047,
+                        "c" : 0.40271493212669685,
+                        "g" : 0.14027149321266968,
+                        "a" : 0.08597285067873303
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.17194570135746606,
+                        "c" : 0.39819004524886875,
+                        "a" : 0.058823529411764705,
+                        "t" : 0.37104072398190047
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region4",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.16363636363636364,
+                        "c" : 0.35454545454545455,
+                        "t" : 0.41363636363636364,
+                        "a" : 0.06818181818181818
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region5",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.3619047619047619,
+                        "t" : 0.35714285714285715,
+                        "g" : 0.17142857142857143,
+                        "a" : 0.10952380952380952
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.36619718309859156,
+                        "t" : 0.49765258215962443,
+                        "a" : 0.08450704225352113,
+                        "g" : 0.051643192488262914
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region7",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.4246575342465753,
+                        "c" : 0.3972602739726027,
+                        "a" : 0.0365296803652968,
+                        "g" : 0.1415525114155251
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region8",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.44285714285714284,
+                        "t" : 0.3904761904761905,
+                        "g" : 0.13333333333333333,
+                        "a" : 0.03333333333333333
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type1 region9",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.38571428571428573,
+                        "c" : 0.3,
+                        "a" : 0.1619047619047619,
+                        "g" : 0.1523809523809524
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.4700460829493088,
+                        "g" : 0.12903225806451613,
+                        "t" : 0.3456221198156682,
+                        "a" : 0.055299539170506916
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.40186915887850466,
+                        "t" : 0.397196261682243,
+                        "g" : 0.08878504672897196,
+                        "a" : 0.11214953271028037
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.45794392523364486,
+                        "t" : 0.40654205607476634,
+                        "a" : 0.0514018691588785,
+                        "g" : 0.08411214953271028
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.1926605504587156,
+                        "c" : 0.5,
+                        "t" : 0.23394495412844038,
+                        "a" : 0.07339449541284404
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.23222748815165878,
+                        "c" : 0.3933649289099526,
+                        "a" : 0.2796208530805687,
+                        "g" : 0.0947867298578199
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region14",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.14534883720930233,
+                        "c" : 0.7674418604651163,
+                        "a" : 0.06976744186046512,
+                        "g" : 0.01744186046511628
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region15",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.9547511312217195,
+                        "c" : 0.013574660633484163,
+                        "t" : 0.02262443438914027,
+                        "g" : 0.00904977375565611
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region16",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.9634703196347032,
+                        "g" : 0.0365296803652968
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region17",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.9272727272727272,
+                        "a" : 0.05909090909090909,
+                        "c" : 0.013636363636363636
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region18",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.5475113122171946,
+                        "a" : 0.28054298642533937,
+                        "c" : 0.09502262443438914,
+                        "t" : 0.07692307692307693
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region19",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.3424657534246575,
+                        "c" : 0.3835616438356164,
+                        "g" : 0.1278538812785388,
+                        "a" : 0.1461187214611872
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.2557077625570776,
+                        "t" : 0.3515981735159817,
+                        "c" : 0.2191780821917808,
+                        "g" : 0.1735159817351598
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region20",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.24545454545454545,
+                        "g" : 0.25,
+                        "t" : 0.2727272727272727,
+                        "c" : 0.2318181818181818
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region21",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.19444444444444445,
+                        "t" : 0.2361111111111111,
+                        "g" : 0.25,
+                        "c" : 0.3194444444444444
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region22",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.410958904109589,
+                        "t" : 0.3424657534246575,
+                        "g" : 0.1643835616438356,
+                        "a" : 0.0821917808219178
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.4343891402714932,
+                        "c" : 0.3438914027149321,
+                        "g" : 0.1493212669683258,
+                        "a" : 0.07239819004524888
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region4",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.3891402714932127,
+                        "g" : 0.22171945701357465,
+                        "t" : 0.334841628959276,
+                        "a" : 0.05429864253393665
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region5",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.39631336405529954,
+                        "c" : 0.37327188940092165,
+                        "g" : 0.11981566820276497,
+                        "a" : 0.11059907834101383
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.07692307692307693,
+                        "c" : 0.40271493212669685,
+                        "t" : 0.45701357466063347,
+                        "a" : 0.06334841628959276
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region7",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.4074074074074074,
+                        "t" : 0.42592592592592593,
+                        "a" : 0.05092592592592592,
+                        "g" : 0.11574074074074074
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region8",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.14832535885167464,
+                        "t" : 0.3827751196172249,
+                        "a" : 0.04784688995215311,
+                        "c" : 0.42105263157894735
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main acceptor type2 region9",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.2,
+                        "a" : 0.3024390243902439,
+                        "t" : 0.13170731707317074,
+                        "c" : 0.36585365853658536
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.1477832512315271,
+                        "g" : 0.3842364532019704,
+                        "c" : 0.3054187192118227,
+                        "a" : 0.1625615763546798
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.45320197044334976,
+                        "a" : 0.16748768472906403,
+                        "c" : 0.2512315270935961,
+                        "t" : 0.12807881773399016
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.07804878048780488,
+                        "t" : 0.17073170731707318,
+                        "c" : 0.16585365853658537,
+                        "a" : 0.5853658536585366
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.848780487804878,
+                        "a" : 0.08292682926829269,
+                        "t" : 0.04390243902439024,
+                        "c" : 0.024390243902439025
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 1.0
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region4",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 1.0
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region5",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.465,
+                        "g" : 0.505,
+                        "c" : 0.02,
+                        "t" : 0.01
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.6984924623115578,
+                        "c" : 0.12562814070351758,
+                        "g" : 0.10050251256281408,
+                        "t" : 0.07537688442211055
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region7",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.7804878048780488,
+                        "t" : 0.08292682926829269,
+                        "a" : 0.08292682926829269,
+                        "c" : 0.05365853658536585
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region8",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.3103448275862069,
+                        "a" : 0.11822660098522167,
+                        "c" : 0.2315270935960591,
+                        "g" : 0.3399014778325123
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type0 region9",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.1724137931034483,
+                        "c" : 0.33497536945812806,
+                        "a" : 0.2561576354679803,
+                        "g" : 0.23645320197044334
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.18226600985221675,
+                        "a" : 0.3054187192118227,
+                        "t" : 0.1330049261083744,
+                        "c" : 0.3793103448275862
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.28292682926829266,
+                        "t" : 0.13658536585365855,
+                        "g" : 0.4097560975609756,
+                        "a" : 0.17073170731707318
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.18536585365853658,
+                        "g" : 0.4097560975609756,
+                        "c" : 0.2682926829268293,
+                        "t" : 0.13658536585365855
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.07881773399014778,
+                        "t" : 0.15270935960591134,
+                        "a" : 0.6009852216748769,
+                        "c" : 0.16748768472906403
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.8585365853658536,
+                        "a" : 0.08292682926829269,
+                        "t" : 0.03414634146341464,
+                        "c" : 0.024390243902439025
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 1.0
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region4",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 1.0
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region5",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.505,
+                        "a" : 0.455,
+                        "c" : 0.02,
+                        "t" : 0.02
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.6731707317073171,
+                        "c" : 0.12195121951219512,
+                        "g" : 0.13658536585365855,
+                        "t" : 0.06829268292682927
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region7",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.7902439024390244,
+                        "a" : 0.06829268292682927,
+                        "c" : 0.05365853658536585,
+                        "t" : 0.08780487804878048
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region8",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.3170731707317073,
+                        "g" : 0.3073170731707317,
+                        "a" : 0.13658536585365855,
+                        "c" : 0.23902439024390243
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type1 region9",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.2926829268292683,
+                        "g" : 0.25853658536585367,
+                        "t" : 0.25853658536585367,
+                        "a" : 0.1902439024390244
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region0",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.17073170731707318,
+                        "a" : 0.2634146341463415,
+                        "g" : 0.23414634146341465,
+                        "c" : 0.33170731707317075
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.3170731707317073,
+                        "g" : 0.3024390243902439,
+                        "c" : 0.2634146341463415,
+                        "a" : 0.11707317073170732
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.4,
+                        "c" : 0.28292682926829266,
+                        "a" : 0.18048780487804877,
+                        "t" : 0.13658536585365855
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.4292682926829268,
+                        "c" : 0.25365853658536586,
+                        "t" : 0.13170731707317074,
+                        "a" : 0.18536585365853658
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.13170731707317074,
+                        "a" : 0.3024390243902439,
+                        "g" : 0.1902439024390244,
+                        "c" : 0.375609756097561
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.16585365853658537,
+                        "t" : 0.16097560975609757,
+                        "g" : 0.07804878048780488,
+                        "a" : 0.5951219512195122
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.8585365853658536,
+                        "a" : 0.07317073170731707,
+                        "c" : 0.024390243902439025,
+                        "t" : 0.04390243902439024
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region4",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 1.0
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region5",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 1.0
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.5,
+                        "a" : 0.4696969696969697,
+                        "c" : 0.020202020202020204,
+                        "t" : 0.010101010101010102
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region7",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.6634146341463415,
+                        "g" : 0.13658536585365855,
+                        "t" : 0.08292682926829269,
+                        "c" : 0.11707317073170732
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region8",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.7951219512195122,
+                        "t" : 0.08292682926829269,
+                        "c" : 0.04390243902439024,
+                        "a" : 0.07804878048780488
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main donor type2 region9",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.17475728155339806,
+                        "a" : 0.17475728155339806,
+                        "c" : 0.3300970873786408,
+                        "g" : 0.32038834951456313
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.9134615384615384,
+                        "c" : 0.0673076923076923,
+                        "g" : 0.019230769230769232
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.970873786407767,
+                        "c" : 0.02912621359223301
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.5,
+                        "a" : 0.16666666666666666,
+                        "c" : 0.13725490196078433,
+                        "t" : 0.19607843137254902
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.33663366336633666,
+                        "c" : 0.3465346534653465,
+                        "a" : 0.21782178217821782,
+                        "t" : 0.09900990099009901
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.34,
+                        "c" : 0.3,
+                        "a" : 0.14,
+                        "t" : 0.22
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 14",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.21904761904761905,
+                        "a" : 0.24761904761904763,
+                        "c" : 0.3333333333333333,
+                        "g" : 0.2
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.08571428571428572,
+                        "t" : 0.20952380952380953,
+                        "g" : 0.41904761904761906,
+                        "c" : 0.2857142857142857
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.3333333333333333,
+                        "g" : 0.20952380952380953,
+                        "t" : 0.2571428571428571,
+                        "a" : 0.2
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 4",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.10476190476190476,
+                        "a" : 0.26666666666666666,
+                        "c" : 0.34285714285714286,
+                        "g" : 0.2857142857142857
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 5",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.10679611650485436,
+                        "g" : 0.4077669902912621,
+                        "a" : 0.3786407766990291,
+                        "c" : 0.10679611650485436
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.4807692307692308,
+                        "g" : 0.125,
+                        "a" : 0.20192307692307693,
+                        "t" : 0.19230769230769232
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 7",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.5,
+                        "a" : 0.14,
+                        "g" : 0.24,
+                        "t" : 0.12
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 8",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.9230769230769231,
+                        "c" : 0.028846153846153848,
+                        "t" : 0.019230769230769232,
+                        "g" : 0.028846153846153848
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main start codon region 9",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.2727272727272727,
+                        "g" : 0.29545454545454547,
+                        "t" : 0.18181818181818182,
+                        "c" : 0.25
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.37142857142857144,
+                        "a" : 0.1619047619047619,
+                        "c" : 0.34285714285714286,
+                        "g" : 0.12380952380952381
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.2815533980582524,
+                        "c" : 0.2912621359223301,
+                        "a" : 0.23300970873786409,
+                        "t" : 0.1941747572815534
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.30392156862745096,
+                        "c" : 0.22549019607843138,
+                        "t" : 0.29411764705882354,
+                        "a" : 0.17647058823529413
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.41414141414141414,
+                        "a" : 0.1919191919191919,
+                        "c" : 0.25252525252525254,
+                        "t" : 0.1414141414141414
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.4823529411764706,
+                        "t" : 0.2,
+                        "c" : 0.17647058823529413,
+                        "a" : 0.1411764705882353
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 14",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.3465346534653465,
+                        "c" : 0.2376237623762376,
+                        "t" : 0.2376237623762376,
+                        "g" : 0.1782178217821782
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.17647058823529413,
+                        "g" : 0.14705882352941177,
+                        "c" : 0.4117647058823529,
+                        "t" : 0.2647058823529412
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "c" : 0.038834951456310676,
+                        "t" : 0.7281553398058253,
+                        "a" : 0.17475728155339806,
+                        "g" : 0.05825242718446602
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 4",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.06666666666666667,
+                        "g" : 0.5714285714285714,
+                        "c" : 0.0380952380952381,
+                        "a" : 0.3238095238095238
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 5",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "a" : 0.5904761904761905,
+                        "g" : 0.3142857142857143,
+                        "c" : 0.02857142857142857,
+                        "t" : 0.06666666666666667
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.3619047619047619,
+                        "a" : 0.3619047619047619,
+                        "t" : 0.10476190476190476,
+                        "c" : 0.17142857142857143
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 7",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "g" : 0.2571428571428571,
+                        "c" : 0.24761904761904763,
+                        "a" : 0.1523809523809524,
+                        "t" : 0.34285714285714286
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 8",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : {
+                "class" : "Distribution",
+                "dtype" : "numpy.str_",
+                "name" : "DiscreteDistribution",
+                "parameters" : [
+                    {
+                        "t" : 0.07766990291262135,
+                        "c" : 0.36893203883495146,
+                        "g" : 0.2621359223300971,
+                        "a" : 0.2912621359223301
+                    }
+                ],
+                "frozen" : false
+            },
+            "name" : "main stop codon region 9",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none_stop_codon_state",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none_start_codon_state",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none donor region",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none donor0 region start",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none donor1 region start",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete stop codon region 1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete stop codon region 2",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete stop codon region 3",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type2 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type2 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type2 region13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type2 region14",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type1 region6",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type1 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type1 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type1 region13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type1 region14",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type0 region10",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type0 region11",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type0 region12",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type0 region13",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type0 region14",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none acceptor2 region start",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type2 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none acceptor1 region start",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type1 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none acceptor0 region start",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "none delete acceptor type0 region1",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "None-start",
+            "weight" : 1.0
+        },
+        {
+            "class" : "State",
+            "distribution" : null,
+            "name" : "None-end",
+            "weight" : 1.0
+        }
+    ],
+    "end_index" : 180,
+    "start_index" : 179,
+    "silent_index" : 151,
+    "edges" : [
+        [
+            179,
+            0,
+            1.0,
+            0.9,
+            null
+        ],
+        [
+            0,
+            0,
+            0.9,
+            0.9,
+            null
+        ],
+        [
+            0,
+            152,
+            0.10000000000000003,
+            0.1,
+            null
+        ],
+        [
+            152,
+            123,
+            0.8415841584158416,
+            0.8415841584158416,
+            null
+        ],
+        [
+            152,
+            14,
+            0.13861386138613863,
+            0.13861386138613863,
+            null
+        ],
+        [
+            152,
+            129,
+            0.019801980198019802,
+            1.0,
+            null
+        ],
+        [
+            1,
+            2,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            2,
+            3,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            3,
+            1,
+            0.8,
+            0.8,
+            null
+        ],
+        [
+            3,
+            151,
+            0.10000000000000003,
+            0.1,
+            null
+        ],
+        [
+            3,
+            153,
+            0.10000000000000003,
+            0.1,
+            null
+        ],
+        [
+            151,
+            156,
+            0.16831683168316836,
+            0.16831683168316833,
+            null
+        ],
+        [
+            151,
+            137,
+            0.6336633663366337,
+            0.6336633663366337,
+            null
+        ],
+        [
+            151,
+            16,
+            0.19801980198019806,
+            0.19801980198019803,
+            null
+        ],
+        [
+            153,
+            154,
+            0.3400000000000001,
+            0.34,
+            null
+        ],
+        [
+            153,
+            155,
+            0.33,
+            0.33,
+            null
+        ],
+        [
+            153,
+            110,
+            0.33,
+            1.0,
+            null
+        ],
+        [
+            18,
+            18,
+            0.9,
+            0.9,
+            null
+        ],
+        [
+            18,
+            177,
+            0.10000000000000003,
+            0.1,
+            null
+        ],
+        [
+            19,
+            19,
+            0.9,
+            0.9,
+            null
+        ],
+        [
+            19,
+            175,
+            0.10000000000000003,
+            0.1,
+            null
+        ],
+        [
+            20,
+            20,
+            0.9,
+            0.9,
+            null
+        ],
+        [
+            20,
+            173,
+            0.10000000000000003,
+            0.1,
+            null
+        ],
+        [
+            154,
+            87,
+            0.9900497512437811,
+            0.9900497512437811,
+            null
+        ],
+        [
+            154,
+            10,
+            0.009950248756218909,
+            0.009950248756218905,
+            null
+        ],
+        [
+            155,
+            98,
+            0.9900497512437811,
+            0.9900497512437811,
+            null
+        ],
+        [
+            155,
+            103,
+            0.009950248756218909,
+            1.0,
+            null
+        ],
+        [
+            177,
+            4,
+            0.36866359447004615,
+            0.3686635944700461,
+            null
+        ],
+        [
+            177,
+            21,
+            0.5852534562211982,
+            0.5852534562211982,
+            null
+        ],
+        [
+            177,
+            178,
+            0.04608294930875577,
+            0.04608294930875576,
+            null
+        ],
+        [
+            175,
+            42,
+            0.695852534562212,
+            0.695852534562212,
+            null
+        ],
+        [
+            175,
+            6,
+            0.2672811059907834,
+            0.2672811059907834,
+            null
+        ],
+        [
+            175,
+            176,
+            0.036866359447004615,
+            0.03686635944700461,
+            null
+        ],
+        [
+            173,
+            8,
+            0.35944700460829493,
+            0.35944700460829493,
+            null
+        ],
+        [
+            173,
+            65,
+            0.5898617511520737,
+            0.5898617511520737,
+            null
+        ],
+        [
+            173,
+            174,
+            0.05069124423963134,
+            0.05069124423963134,
+            null
+        ],
+        [
+            14,
+            14,
+            0.3478260869565218,
+            0.34782608695652173,
+            null
+        ],
+        [
+            14,
+            123,
+            0.6521739130434783,
+            0.6521739130434783,
+            null
+        ],
+        [
+            123,
+            129,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            129,
+            130,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            130,
+            131,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            131,
+            132,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            132,
+            133,
+            0.970873786407767,
+            0.970873786407767,
+            null
+        ],
+        [
+            132,
+            134,
+            0.02912621359223302,
+            1.0,
+            null
+        ],
+        [
+            133,
+            134,
+            0.9801980198019802,
+            0.9801980198019802,
+            null
+        ],
+        [
+            133,
+            135,
+            0.019801980198019802,
+            1.0,
+            null
+        ],
+        [
+            134,
+            135,
+            0.9411764705882353,
+            0.9411764705882353,
+            null
+        ],
+        [
+            134,
+            136,
+            0.05882352941176471,
+            1.0,
+            null
+        ],
+        [
+            135,
+            136,
+            0.9795918367346939,
+            0.9795918367346939,
+            null
+        ],
+        [
+            135,
+            124,
+            0.02040816326530612,
+            1.0,
+            null
+        ],
+        [
+            136,
+            124,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            124,
+            125,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            125,
+            126,
+            0.9611650485436893,
+            0.9611650485436893,
+            null
+        ],
+        [
+            125,
+            1,
+            0.03883495145631069,
+            1.0,
+            null
+        ],
+        [
+            126,
+            127,
+            0.98,
+            0.98,
+            null
+        ],
+        [
+            126,
+            1,
+            0.020000000000000007,
+            1.0,
+            null
+        ],
+        [
+            127,
+            128,
+            0.9797979797979798,
+            0.9797979797979798,
+            null
+        ],
+        [
+            127,
+            1,
+            0.02020202020202021,
+            1.0,
+            null
+        ],
+        [
+            128,
+            1,
+            0.9693877551020408,
+            0.9693877551020408,
+            null
+        ],
+        [
+            128,
+            15,
+            0.030612244897959186,
+            0.030612244897959183,
+            null
+        ],
+        [
+            15,
+            1,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            16,
+            16,
+            0.36363636363636365,
+            0.36363636363636365,
+            null
+        ],
+        [
+            16,
+            137,
+            0.6363636363636364,
+            0.6363636363636364,
+            null
+        ],
+        [
+            137,
+            143,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            156,
+            143,
+            0.7368421052631579,
+            0.7368421052631579,
+            null
+        ],
+        [
+            156,
+            157,
+            0.2631578947368421,
+            0.2631578947368421,
+            null
+        ],
+        [
+            143,
+            144,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            157,
+            158,
+            0.6666666666666666,
+            0.6666666666666666,
+            null
+        ],
+        [
+            157,
+            144,
+            0.3333333333333333,
+            0.3333333333333333,
+            null
+        ],
+        [
+            144,
+            145,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            158,
+            145,
+            0.4,
+            0.4,
+            null
+        ],
+        [
+            158,
+            146,
+            0.6,
+            1.0,
+            null
+        ],
+        [
+            145,
+            146,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            146,
+            147,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            147,
+            148,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            148,
+            149,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            149,
+            150,
+            0.970873786407767,
+            0.970873786407767,
+            null
+        ],
+        [
+            149,
+            138,
+            0.02912621359223302,
+            1.0,
+            null
+        ],
+        [
+            150,
+            138,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            138,
+            139,
+            0.970873786407767,
+            0.970873786407767,
+            null
+        ],
+        [
+            138,
+            0,
+            0.02912621359223302,
+            1.0,
+            null
+        ],
+        [
+            139,
+            140,
+            0.9801980198019802,
+            0.9801980198019802,
+            null
+        ],
+        [
+            139,
+            0,
+            0.019801980198019802,
+            1.0,
+            null
+        ],
+        [
+            140,
+            141,
+            0.96,
+            0.96,
+            null
+        ],
+        [
+            140,
+            0,
+            0.040000000000000015,
+            1.0,
+            null
+        ],
+        [
+            141,
+            142,
+            0.845360824742268,
+            0.845360824742268,
+            null
+        ],
+        [
+            141,
+            0,
+            0.15463917525773196,
+            1.0,
+            null
+        ],
+        [
+            142,
+            17,
+            0.24096385542168675,
+            0.24096385542168675,
+            null
+        ],
+        [
+            142,
+            0,
+            0.7590361445783133,
+            0.7590361445783133,
+            null
+        ],
+        [
+            17,
+            0,
+            0.6666666666666666,
+            0.6666666666666666,
+            null
+        ],
+        [
+            17,
+            17,
+            0.3333333333333333,
+            0.3333333333333333,
+            null
+        ],
+        [
+            10,
+            10,
+            0.625,
+            0.625,
+            null
+        ],
+        [
+            10,
+            87,
+            0.37500000000000006,
+            0.375,
+            null
+        ],
+        [
+            87,
+            90,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            90,
+            91,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            91,
+            92,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            92,
+            93,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            93,
+            94,
+            0.9704433497536946,
+            0.9704433497536946,
+            null
+        ],
+        [
+            93,
+            95,
+            0.029556650246305428,
+            1.0,
+            null
+        ],
+        [
+            94,
+            95,
+            0.9646464646464646,
+            0.9646464646464646,
+            null
+        ],
+        [
+            94,
+            96,
+            0.03535353535353535,
+            1.0,
+            null
+        ],
+        [
+            95,
+            96,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            96,
+            97,
+            0.9852216748768473,
+            0.9852216748768473,
+            null
+        ],
+        [
+            96,
+            18,
+            0.014778325123152707,
+            1.0,
+            null
+        ],
+        [
+            97,
+            88,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            88,
+            89,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            89,
+            18,
+            0.9402985074626866,
+            0.9402985074626866,
+            null
+        ],
+        [
+            89,
+            11,
+            0.059701492537313446,
+            0.05970149253731343,
+            null
+        ],
+        [
+            11,
+            18,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            4,
+            4,
+            0.3305785123966942,
+            0.3305785123966942,
+            null
+        ],
+        [
+            4,
+            21,
+            0.6694214876033058,
+            0.6694214876033058,
+            null
+        ],
+        [
+            21,
+            32,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            178,
+            32,
+            0.75,
+            0.75,
+            null
+        ],
+        [
+            178,
+            36,
+            0.25000000000000006,
+            1.0,
+            null
+        ],
+        [
+            32,
+            35,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            35,
+            36,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            36,
+            37,
+            0.9817351598173516,
+            0.9817351598173516,
+            null
+        ],
+        [
+            36,
+            38,
+            0.018264840182648408,
+            1.0,
+            null
+        ],
+        [
+            37,
+            38,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            38,
+            39,
+            0.9771689497716894,
+            0.9771689497716894,
+            null
+        ],
+        [
+            38,
+            40,
+            0.022831050228310508,
+            1.0,
+            null
+        ],
+        [
+            39,
+            40,
+            0.9720930232558139,
+            0.9720930232558139,
+            null
+        ],
+        [
+            39,
+            41,
+            0.02790697674418605,
+            1.0,
+            null
+        ],
+        [
+            40,
+            41,
+            0.9532710280373832,
+            0.9532710280373832,
+            null
+        ],
+        [
+            40,
+            22,
+            0.046728971962616835,
+            1.0,
+            null
+        ],
+        [
+            41,
+            22,
+            0.8714285714285714,
+            0.8714285714285714,
+            null
+        ],
+        [
+            41,
+            168,
+            0.12857142857142856,
+            0.12857142857142856,
+            null
+        ],
+        [
+            22,
+            23,
+            0.9637305699481865,
+            0.9637305699481865,
+            null
+        ],
+        [
+            22,
+            169,
+            0.03626943005181348,
+            0.03626943005181347,
+            null
+        ],
+        [
+            168,
+            23,
+            0.8928571428571429,
+            0.8928571428571429,
+            null
+        ],
+        [
+            168,
+            169,
+            0.10714285714285715,
+            0.10714285714285714,
+            null
+        ],
+        [
+            23,
+            24,
+            0.943127962085308,
+            0.943127962085308,
+            null
+        ],
+        [
+            23,
+            170,
+            0.05687203791469195,
+            0.05687203791469194,
+            null
+        ],
+        [
+            169,
+            24,
+            0.6,
+            0.6,
+            null
+        ],
+        [
+            169,
+            170,
+            0.4,
+            0.4,
+            null
+        ],
+        [
+            24,
+            25,
+            0.9512195121951219,
+            0.9512195121951219,
+            null
+        ],
+        [
+            24,
+            171,
+            0.04878048780487805,
+            0.04878048780487805,
+            null
+        ],
+        [
+            170,
+            171,
+            0.625,
+            0.625,
+            null
+        ],
+        [
+            170,
+            25,
+            0.37500000000000006,
+            0.375,
+            null
+        ],
+        [
+            25,
+            172,
+            0.06965174129353234,
+            0.06965174129353234,
+            null
+        ],
+        [
+            25,
+            26,
+            0.9303482587064676,
+            0.9303482587064676,
+            null
+        ],
+        [
+            171,
+            172,
+            0.45,
+            0.45,
+            null
+        ],
+        [
+            171,
+            26,
+            0.55,
+            0.55,
+            null
+        ],
+        [
+            26,
+            27,
+            0.9848484848484849,
+            0.9848484848484849,
+            null
+        ],
+        [
+            26,
+            28,
+            0.01515151515151516,
+            1.0,
+            null
+        ],
+        [
+            172,
+            27,
+            0.6086956521739131,
+            0.6086956521739131,
+            null
+        ],
+        [
+            172,
+            28,
+            0.39130434782608703,
+            1.0,
+            null
+        ],
+        [
+            27,
+            28,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            28,
+            29,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            29,
+            30,
+            0.9726027397260274,
+            0.9726027397260274,
+            null
+        ],
+        [
+            29,
+            31,
+            0.027397260273972605,
+            1.0,
+            null
+        ],
+        [
+            30,
+            31,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            31,
+            33,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            33,
+            34,
+            0.9908675799086758,
+            0.9908675799086758,
+            null
+        ],
+        [
+            33,
+            1,
+            0.009132420091324202,
+            1.0,
+            null
+        ],
+        [
+            34,
+            1,
+            0.926605504587156,
+            0.926605504587156,
+            null
+        ],
+        [
+            34,
+            5,
+            0.07339449541284405,
+            0.07339449541284404,
+            null
+        ],
+        [
+            5,
+            1,
+            0.7619047619047619,
+            0.7619047619047619,
+            null
+        ],
+        [
+            5,
+            5,
+            0.23809523809523808,
+            0.23809523809523808,
+            null
+        ],
+        [
+            98,
+            99,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            99,
+            102,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            102,
+            103,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            103,
+            104,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            104,
+            105,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            105,
+            106,
+            0.9704433497536946,
+            0.9704433497536946,
+            null
+        ],
+        [
+            105,
+            107,
+            0.029556650246305428,
+            1.0,
+            null
+        ],
+        [
+            106,
+            107,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            107,
+            108,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            108,
+            109,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            109,
+            100,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            100,
+            101,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            101,
+            19,
+            0.9605911330049262,
+            0.9605911330049262,
+            null
+        ],
+        [
+            101,
+            12,
+            0.0394088669950739,
+            0.03940886699507389,
+            null
+        ],
+        [
+            12,
+            19,
+            0.6153846153846154,
+            0.6153846153846154,
+            null
+        ],
+        [
+            12,
+            12,
+            0.38461538461538464,
+            0.38461538461538464,
+            null
+        ],
+        [
+            6,
+            6,
+            0.32954545454545453,
+            0.32954545454545453,
+            null
+        ],
+        [
+            6,
+            42,
+            0.6704545454545454,
+            0.6704545454545454,
+            null
+        ],
+        [
+            42,
+            53,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            176,
+            53,
+            0.8,
+            0.8,
+            null
+        ],
+        [
+            176,
+            58,
+            0.20000000000000004,
+            1.0,
+            null
+        ],
+        [
+            53,
+            58,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            58,
+            59,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            59,
+            60,
+            0.9908675799086758,
+            0.9908675799086758,
+            null
+        ],
+        [
+            59,
+            61,
+            0.009132420091324202,
+            1.0,
+            null
+        ],
+        [
+            60,
+            61,
+            0.944954128440367,
+            0.944954128440367,
+            null
+        ],
+        [
+            60,
+            163,
+            0.055045871559633044,
+            0.05504587155963303,
+            null
+        ],
+        [
+            61,
+            62,
+            0.9855769230769231,
+            0.9855769230769231,
+            null
+        ],
+        [
+            61,
+            63,
+            0.014423076923076933,
+            1.0,
+            null
+        ],
+        [
+            163,
+            62,
+            0.46153846153846156,
+            0.46153846153846156,
+            null
+        ],
+        [
+            163,
+            63,
+            0.5384615384615384,
+            1.0,
+            null
+        ],
+        [
+            62,
+            63,
+            0.985781990521327,
+            0.985781990521327,
+            null
+        ],
+        [
+            62,
+            64,
+            0.014218009478672992,
+            1.0,
+            null
+        ],
+        [
+            63,
+            64,
+            0.9447004608294931,
+            0.9447004608294931,
+            null
+        ],
+        [
+            63,
+            43,
+            0.055299539170506916,
+            1.0,
+            null
+        ],
+        [
+            64,
+            43,
+            0.9663461538461539,
+            0.9663461538461539,
+            null
+        ],
+        [
+            64,
+            44,
+            0.03365384615384615,
+            1.0,
+            null
+        ],
+        [
+            43,
+            44,
+            0.9530516431924883,
+            0.9530516431924883,
+            null
+        ],
+        [
+            43,
+            164,
+            0.04694835680751174,
+            0.046948356807511735,
+            null
+        ],
+        [
+            44,
+            45,
+            0.9809523809523809,
+            0.9809523809523809,
+            null
+        ],
+        [
+            44,
+            165,
+            0.01904761904761905,
+            0.01904761904761905,
+            null
+        ],
+        [
+            164,
+            165,
+            0.4545454545454546,
+            0.45454545454545453,
+            null
+        ],
+        [
+            164,
+            45,
+            0.5454545454545454,
+            0.5454545454545454,
+            null
+        ],
+        [
+            45,
+            46,
+            0.9811320754716981,
+            0.9811320754716981,
+            null
+        ],
+        [
+            45,
+            166,
+            0.01886792452830189,
+            0.018867924528301886,
+            null
+        ],
+        [
+            165,
+            46,
+            0.7777777777777778,
+            0.7777777777777778,
+            null
+        ],
+        [
+            165,
+            166,
+            0.2222222222222222,
+            0.2222222222222222,
+            null
+        ],
+        [
+            46,
+            47,
+            0.9720930232558139,
+            0.9720930232558139,
+            null
+        ],
+        [
+            46,
+            167,
+            0.02790697674418605,
+            0.027906976744186046,
+            null
+        ],
+        [
+            166,
+            47,
+            0.6666666666666666,
+            0.6666666666666666,
+            null
+        ],
+        [
+            166,
+            167,
+            0.3333333333333333,
+            0.3333333333333333,
+            null
+        ],
+        [
+            47,
+            48,
+            0.971830985915493,
+            0.971830985915493,
+            null
+        ],
+        [
+            47,
+            49,
+            0.02816901408450705,
+            1.0,
+            null
+        ],
+        [
+            167,
+            48,
+            0.5,
+            0.5,
+            null
+        ],
+        [
+            167,
+            49,
+            0.5,
+            1.0,
+            null
+        ],
+        [
+            48,
+            49,
+            0.985781990521327,
+            0.985781990521327,
+            null
+        ],
+        [
+            48,
+            50,
+            0.014218009478672992,
+            1.0,
+            null
+        ],
+        [
+            49,
+            50,
+            0.9815668202764977,
+            0.9815668202764977,
+            null
+        ],
+        [
+            49,
+            51,
+            0.018433179723502308,
+            1.0,
+            null
+        ],
+        [
+            50,
+            51,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            51,
+            52,
+            0.9908675799086758,
+            0.9908675799086758,
+            null
+        ],
+        [
+            51,
+            54,
+            0.009132420091324202,
+            1.0,
+            null
+        ],
+        [
+            52,
+            54,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            54,
+            55,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            55,
+            56,
+            0.9771689497716894,
+            0.9771689497716894,
+            null
+        ],
+        [
+            55,
+            1,
+            0.022831050228310508,
+            1.0,
+            null
+        ],
+        [
+            56,
+            57,
+            0.986046511627907,
+            0.986046511627907,
+            null
+        ],
+        [
+            56,
+            1,
+            0.013953488372093023,
+            1.0,
+            null
+        ],
+        [
+            57,
+            1,
+            0.9436619718309859,
+            0.9436619718309859,
+            null
+        ],
+        [
+            57,
+            7,
+            0.0563380281690141,
+            0.056338028169014086,
+            null
+        ],
+        [
+            7,
+            7,
+            0.14285714285714285,
+            0.14285714285714285,
+            null
+        ],
+        [
+            7,
+            1,
+            0.8571428571428571,
+            0.8571428571428571,
+            null
+        ],
+        [
+            110,
+            111,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            111,
+            115,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            115,
+            116,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            116,
+            117,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            117,
+            118,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            118,
+            119,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            119,
+            120,
+            0.9605911330049262,
+            0.9605911330049262,
+            null
+        ],
+        [
+            119,
+            121,
+            0.0394088669950739,
+            1.0,
+            null
+        ],
+        [
+            120,
+            121,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            121,
+            122,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            122,
+            112,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            112,
+            113,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            113,
+            114,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            114,
+            20,
+            0.9605911330049262,
+            0.9605911330049262,
+            null
+        ],
+        [
+            114,
+            13,
+            0.0394088669950739,
+            0.03940886699507389,
+            null
+        ],
+        [
+            13,
+            20,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            8,
+            8,
+            0.2752293577981652,
+            0.27522935779816515,
+            null
+        ],
+        [
+            8,
+            65,
+            0.7247706422018348,
+            0.7247706422018348,
+            null
+        ],
+        [
+            65,
+            76,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            174,
+            76,
+            0.7692307692307693,
+            0.7692307692307693,
+            null
+        ],
+        [
+            174,
+            81,
+            0.2307692307692308,
+            1.0,
+            null
+        ],
+        [
+            76,
+            80,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            80,
+            81,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            81,
+            82,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            82,
+            83,
+            0.9771689497716894,
+            0.9771689497716894,
+            null
+        ],
+        [
+            82,
+            84,
+            0.022831050228310508,
+            1.0,
+            null
+        ],
+        [
+            83,
+            84,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            84,
+            85,
+            0.9726027397260274,
+            0.9726027397260274,
+            null
+        ],
+        [
+            84,
+            86,
+            0.027397260273972605,
+            1.0,
+            null
+        ],
+        [
+            85,
+            86,
+            0.9392523364485982,
+            0.9392523364485982,
+            null
+        ],
+        [
+            85,
+            66,
+            0.06074766355140187,
+            1.0,
+            null
+        ],
+        [
+            86,
+            66,
+            0.9758454106280193,
+            0.9758454106280193,
+            null
+        ],
+        [
+            86,
+            67,
+            0.02415458937198068,
+            1.0,
+            null
+        ],
+        [
+            66,
+            67,
+            0.9627906976744186,
+            0.9627906976744186,
+            null
+        ],
+        [
+            66,
+            159,
+            0.03720930232558141,
+            0.037209302325581395,
+            null
+        ],
+        [
+            67,
+            68,
+            0.9811320754716981,
+            0.9811320754716981,
+            null
+        ],
+        [
+            67,
+            160,
+            0.01886792452830189,
+            0.018867924528301886,
+            null
+        ],
+        [
+            159,
+            68,
+            0.4444444444444445,
+            0.4444444444444444,
+            null
+        ],
+        [
+            159,
+            160,
+            0.5555555555555556,
+            0.5555555555555556,
+            null
+        ],
+        [
+            68,
+            69,
+            0.9905660377358491,
+            0.9905660377358491,
+            null
+        ],
+        [
+            68,
+            161,
+            0.009433962264150948,
+            0.009433962264150943,
+            null
+        ],
+        [
+            160,
+            69,
+            0.6666666666666666,
+            0.6666666666666666,
+            null
+        ],
+        [
+            160,
+            161,
+            0.3333333333333333,
+            0.3333333333333333,
+            null
+        ],
+        [
+            69,
+            70,
+            0.9583333333333334,
+            0.9583333333333334,
+            null
+        ],
+        [
+            69,
+            162,
+            0.04166666666666667,
+            0.041666666666666664,
+            null
+        ],
+        [
+            161,
+            70,
+            0.4,
+            0.4,
+            null
+        ],
+        [
+            161,
+            162,
+            0.6,
+            0.6,
+            null
+        ],
+        [
+            70,
+            71,
+            0.784688995215311,
+            0.784688995215311,
+            null
+        ],
+        [
+            70,
+            72,
+            0.21531100478468904,
+            1.0,
+            null
+        ],
+        [
+            162,
+            71,
+            0.5,
+            0.5,
+            null
+        ],
+        [
+            162,
+            72,
+            0.5,
+            1.0,
+            null
+        ],
+        [
+            71,
+            72,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            72,
+            73,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            73,
+            74,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            74,
+            75,
+            1.0,
+            1.0,
+            null
+        ],
+        [
+            75,
+            77,
+            0.9863013698630136,
+            0.9863013698630136,
+            null
+        ],
+        [
+            75,
+            78,
+            0.013698630136986308,
+            1.0,
+            null
+        ],
+        [
+            77,
+            78,
+            0.9907834101382489,
+            0.9907834101382489,
+            null
+        ],
+        [
+            77,
+            1,
+            0.009216589861751154,
+            1.0,
+            null
+        ],
+        [
+            78,
+            79,
+            0.9770642201834863,
+            0.9770642201834863,
+            null
+        ],
+        [
+            78,
+            1,
+            0.022935779816513763,
+            1.0,
+            null
+        ],
+        [
+            79,
+            1,
+            0.9439252336448598,
+            0.9439252336448598,
+            null
+        ],
+        [
+            79,
+            9,
+            0.05607476635514019,
+            0.056074766355140186,
+            null
+        ],
+        [
+            9,
+            9,
+            0.3684210526315789,
+            0.3684210526315789,
+            null
+        ],
+        [
+            9,
+            1,
+            0.631578947368421,
+            0.631578947368421,
+            null
+        ]
+    ],
+    "distribution ties" : []
+}

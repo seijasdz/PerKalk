@@ -1,8 +1,8 @@
 from collections import deque
-before = 16
-after = 7
+before = 40
+after = 35
 size = before + after
-file = 'duplexW_IE'
+file = 'TSS'
 filename = file + '.txt'
 examples = 0
 count_a = [0] * size
@@ -17,14 +17,15 @@ with open(filename) as file_obj:
     with open(file + '.f', 'w') as out_file_obj:
         for line in file_obj:
             for idx, ch in enumerate(line):
-                masdos = idx + 2 if idx + 2 < len(line) else idx
-                masuno = idx + 2 if idx + 1 < len(line) else idx
-                if ch != ',' and not (ch == 'a' and line[masdos] == 'p') and not (ch == 'g' and line[masuno] == 'p'):
+                # masdos = idx + 2 if idx + 2 < len(line) else idx
+                # masuno = idx + 2 if idx + 1 < len(line) else idx
+                # if ch != ',' and not (ch == 'a' and line[masdos] == 'p') and not (ch == 'g' and line[masuno] == 'p'):
+                if ch != ',':
                     deck.append(ch)
                     if deck[-after] == 'p':
                         examples = examples + 1
                         llist = list(deck)
-                        llist.remove('p')
+                        # llist.remove('p')
                         list_of_decks.append(llist)
                         out_file_obj.write('> seq' + str(examples) + '\n')
                         for idx, val in enumerate(deck):

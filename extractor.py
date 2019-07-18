@@ -1,8 +1,8 @@
 from collections import deque
-before = 40
-after = 35
+before = 6
+after = 9
 size = before + after
-file = 'TSS'
+file = 'duplexW_EI'
 filename = file + '.txt'
 examples = 0
 count_a = [0] * size

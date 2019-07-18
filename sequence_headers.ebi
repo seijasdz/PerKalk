@@ -1,0 +1,690 @@
+ID   1    standard; DNA; HTG; 500000 BP.
+XX
+AC   chromosome:GRCh37:1:148374643:148874642:1
+XX
+SV   chromosome:GRCh37:1:148374643:148874642:1
+XX
+DT   1-MAY-2011
+XX
+DE   Homo sapiens chromosome 1 GRCh37 partial sequence 148374643..148874642
+DE   annotated by Ensembl
+XX
+KW   .
+XX
+OS   Homo sapiens (human)
+OC   Eukaryota; Metazoa; Eumetazoa; Bilateria; Coelomata; Deuterostomia;
+OC   Chordata; Craniata; Vertebrata; Gnathostomata; Teleostomi; Euteleostomi;
+OC   Sarcopterygii; Tetrapoda; Amniota; Mammalia; Theria; Eutheria;
+OC   Euarchontoglires; Primates; Haplorrhini; Simiiformes; Catarrhini;
+OC   Hominoidea; Hominidae; Homininae; Homo.
+XX
+CC   This sequence was annotated by the Ensembl system. Please visit the Ensembl
+CC   web site, http://www.ensembl.org/ for more information.
+XX
+CC   All feature locations are relative to the first (5') base of the sequence
+CC   in this file.  The sequence presented is always the forward strand of the
+CC   assembly. Features that lie outside of the sequence contained in this file
+CC   have clonal location coordinates in the format: .:..
+XX
+CC   The /gene indicates a unique id for a gene, /note="transcript_id=..." a
+CC   unique id for a transcript, /protein_id a unique id for a peptide and
+CC   note="exon_id=..." a unique id for an exon. These ids are maintained
+CC   wherever possible between versions.
+XX
+CC   All the exons and transcripts in Ensembl are confirmed by similarity to
+CC   either protein or cDNA sequences.
+XX
+FH   Key             Location/Qualifiers
+FT   source          1..500000
+FT                   /organism="Homo sapiens"
+FT                   /db_xref="taxon:9606"
+FT   gene            168231..170486
+FT                   /gene=ENSG00000229002
+FT                   /locus_tag="RP11-666A1.4"
+FT   misc_RNA        join(168231..168467,170460..170486)
+FT                   /gene="ENSG00000229002"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000046027"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-666A1.4-001"
+FT                   /db_xref="OTTT:OTTHUMT00000046027"
+FT                   /note="unprocessed_pseudogene"
+FT                   /note="transcript_id=ENST00000440916"
+FT   gene            181337..221625
+FT                   /gene=ENSG00000243452
+FT                   /locus_tag="NBPF15"
+FT                   /note="neuroblastoma breakpoint family, member 15
+FT                   [Source:HGNC Symbol;Acc:28791]"
+FT   misc_RNA        join(181337..181630,182050..182168,183527..183645,
+FT                   186205..186473,192208..192238,194094..194235,
+FT                   200095..200345,202430..202609,202716..202870,
+FT                   202973..203182,204964..205066,205898..206112,
+FT                   207154..207226,207691..207896,209184..209235,
+FT                   213146..213309,214352..214403,215019..215191,
+FT                   215911..215962,216559..216731,217441..217492,
+FT                   218149..218321,219036..219081)
+FT                   /gene="ENSG00000243452"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000037996"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000037996"
+FT                   /db_xref="HGNC_transcript_name:NBPF15-001"
+FT                   /db_xref="OTTT:OTTHUMT00000037996"
+FT                   /note="processed_transcript"
+FT                   /note="transcript_id=ENST00000464336"
+FT   misc_RNA        join(181367..181630,186205..186473,192208..192238,
+FT                   194094..194235)
+FT                   /gene="ENSG00000243452"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097521"
+FT                   /db_xref="HGNC_transcript_name:NBPF15-003"
+FT                   /db_xref="OTTT:OTTHUMT00000097521"
+FT                   /note="processed_transcript"
+FT                   /note="transcript_id=ENST00000478419"
+FT   misc_RNA        join(181453..181630,183527..183645,186205..186473,
+FT                   194094..194235,202716..202870,202973..203018)
+FT                   /gene="ENSG00000243452"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097522"
+FT                   /db_xref="HGNC_transcript_name:NBPF15-004"
+FT                   /db_xref="OTTT:OTTHUMT00000097522"
+FT                   /note="processed_transcript"
+FT                   /note="transcript_id=ENST00000488031"
+FT   misc_RNA        join(186249..186473,192140..192238,194094..194184)
+FT                   /gene="ENSG00000243452"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097523"
+FT                   /db_xref="HGNC_transcript_name:NBPF15-005"
+FT                   /db_xref="OTTT:OTTHUMT00000097523"
+FT                   /note="processed_transcript"
+FT                   /note="transcript_id=ENST00000492711"
+FT   mRNA            join(186348..186473,192208..192238,194094..194235,
+FT                   202716..202870,202973..203182,204964..205066,
+FT                   205898..206112,207154..207226,207691..207896,
+FT                   209184..209235,213146..213309,214352..214403,
+FT                   215019..215191,215911..215962,216559..216731,
+FT                   217441..217492,218149..218321,219036..219141,
+FT                   219755..221516)
+FT                   /gene="ENSG00000243452"
+FT                   /note="transcript_id=ENST00000369187"
+FT   CDS             join(203008..203182,204964..205066,205898..206112,
+FT                   207154..207226,207691..207896,209184..209235,
+FT                   213146..213309,214352..214403,215019..215191,
+FT                   215911..215962,216559..216731,217441..217492,
+FT                   218149..218321,219036..219141,219755..219998)
+FT                   /gene="ENSG00000243452"
+FT                   /protein_id="ENSP00000358188"
+FT                   /note="transcript_id=ENST00000369187"
+FT                   /db_xref="EntrezGene:NBPF15"
+FT                   /db_xref="CCDS:CCDS932.1"
+FT                   /db_xref="Uniprot/SWISSPROT:NBPFF_HUMAN"
+FT                   /db_xref="RefSeq_peptide:NP_001164226.1"
+FT                   /db_xref="RefSeq_peptide:NP_775909.2"
+FT                   /db_xref="Vega_transcript:NBPF15-002"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000038609"
+FT                   /db_xref="Uniprot/SPTREMBL:B4DRP3_HUMAN"
+FT                   /db_xref="Uniprot_genename:NBPF15"
+FT                   /db_xref="UCSC:uc001esc.2"
+FT                   /db_xref="WikiGene:NBPF15"
+FT                   /db_xref="EMBL:AF379630"
+FT                   /db_xref="EMBL:AK299360"
+FT                   /db_xref="EMBL:AL954711"
+FT                   /db_xref="EMBL:AY894566"
+FT                   /db_xref="EMBL:BC023087"
+FT                   /db_xref="GO:GO:0005737"
+FT                   /db_xref="HGNC_transcript_name:NBPF15-002"
+FT                   /db_xref="IPI:IPI00657894.3"
+FT                   /db_xref="IPI:IPI00970808.1"
+FT                   /db_xref="IPI:IPI00970992.1"
+FT                   /db_xref="MIM_GENE:*610414"
+FT                   /db_xref="Vega_translation:122015"
+FT                   /db_xref="Vega_translation:OTTHUMP00000082400"
+FT                   /db_xref="goslim_goa:GO:0005575"
+FT                   /db_xref="goslim_goa:GO:0005622"
+FT                   /db_xref="goslim_goa:GO:0005623"
+FT                   /db_xref="goslim_goa:GO:0005737"
+FT                   /db_xref="protein_id:AAH23087.1"
+FT                   /db_xref="protein_id:AAO15398.1"
+FT                   /db_xref="protein_id:AAX85105.1"
+FT                   /db_xref="protein_id:BAG61355.1"
+FT                   /db_xref="protein_id:CAM22821.1"
+FT                   /db_xref="OTTT:OTTHUMT00000038609"
+FT                   /db_xref="shares_CDS_and_UTR_with_OTTT:OTTHUMT00000038609"
+FT                   /translation="MVVSAGPLSSEKAEMNILEINEKLRPQLAEKKQQFRNLKEKCFLT
+FT                   QLAGFLANRQKKYKYEECKDLIKFMLRNERQFKEEKLAEQLKQAEELRQYKVLVHAQER
+FT                   ELTQLREKLREGRDASRSLNEHLQALLTPDEPDKSQGQDLQEQLAEGCRLTQHLVQKLS
+FT                   PENDNDDDEDVQVEVAEKVQKSSAPREMQKAEEKEVPEDSLEECAITCSNSHGPYDSNQ
+FT                   PHKKTKITFEEDKVDSTLIGSSSHVEWEDAVHIIPENESDDEEEEEKGPVSPRNLQESE
+FT                   EEEVPQESWDEGYSTLSIPPEMLASYQSYSSTFHSLEEQQVCMAVDIGRHRWDQVKKED
+FT                   QEATGPRLSRELLDEKEPEVLQDSLDRCYSTPSGCLELTDSCQPYRSAFYVLEQQRVGL
+FT                   AIDMDEIEKYQEVEEDQDPSCPRLSRELLDEKEPEVLQDSLDRCYSTPSDYLELPDLGQ
+FT                   PYSSAVYSLEEQYLGLALDVDRIKKDQEEEEDQGPPCPRLSRELLEVVEPEVLQDSLDR
+FT                   CYSTPSSCLEQPDSCQPYGSSFYALEEKHVGFSLDVGEIEKKGKGKKRRGRRSKKKRRR
+FT                   GRKEGEDDNPPCPRLYGVLMEVEEPEVLQDSLDRCYSTPSMYFEQPDSFQHYRSVFYSF
+FT                   EEEHISFALYVDNRFFTLTVTSLHLVFQMGVIFPQ"
+FT   mRNA            join(186201..186473,192208..192238,194094..194235,
+FT                   200095..200345,202430..202609,202716..202870,
+FT                   202973..203182,204964..205066,205898..206112,
+FT                   207154..207226,207691..207896,209184..209235,
+FT                   213146..213309,214352..214403,215019..215191,
+FT                   215911..215962,216559..216731,217441..217492,
+FT                   218149..218321,219036..219141,219755..221625)
+FT                   /gene="ENSG00000243452"
+FT                   /note="transcript_id=ENST00000442702"
+FT   CDS             join(203008..203182,204964..205066,205898..206112,
+FT                   207154..207226,207691..207896,209184..209235,
+FT                   213146..213309,214352..214403,215019..215191,
+FT                   215911..215962,216559..216731,217441..217492,
+FT                   218149..218321,219036..219141,219755..219998)
+FT                   /gene="ENSG00000243452"
+FT                   /protein_id="ENSP00000416864"
+FT                   /note="transcript_id=ENST00000442702"
+FT                   /db_xref="EntrezGene:NBPF15"
+FT                   /db_xref="CCDS:CCDS932.1"
+FT                   /db_xref="RefSeq_peptide:NP_001164226.1"
+FT                   /db_xref="RefSeq_peptide:NP_775909.2"
+FT                   /db_xref="RefSeq_dna:NM_001170755.1"
+FT                   /db_xref="RefSeq_dna:NM_173638.3"
+FT                   /db_xref="Uniprot/SPTREMBL:B4DRP3_HUMAN"
+FT                   /db_xref="Uniprot_genename:NBPF15"
+FT                   /db_xref="HGNC:NBPF15"
+FT                   /db_xref="UCSC:uc001esc.2"
+FT                   /db_xref="WikiGene:NBPF15"
+FT                   /db_xref="EMBL:AF379630"
+FT                   /db_xref="EMBL:AK299360"
+FT                   /db_xref="EMBL:AL954711"
+FT                   /db_xref="EMBL:AY894566"
+FT                   /db_xref="EMBL:BC023087"
+FT                   /db_xref="GO:GO:0005737"
+FT                   /db_xref="HGNC_transcript_name:NBPF15-201"
+FT                   /db_xref="IPI:IPI00657894.3"
+FT                   /db_xref="IPI:IPI00970808.1"
+FT                   /db_xref="IPI:IPI00970992.1"
+FT                   /db_xref="MIM_GENE:*610414"
+FT                   /db_xref="UniGene:Hs.598315"
+FT                   /db_xref="UniGene:Hs.656782"
+FT                   /db_xref="goslim_goa:GO:0005575"
+FT                   /db_xref="goslim_goa:GO:0005622"
+FT                   /db_xref="goslim_goa:GO:0005623"
+FT                   /db_xref="goslim_goa:GO:0005737"
+FT                   /db_xref="protein_id:AAH23087.1"
+FT                   /db_xref="protein_id:AAO15398.1"
+FT                   /db_xref="protein_id:AAX85105.1"
+FT                   /db_xref="protein_id:BAG61355.1"
+FT                   /db_xref="protein_id:CAM22821.1"
+FT                   /translation="MVVSAGPLSSEKAEMNILEINEKLRPQLAEKKQQFRNLKEKCFLT
+FT                   QLAGFLANRQKKYKYEECKDLIKFMLRNERQFKEEKLAEQLKQAEELRQYKVLVHAQER
+FT                   ELTQLREKLREGRDASRSLNEHLQALLTPDEPDKSQGQDLQEQLAEGCRLTQHLVQKLS
+FT                   PENDNDDDEDVQVEVAEKVQKSSAPREMQKAEEKEVPEDSLEECAITCSNSHGPYDSNQ
+FT                   PHKKTKITFEEDKVDSTLIGSSSHVEWEDAVHIIPENESDDEEEEEKGPVSPRNLQESE
+FT                   EEEVPQESWDEGYSTLSIPPEMLASYQSYSSTFHSLEEQQVCMAVDIGRHRWDQVKKED
+FT                   QEATGPRLSRELLDEKEPEVLQDSLDRCYSTPSGCLELTDSCQPYRSAFYVLEQQRVGL
+FT                   AIDMDEIEKYQEVEEDQDPSCPRLSRELLDEKEPEVLQDSLDRCYSTPSDYLELPDLGQ
+FT                   PYSSAVYSLEEQYLGLALDVDRIKKDQEEEEDQGPPCPRLSRELLEVVEPEVLQDSLDR
+FT                   CYSTPSSCLEQPDSCQPYGSSFYALEEKHVGFSLDVGEIEKKGKGKKRRGRRSKKKRRR
+FT                   GRKEGEDDNPPCPRLYGVLMEVEEPEVLQDSLDRCYSTPSMYFEQPDSFQHYRSVFYSF
+FT                   EEEHISFALYVDNRFFTLTVTSLHLVFQMGVIFPQ"
+FT   gene            complement(200011..200409)
+FT                   /gene=ENSG00000227212
+FT                   /locus_tag="RP11-666A1.1"
+FT   misc_RNA        complement(200011..200409)
+FT                   /gene="ENSG00000227212"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000038770"
+FT                   /db_xref="UCSC:uc001esd.2"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-666A1.1-001"
+FT                   /db_xref="OTTT:OTTHUMT00000038770"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000476786"
+FT   gene            223756..224889
+FT                   /gene=ENSG00000237253
+FT                   /locus_tag="RP11-666A1.5"
+FT   misc_RNA        join(223756..223875,224645..224889)
+FT                   /gene="ENSG00000237253"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097602"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-666A1.5-001"
+FT                   /db_xref="OTTT:OTTHUMT00000097602"
+FT                   /note="processed_transcript"
+FT                   /note="transcript_id=ENST00000415104"
+FT   gene            complement(223822..224334)
+FT                   /gene=ENSG00000226675
+FT                   /locus_tag="RP11-666A1.3"
+FT   misc_RNA        complement(223822..224334)
+FT                   /gene="ENSG00000226675"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000046026"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-666A1.3-001"
+FT                   /db_xref="UniGene:Hs.504599"
+FT                   /db_xref="OTTT:OTTHUMT00000046026"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000430618"
+FT   gene            complement(230266..230430)
+FT                   /gene=ENSG00000207205
+FT                   /locus_tag="U1.87"
+FT                   /note="U1 spliceosomal RNA  [Source:RFAM;Acc:RF00003]"
+FT   misc_RNA        complement(230266..230430)
+FT                   /gene="ENSG00000207205"
+FT                   /db_xref="RFAM:RF00003"
+FT                   /db_xref="RFAM_transcript_name:U1.87-201"
+FT                   /note="snRNA"
+FT                   /note="transcript_id=ENST00000384476"
+FT   gene            269369..270153
+FT                   /gene=ENSG00000231267
+FT                   /locus_tag="RP11-666A1.2"
+FT                   /note="peptidylprolyl isomerase A (cyclophilin A)-like 4E
+FT                   (PPIAL4E), mRNA [Source:RefSeq DNA;Acc:NM_001144032]"
+FT   misc_RNA        269444..269932
+FT                   /gene="ENSG00000231267"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000038771"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-666A1.2-001"
+FT                   /db_xref="OTTT:OTTHUMT00000038771"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000427485"
+FT   misc_RNA        269369..270153
+FT                   /gene="ENSG00000231267"
+FT                   /db_xref="RefSeq_dna:NM_001144032"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-666A1.2-201"
+FT                   /db_xref="UniGene:Hs.719884"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000538306"
+FT   gene            complement(362047..362445)
+FT                   /gene=ENSG00000237533
+FT                   /locus_tag="RP11-763B22.2"
+FT   misc_RNA        complement(362047..362445)
+FT                   /gene="ENSG00000237533"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097694"
+FT                   /db_xref="UCSC:uc001ese.2"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.2-001"
+FT                   /db_xref="OTTT:OTTHUMT00000097694"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000457353"
+FT   gene            364801..383669
+FT                   /gene=ENSG00000203827
+FT                   /locus_tag="NBPF16"
+FT                   /note="neuroblastoma breakpoint family, member 16
+FT                   [Source:HGNC Symbol;Acc:31996]"
+FT   mRNA            join(364801..364955,365058..365267,367048..367150,
+FT                   367985..368199,369241..369313,369778..369983,
+FT                   371271..371322,375190..375353,376396..376447,
+FT                   377067..377239,377959..378010,378607..378779,
+FT                   379489..379540,380193..380365,381080..381185,
+FT                   381799..383669)
+FT                   /gene="ENSG00000203827"
+FT                   /note="transcript_id=ENST00000417839"
+FT   CDS             join(365093..365267,367048..367150,367985..368199,
+FT                   369241..369313,369778..369983,371271..371322,
+FT                   375190..375353,376396..376447,377067..377239,
+FT                   377959..378010,378607..378779,379489..379540,
+FT                   380193..380365,381080..381185,381799..382042)
+FT                   /gene="ENSG00000203827"
+FT                   /protein_id="ENSP00000395369"
+FT                   /note="transcript_id=ENST00000417839"
+FT                   /db_xref="EntrezGene:NBPF16"
+FT                   /db_xref="CCDS:CCDS41384.1"
+FT                   /db_xref="Uniprot/SWISSPROT:NBPFG_HUMAN"
+FT                   /db_xref="RefSeq_peptide:NP_001096133.1"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097693"
+FT                   /db_xref="Uniprot_genename:NBPF16"
+FT                   /db_xref="HGNC:NBPF16"
+FT                   /db_xref="UCSC:uc010pba.1"
+FT                   /db_xref="WikiGene:NBPF16"
+FT                   /db_xref="EMBL:AL592492"
+FT                   /db_xref="GO:GO:0005737"
+FT                   /db_xref="HGNC_transcript_name:NBPF16-001"
+FT                   /db_xref="IPI:IPI00166936.2"
+FT                   /db_xref="IPI:IPI00940589.1"
+FT                   /db_xref="UniGene:Hs.523572"
+FT                   /db_xref="UniGene:Hs.598315"
+FT                   /db_xref="Vega_translation:122016"
+FT                   /db_xref="Vega_translation:OTTHUMP00000038386"
+FT                   /db_xref="goslim_goa:GO:0005575"
+FT                   /db_xref="goslim_goa:GO:0005622"
+FT                   /db_xref="goslim_goa:GO:0005623"
+FT                   /db_xref="goslim_goa:GO:0005737"
+FT                   /db_xref="protein_id:CAI16654.1"
+FT                   /db_xref="OTTT:OTTHUMT00000097693"
+FT                   /db_xref="shares_CDS_and_UTR_with_OTTT:OTTHUMT00000097693"
+FT                   /translation="MVVSAGPLSSEKAEMNILEINEKLRPQLAEKKQQFRNLKEKCFLT
+FT                   QLAGFLANRQKKYKYEECKDLIKFMLRNERQFKEEKLAEQLKQAEELRQYKVLVHAQER
+FT                   ELTQLREKLREGRDASRSLNEHLQALLTPDEPDKSQGQDLQEQLAEGCRLTQHLVQKLS
+FT                   PENDNDDDEDVQVEVAEKVQKSSAPREMQKAEEKEVPEDSLEECAITCSNSHGPYDSNQ
+FT                   PHKKTKITFEEDKVDSTLIGSSSHVEWEDAVHIIPENESDDEEEEEKGPVSPRNLQESE
+FT                   EEEVPQESWDEGYSTLSIPPEMLASYQSYSSTFHSLEEQQVCMAVDIGRHRWDQVKKED
+FT                   QEATGPRLSRELLDEKEPEVLQDSLDRCYSTPSGCLELTDSCQPYRSAFYVLEQQRVGL
+FT                   AIDMDEIEKYQEVEEDQDPSCPRLSRELLDEKEPEVLQDSLDRCYSTPSDYLELPDLGQ
+FT                   PYSSAVYSLEEQYLGLALDVDRIKKDQEEEEDQGPPCPRLSRELLEVVEPEVLQDSLDR
+FT                   YYSTPSSCLEQPDSCQPYGSSFYALEEKHVGFSLDVGEIEKKGKGKKRRGRRSKKKRRR
+FT                   GRKEGEDDNPPCPRLNGVLMEVEEPEVLQDSLDRCYSTQSMYFELPDSFQHYRSVFYSF
+FT                   EEEHISFALYVDNRFFTLTVTSLHLVFQMGVIFPQ"
+FT   mRNA            join(365093..365267,367048..367150,367985..368199,
+FT                   369241..369313,369778..369983,371271..371322,
+FT                   375190..375353,376396..376447,377067..377239,
+FT                   377959..378010,378607..378779,379489..379540,
+FT                   380193..380365,381080..381185,381799..383669)
+FT                   /gene="ENSG00000203827"
+FT                   /note="transcript_id=ENST00000254372"
+FT   CDS             join(365093..365267,367048..367150,367985..368199,
+FT                   369241..369313,369778..369983,371271..371322,
+FT                   375190..375353,376396..376447,377067..377239,
+FT                   377959..378010,378607..378779,379489..379540,
+FT                   380193..380365,381080..381185,381799..382042)
+FT                   /gene="ENSG00000203827"
+FT                   /protein_id="ENSP00000254372"
+FT                   /note="transcript_id=ENST00000254372"
+FT                   /db_xref="EntrezGene:NBPF16"
+FT                   /db_xref="CCDS:CCDS41384.1"
+FT                   /db_xref="Uniprot/SWISSPROT:NBPFG_HUMAN"
+FT                   /db_xref="RefSeq_peptide:NP_001096133.1"
+FT                   /db_xref="RefSeq_dna:NM_001102663.1"
+FT                   /db_xref="Uniprot_genename:NBPF16"
+FT                   /db_xref="UCSC:uc010pba.1"
+FT                   /db_xref="WikiGene:NBPF16"
+FT                   /db_xref="EMBL:AL592492"
+FT                   /db_xref="GO:GO:0005737"
+FT                   /db_xref="HGNC_transcript_name:NBPF16-201"
+FT                   /db_xref="IPI:IPI00166936.2"
+FT                   /db_xref="IPI:IPI00940589.1"
+FT                   /db_xref="UniGene:Hs.598315"
+FT                   /db_xref="goslim_goa:GO:0005575"
+FT                   /db_xref="goslim_goa:GO:0005622"
+FT                   /db_xref="goslim_goa:GO:0005623"
+FT                   /db_xref="goslim_goa:GO:0005737"
+FT                   /db_xref="protein_id:CAI16654.1"
+FT                   /translation="MVVSAGPLSSEKAEMNILEINEKLRPQLAEKKQQFRNLKEKCFLT
+FT                   QLAGFLANRQKKYKYEECKDLIKFMLRNERQFKEEKLAEQLKQAEELRQYKVLVHAQER
+FT                   ELTQLREKLREGRDASRSLNEHLQALLTPDEPDKSQGQDLQEQLAEGCRLTQHLVQKLS
+FT                   PENDNDDDEDVQVEVAEKVQKSSAPREMQKAEEKEVPEDSLEECAITCSNSHGPYDSNQ
+FT                   PHKKTKITFEEDKVDSTLIGSSSHVEWEDAVHIIPENESDDEEEEEKGPVSPRNLQESE
+FT                   EEEVPQESWDEGYSTLSIPPEMLASYQSYSSTFHSLEEQQVCMAVDIGRHRWDQVKKED
+FT                   QEATGPRLSRELLDEKEPEVLQDSLDRCYSTPSGCLELTDSCQPYRSAFYVLEQQRVGL
+FT                   AIDMDEIEKYQEVEEDQDPSCPRLSRELLDEKEPEVLQDSLDRCYSTPSDYLELPDLGQ
+FT                   PYSSAVYSLEEQYLGLALDVDRIKKDQEEEEDQGPPCPRLSRELLEVVEPEVLQDSLDR
+FT                   YYSTPSSCLEQPDSCQPYGSSFYALEEKHVGFSLDVGEIEKKGKGKKRRGRRSKKKRRR
+FT                   GRKEGEDDNPPCPRLNGVLMEVEEPEVLQDSLDRCYSTQSMYFELPDSFQHYRSVFYSF
+FT                   EEEHISFALYVDNRFFTLTVTSLHLVFQMGVIFPQ"
+FT   gene            385862..386941
+FT                   /gene=ENSG00000237343
+FT                   /locus_tag="RP11-763B22.4"
+FT   misc_RNA        join(385862..385917,386684..386941)
+FT                   /gene="ENSG00000237343"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097804"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.4-001"
+FT                   /db_xref="OTTT:OTTHUMT00000097804"
+FT                   /note="processed_transcript"
+FT                   /note="transcript_id=ENST00000455105"
+FT   gene            complement(385864..386376)
+FT                   /gene=ENSG00000233586
+FT                   /locus_tag="RP11-763B22.3"
+FT   misc_RNA        complement(385864..386376)
+FT                   /gene="ENSG00000233586"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097803"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.3-001"
+FT                   /db_xref="UniGene:Hs.504599"
+FT                   /db_xref="OTTT:OTTHUMT00000097803"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000432512"
+FT   gene            complement(392296..392460)
+FT                   /gene=ENSG00000206968
+FT                   /locus_tag="U1.79"
+FT                   /note="U1 spliceosomal RNA  [Source:RFAM;Acc:RF00003]"
+FT   misc_RNA        complement(392296..392460)
+FT                   /gene="ENSG00000206968"
+FT                   /db_xref="RFAM:RF00003"
+FT                   /db_xref="RFAM_transcript_name:U1.79-201"
+FT                   /note="snRNA"
+FT                   /note="transcript_id=ENST00000384241"
+FT   gene            431373..432157
+FT                   /gene=ENSG00000230582
+FT                   /locus_tag="RP11-763B22.5"
+FT                   /note="peptidylprolyl isomerase A (cyclophilin A)-like 4D
+FT                   (PPIAL4D), mRNA [Source:RefSeq DNA;Acc:NM_001164261]"
+FT   misc_RNA        431451..431936
+FT                   /gene="ENSG00000230582"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097805"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.5-001"
+FT                   /db_xref="OTTT:OTTHUMT00000097805"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000441419"
+FT   misc_RNA        431373..432157
+FT                   /gene="ENSG00000230582"
+FT                   /db_xref="RefSeq_dna:NM_001164261"
+FT                   /db_xref="RefSeq_dna:NM_001164262"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.5-201"
+FT                   /db_xref="UniGene:Hs.723812"
+FT                   /db_xref="UniGene:Hs.730589"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000541527"
+FT   gene            477751..479075
+FT                   /gene=ENSG00000235887
+FT                   /locus_tag="RP11-763B22.6"
+FT   misc_RNA        join(477751..477892,478714..478790,478887..479075)
+FT                   /gene="ENSG00000235887"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097806"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.6-001"
+FT                   /db_xref="UniGene:Hs.618833"
+FT                   /db_xref="OTTT:OTTHUMT00000097806"
+FT                   /note="processed_transcript"
+FT                   /note="transcript_id=ENST00000456469"
+FT   gene            complement(479161..479478)
+FT                   /gene=ENSG00000223495
+FT                   /locus_tag="RP11-763B22.7"
+FT   misc_RNA        complement(479161..479478)
+FT                   /gene="ENSG00000223495"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097807"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.7-001"
+FT                   /db_xref="OTTT:OTTHUMT00000097807"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000444165"
+FT   gene            AL592492.10:119991..157593
+FT                   /gene=ENSG00000231448
+FT                   /locus_tag="RP11-763B22.9"
+FT   misc_RNA        join(479496..479519,498764..498880,
+FT                   AL592492.10:142131..142271,AL592492.10:147801..147902,
+FT                   AL592492.10:148056..148220,AL592492.10:153471..153659,
+FT                   AL592492.10:153915..154082,AL592492.10:155432..155542,
+FT                   AL592492.10:156046..156114,AL592492.10:157378..157593)
+FT                   /gene="ENSG00000231448"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000046322"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.9-001"
+FT                   /db_xref="OTTT:OTTHUMT00000046322"
+FT                   /note="unprocessed_pseudogene"
+FT                   /note="transcript_id=ENST00000444424"
+FT   gene            complement(489952..490533)
+FT                   /gene=ENSG00000242943
+FT                   /locus_tag="NKAIN1P1"
+FT                   /note="Na+/K+ transporting ATPase interacting 1 pseudogene
+FT                   1 [Source:HGNC Symbol;Acc:38593]"
+FT   misc_RNA        complement(489952..490533)
+FT                   /gene="ENSG00000242943"
+FT                   /db_xref="RefSeq_dna_predicted:XR_108343"
+FT                   /db_xref="Vega_transcript:OTTHUMT00000097808"
+FT                   /db_xref="HGNC:38593"
+FT                   /db_xref="Clone_based_vega_transcript:RP11-763B22.8-001"
+FT                   /db_xref="HGNC_transcript_name:NKAIN1P1-001"
+FT                   /db_xref="UniGene:Hs.631791"
+FT                   /db_xref="OTTT:OTTHUMT00000097808"
+FT                   /note="processed_pseudogene"
+FT                   /note="transcript_id=ENST00000435754"
+FT   exon            168231..168467
+FT                   /note="exon_id=ENSE00001602649"
+FT   exon            170460..170486
+FT                   /note="exon_id=ENSE00001774109"
+FT   exon            181367..181630
+FT                   /note="exon_id=ENSE00001909333"
+FT   exon            209184..209235
+FT                   /note="exon_id=ENSE00001886320"
+FT   exon            207691..207896
+FT                   /note="exon_id=ENSE00001854679"
+FT   exon            216559..216731
+FT                   /note="exon_id=ENSE00001698795"
+FT   exon            207154..207226
+FT                   /note="exon_id=ENSE00001640459"
+FT   exon            205898..206112
+FT                   /note="exon_id=ENSE00001655913"
+FT   exon            202973..203182
+FT                   /note="exon_id=ENSE00002301242"
+FT   exon            207154..207226
+FT                   /note="exon_id=ENSE00001878471"
+FT   exon            214352..214403
+FT                   /note="exon_id=ENSE00001614918"
+FT   exon            192208..192238
+FT                   /note="exon_id=ENSE00001739909"
+FT   exon            204964..205066
+FT                   /note="exon_id=ENSE00001754539"
+FT   exon            194094..194235
+FT                   /note="exon_id=ENSE00001799850"
+FT   exon            213146..213309
+FT                   /note="exon_id=ENSE00001659130"
+FT   exon            186201..186473
+FT                   /note="exon_id=ENSE00002318788"
+FT   exon            218149..218321
+FT                   /note="exon_id=ENSE00001921758"
+FT   exon            182050..182168
+FT                   /note="exon_id=ENSE00001815179"
+FT   exon            217441..217492
+FT                   /note="exon_id=ENSE00001860097"
+FT   exon            217441..217492
+FT                   /note="exon_id=ENSE00001692681"
+FT   exon            192140..192238
+FT                   /note="exon_id=ENSE00001865886"
+FT   exon            205898..206112
+FT                   /note="exon_id=ENSE00001828730"
+FT   exon            202430..202609
+FT                   /note="exon_id=ENSE00001949309"
+FT   exon            202973..203182
+FT                   /note="exon_id=ENSE00002287022"
+FT   exon            219755..221625
+FT                   /note="exon_id=ENSE00002295025"
+FT   exon            218149..218321
+FT                   /note="exon_id=ENSE00001640296"
+FT   exon            215019..215191
+FT                   /note="exon_id=ENSE00001744318"
+FT   exon            219755..221516
+FT                   /note="exon_id=ENSE00001831954"
+FT   exon            194094..194184
+FT                   /note="exon_id=ENSE00001902922"
+FT   exon            181337..181630
+FT                   /note="exon_id=ENSE00001900567"
+FT   exon            181453..181630
+FT                   /note="exon_id=ENSE00001936081"
+FT   exon            209184..209235
+FT                   /note="exon_id=ENSE00001676555"
+FT   exon            183527..183645
+FT                   /note="exon_id=ENSE00001833138"
+FT   exon            202973..203018
+FT                   /note="exon_id=ENSE00001940142"
+FT   exon            219036..219081
+FT                   /note="exon_id=ENSE00001904361"
+FT   exon            204964..205066
+FT                   /note="exon_id=ENSE00001946015"
+FT   exon            202716..202870
+FT                   /note="exon_id=ENSE00001674262"
+FT   exon            200095..200345
+FT                   /note="exon_id=ENSE00001836560"
+FT   exon            186249..186473
+FT                   /note="exon_id=ENSE00001845080"
+FT   exon            215019..215191
+FT                   /note="exon_id=ENSE00001851846"
+FT   exon            213146..213309
+FT                   /note="exon_id=ENSE00001887686"
+FT   exon            214352..214403
+FT                   /note="exon_id=ENSE00001823460"
+FT   exon            215911..215962
+FT                   /note="exon_id=ENSE00001635364"
+FT   exon            186205..186473
+FT                   /note="exon_id=ENSE00001882386"
+FT   exon            215911..215962
+FT                   /note="exon_id=ENSE00001947085"
+FT   exon            219036..219141
+FT                   /note="exon_id=ENSE00001620829"
+FT   exon            207691..207896
+FT                   /note="exon_id=ENSE00001719238"
+FT   exon            216559..216731
+FT                   /note="exon_id=ENSE00001942941"
+FT   exon            186348..186473
+FT                   /note="exon_id=ENSE00001682038"
+FT   exon            complement(200011..200409)
+FT                   /note="exon_id=ENSE00001940825"
+FT   exon            224645..224889
+FT                   /note="exon_id=ENSE00001672987"
+FT   exon            223756..223875
+FT                   /note="exon_id=ENSE00001621385"
+FT   exon            complement(223822..224334)
+FT                   /note="exon_id=ENSE00001722051"
+FT   exon            complement(230266..230430)
+FT                   /note="exon_id=ENSE00001808588"
+FT   exon            269369..270153
+FT                   /note="exon_id=ENSE00002262297"
+FT   exon            269444..269932
+FT                   /note="exon_id=ENSE00001660702"
+FT   exon            complement(362047..362445)
+FT                   /note="exon_id=ENSE00001608560"
+FT   exon            380193..380365
+FT                   /note="exon_id=ENSE00001647235"
+FT   exon            375190..375353
+FT                   /note="exon_id=ENSE00001800257"
+FT   exon            379489..379540
+FT                   /note="exon_id=ENSE00001750456"
+FT   exon            367985..368199
+FT                   /note="exon_id=ENSE00001720931"
+FT   exon            365058..365267
+FT                   /note="exon_id=ENSE00001760081"
+FT   exon            371271..371322
+FT                   /note="exon_id=ENSE00001601584"
+FT   exon            369241..369313
+FT                   /note="exon_id=ENSE00001599534"
+FT   exon            381080..381185
+FT                   /note="exon_id=ENSE00001678011"
+FT   exon            377067..377239
+FT                   /note="exon_id=ENSE00001651939"
+FT   exon            369778..369983
+FT                   /note="exon_id=ENSE00001604383"
+FT   exon            376396..376447
+FT                   /note="exon_id=ENSE00001730588"
+FT   exon            381799..383669
+FT                   /note="exon_id=ENSE00002206997"
+FT   exon            377959..378010
+FT                   /note="exon_id=ENSE00001795877"
+FT   exon            367048..367150
+FT                   /note="exon_id=ENSE00001698080"
+FT   exon            365093..365267
+FT                   /note="exon_id=ENSE00001675150"
+FT   exon            378607..378779
+FT                   /note="exon_id=ENSE00001595409"
+FT   exon            364801..364955
+FT                   /note="exon_id=ENSE00001687657"
+FT   exon            386684..386941
+FT                   /note="exon_id=ENSE00001630464"
+FT   exon            385862..385917
+FT                   /note="exon_id=ENSE00001654385"
+FT   exon            complement(385864..386376)
+FT                   /note="exon_id=ENSE00001609139"
+FT   exon            complement(392296..392460)
+FT                   /note="exon_id=ENSE00001807411"
+FT   exon            431451..431936
+FT                   /note="exon_id=ENSE00001619028"
+FT   exon            431373..432157
+FT                   /note="exon_id=ENSE00002245094"
+FT   exon            478887..479075
+FT                   /note="exon_id=ENSE00001782581"
+FT   exon            477751..477892
+FT                   /note="exon_id=ENSE00001612977"
+FT   exon            478714..478790
+FT                   /note="exon_id=ENSE00001793090"
+FT   exon            complement(479161..479478)
+FT                   /note="exon_id=ENSE00001716778"
+FT   exon            AL592492.10:157378..157593
+FT                   /note="exon_id=ENSE00001689370"
+FT   exon            AL592492.10:147801..147902
+FT                   /note="exon_id=ENSE00001662849"
+FT   exon            AL592492.10:153915..154082
+FT                   /note="exon_id=ENSE00001711738"
+FT   exon            AL592492.10:156046..156114
+FT                   /note="exon_id=ENSE00001773764"
+FT   exon            AL592492.10:155432..155542
+FT                   /note="exon_id=ENSE00001661874"
+FT   exon            498764..498880
+FT                   /note="exon_id=ENSE00001629029"
+FT   exon            AL592492.10:153471..153659
+FT                   /note="exon_id=ENSE00001761951"
+FT   exon            AL592492.10:148056..148220
+FT                   /note="exon_id=ENSE00001747811"
+FT   exon            479496..479519
+FT                   /note="exon_id=ENSE00001667414"
+FT   exon            AL592492.10:142131..142271
+FT                   /note="exon_id=ENSE00001794437"
+FT   exon            complement(489952..490533)
+FT                   /note="exon_id=ENSE00001653560"
+XX
+SQ   Sequence 500000 BP; 92976 A; 62324 C; 60593 G; 97391 T; 186716 other;

@@ -1,11 +1,11 @@
-from matrix_from_aln import create_matrix
-from matrix_from_aln import load_to_fit
+from matrix_from_aln import create_matrix_from_aln
+from matrix_from_aln import load_sequences_from_fasta
 from insertor import HMMWrapper
 from pomegranate import State
 from pomegranate import DiscreteDistribution
 import numpy
 
-tss_matrix = create_matrix('TSS.aln')
+tss_matrix = create_matrix_from_aln('TSS.aln')
 
 background_state = State(DiscreteDistribution({'a': 0.25, 'c': 0.25, 'g': 0.25, 't': 0.25}), name='background')
 start_tss = State(None, name='none start tss')
@@ -34,7 +34,7 @@ hmm_predictions = model.predict(seq, algorithm='viterbi')
 for pre in hmm_predictions:
     print(model.states[pre].name)
 
-model.model.fit(load_to_fit('TSS.f'))
+model.model.fit(load_sequences_from_fasta('TSS.f'))
 
 
 print(len(seq))

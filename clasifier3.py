@@ -3,6 +3,8 @@ from pomegranate import State
 from pomegranate import DiscreteDistribution
 from pomegranate import HiddenMarkovModel
 from converter_to_two import converter_to_two
+from matrix_from_aln import matrix_from_fasta
+from gene_sample_extractor import seqs_from
 
 
 example = [
@@ -24,7 +26,8 @@ example = [
 
 ]
 
-data_matrix = numpy.array(example, numpy.unicode_)
+data_matrix = numpy.array(matrix_from_fasta('duplexW_EI.f'))
+print(data_matrix)
 
 
 class FirstOrderState:
@@ -104,18 +107,20 @@ back_states = {
 back = State(DiscreteDistribution(back_states), name='back')
 model.add_state(back)
 model.add_transition(model.start, back, 1.0)
-model.add_transition(back, back, 0.1)
+model.add_transition(back, back, 0.999)
 
 add_sequence(model, v_states)
 
-model.add_transition(back, v_states[0], 0.9)
+model.add_transition(back, v_states[0], 0.001)
+print('shix', len(v_states))
 model.add_transition(v_states[-1], back, 1.0)
 
 model.bake()
 
 print(model.states)
-
-test_seq = list('acgtacgtacgtacgtacgtacgtacgtactatgcaa')
+string = seqs_from('sequence_body.ebi')[0]
+print(string)
+test_seq = list(string)
 two_seq = converter_to_two(test_seq)
 print(two_seq)
 seq = numpy.array(two_seq, numpy.unicode_)
@@ -125,8 +130,8 @@ hmm_predictions = model.predict(seq, algorithm='viterbi')
 #print(model.states)
 
 count = 0
-for pre in hmm_predictions:
-    #if 'none' not in model.states[pre].name and 'None' not in model.states[pre].name and 'back' not in model.states[pre].name:
-        print(model.states[pre].name)
+for i, pre in enumerate(hmm_predictions):
+    if 'none' not in model.states[pre].name and 'None' not in model.states[pre].name and 'back' not in model.states[pre].name:
+        print(model.states[pre].name, two_seq[i])
         #print(count, seq[count])
         #count += 1

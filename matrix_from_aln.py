@@ -1,7 +1,7 @@
 import numpy
 
 
-def create_matrix(filename):
+def create_matrix_from_aln(filename):
     with open(filename) as file_handle:
         lines = {}
         for index, line in enumerate(file_handle):
@@ -19,15 +19,24 @@ def create_matrix(filename):
         return numpy.array(in_array, numpy.unicode_)
 
 
-def load_to_fit(filename):
+def load_sequences_from_fasta(filename):
     lines = []
     with open(filename) as file_handle:
         for line in file_handle:
             if line[0] != '>':
-                lines.append('acgt' + line[0:-1])
+                lines.append(line[0:-1])
 
     return lines
 
 
-lines = load_to_fit('TSS.f')
-print(lines)
+def matrix_from_fasta(filename):
+    lines = load_sequences_from_fasta(filename)
+    list_of_lists = []
+    for line in lines:
+        converted = list(line)
+        list_of_lists.append(converted)
+        print(converted)
+    return list_of_lists
+
+
+

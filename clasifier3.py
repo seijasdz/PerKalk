@@ -2,9 +2,10 @@ import numpy
 from pomegranate import State
 from pomegranate import DiscreteDistribution
 from pomegranate import HiddenMarkovModel
-from converter_to_two import converter_to_two
+from converter_to_two import converter_to
 from matrix_from_aln import matrix_from_fasta
 from gene_sample_extractor import seqs_from
+import itertools
 
 
 example = [
@@ -26,35 +27,41 @@ example = [
 
 ]
 
-data_matrix = numpy.array(matrix_from_fasta('duplexW_EI.f'))
+data_matrix = numpy.array(matrix_from_fasta('duplexW_ZE100.f'))
+#data_matrix = numpy.array(example, numpy.unicode)
 print(data_matrix)
 
 
-class FirstOrderState:
-    def __init__(self, column1, column0):
-        self.states_distribution = self.calculate_states(column1, column0)
+class HighOrderState:
+    def __init__(self, columns):
+        self.states_distribution = self.calculate_states(columns)
 
     @staticmethod
-    def calculate_states(column1, column0):
+    def calculate_states(columns):
         states_distribution = {}
-        for index, base1 in enumerate(column1):
-            base0 = column0[index]
-            name = base1 + str('|') + base0
+        for index, base1 in enumerate(columns[0]):
+            name = base1 + '|'
+            for i, col in enumerate(columns):
+                if i:
+                    name += col[index]
             if name not in states_distribution:
                 states_distribution[name] = 1
             else:
                 states_distribution[name] += 1
 
         for key, value in states_distribution.items():
-            states_distribution[key] /= len(column1)
+            states_distribution[key] /= len(columns[0])
         return states_distribution
 
 
-def classify(matrix):
+def classify(matrix, order=1):
     state_data = []
     for index, column in enumerate(matrix.T):
-        if index > 0:
-            data = FirstOrderState(column, matrix.T[index - 1])
+        columns = [column]
+        for x in range(1, order + 1):
+            columns.append(matrix.T[index - x])
+        if index > order - 1:
+            data = HighOrderState(columns)
             state_data.append(data)
     return state_data
 
@@ -78,33 +85,33 @@ def add_sequence(model, states):
             model.add_transition(state, states[index + 1], 1.0)
 
 
-v_states_data = classify(data_matrix)
+v_states_data = classify(data_matrix, 2)
 v_states = sequence_state_factory(v_states_data, 'test')
 
 
 model = HiddenMarkovModel()
 
-back_prob = 1 / 16
-back_states = {
-    'a|a': back_prob,
-    'a|c': back_prob,
-    'a|g': back_prob,
-    'a|t': back_prob,
-    'c|a': back_prob,
-    'c|c': back_prob,
-    'c|g': back_prob,
-    'c|t': back_prob,
-    'g|a': back_prob,
-    'g|c': back_prob,
-    'g|g': back_prob,
-    'g|t': back_prob,
-    't|a': back_prob,
-    't|c': back_prob,
-    't|g': back_prob,
-    't|t': back_prob,
-}
 
-back = State(DiscreteDistribution(back_states), name='back')
+def foo(l):
+    yield from itertools.product(*([l] * 3))
+
+
+def temporal_back(order):
+    print('ssss')
+    states = {}
+    back_prob = 1.0 / pow(4, order + 1)
+    nucleotides = ['a', 'c', 'g', 't']
+    t = foo(nucleotides)
+    for s in t:
+        state = ''.join(s)
+        states[state[:1] + '|' + state[1:]] = back_prob
+    return states
+
+
+bs = temporal_back(2)
+print(bs)
+
+back = State(DiscreteDistribution(bs), name='back')
 model.add_state(back)
 model.add_transition(model.start, back, 1.0)
 model.add_transition(back, back, 0.999)
@@ -112,26 +119,31 @@ model.add_transition(back, back, 0.999)
 add_sequence(model, v_states)
 
 model.add_transition(back, v_states[0], 0.001)
-print('shix', len(v_states))
+#print('shix', len(v_states))
 model.add_transition(v_states[-1], back, 1.0)
 
 model.bake()
 
-print(model.states)
+#print(model.states)
 string = seqs_from('sequence_body.ebi')[0]
 print(string)
 test_seq = list(string)
-two_seq = converter_to_two(test_seq)
-print(two_seq)
+two_seq = converter_to(test_seq, 2)
+#print(two_seq)
 seq = numpy.array(two_seq, numpy.unicode_)
-print(seq)
+#print(seq)
 hmm_predictions = model.predict(seq, algorithm='viterbi')
 
 #print(model.states)
 
 count = 0
+
+len(hmm_predictions)
+
 for i, pre in enumerate(hmm_predictions):
     if 'none' not in model.states[pre].name and 'None' not in model.states[pre].name and 'back' not in model.states[pre].name:
-        print(model.states[pre].name, two_seq[i])
+#        print(model.states[pre].name, two_seq[i])
         #print(count, seq[count])
-        #count += 1
+        count += 1
+
+print(count)

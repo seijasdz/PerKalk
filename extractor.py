@@ -1,5 +1,5 @@
 from collections import deque
-before = 6
+before = 7
 after = 9
 size = before + after
 file = 'duplexW_EI'

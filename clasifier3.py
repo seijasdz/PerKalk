@@ -27,8 +27,8 @@ example = [
 
 ]
 
-data_matrix = numpy.array(matrix_from_fasta('duplexW_ZE100.f'))
-#data_matrix = numpy.array(example, numpy.unicode)
+#data_matrix = numpy.array(matrix_from_fasta('duplexW_ZE100.f'))
+data_matrix = numpy.array(example, numpy.unicode)
 print(data_matrix)
 
 
@@ -58,8 +58,10 @@ def classify(matrix, order=1):
     state_data = []
     for index, column in enumerate(matrix.T):
         columns = [column]
-        for x in range(1, order + 1):
-            columns.append(matrix.T[index - x])
+        for x in range(order + 1, -1, 1):
+            col = matrix.T[index - x]
+            print(col)
+            columns.append(col)
         if index > order - 1:
             data = HighOrderState(columns)
             state_data.append(data)

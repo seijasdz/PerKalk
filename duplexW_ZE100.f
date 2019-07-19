@@ -1,202 +1,202 @@
 > seq1
-tatcagccatggtc
+actatcagccatggtc
 > seq2
-ttacttccatgggg
+gcttacttccatgggg
 > seq3
-gagacaacatgtgg
+tggagacaacatgtgg
 > seq4
-cagcggtcatgtcc
+tccagcggtcatgtcc
 > seq5
-tcgctgtcatgtct
+tatcgctgtcatgtct
 > seq6
-ggttcgctatggcc
+ttggttcgctatggcc
 > seq7
-cgtagcccatgctg
+ggcgtagcccatgctg
 > seq8
-ccagaaccatgggc
+caccagaaccatgggc
 > seq9
-gtagaaagatgggg
+gggtagaaagatgggg
 > seq10
-ccagaaccatgggc
+caccagaaccatgggc
 > seq11
-acctcaggatggga
+ggacctcaggatggga
 > seq12
-tatgttaaatgact
+gttatgttaaatgact
 > seq13
-aaccaaccatggca
+tcaaccaaccatggca
 > seq14
-ccctcattatgtct
+ctccctcattatgtct
 > seq15
-aagtcactatggga
+caaagtcactatggga
 > seq16
-ttggaaaaatgttt
+atttggaaaaatgttt
 > seq17
-tatgttaaatgact
+gttatgttaaatgact
 > seq18
-aaccaaccatggca
+tcaaccaaccatggca
 > seq19
-ccctcattatgtct
+ctccctcattatgtct
 > seq20
-aagtcactatggga
+caaagtcactatggga
 > seq21
-ttggaaaaatgttt
+atttggaaaaatgttt
 > seq22
-ttcagaccatggat
+cgttcagaccatggat
 > seq23
-acagagacatgagg
+ccacagagacatgagg
 > seq24
-ggtggctgatgccc
+gaggtggctgatgccc
 > seq25
-ccagcgccatgtcc
+gaccagcgccatgtcc
 > seq26
-gggcgggtatggga
+tggggcgggtatggga
 > seq27
-taggttccatggca
+agtaggttccatggca
 > seq28
-ttcagaccatggat
+cgttcagaccatggat
 > seq29
-cgggcaccatgagc
+ggcgggcaccatgagc
 > seq30
-acagagacatgagg
+ccacagagacatgagg
 > seq31
-ggtggctgatgccc
+gaggtggctgatgccc
 > seq32
-ccagcgccatgtcc
+gaccagcgccatgtcc
 > seq33
-agcgcagcatggct
+tgagcgcagcatggct
 > seq34
-gagcaggaatggcg
+gggagcaggaatggcg
 > seq35
-ctcccaccccggcc
+ccctcccaccccggcc
 > seq36
-ccggggccatgccg
+cgccggggccatgccg
 > seq37
-ccgcagccatgaac
+ggccgcagccatgaac
 > seq38
-gctacagcatggtg
+tcgctacagcatggtg
 > seq39
-gagaggacgagatg
+acgagaggacgagatg
 > seq40
-cgggagggatgaac
+cccgggagggatgaac
 > seq41
-gtcacggcatgggg
+cggtcacggcatgggg
 > seq42
-gcctggcaatggat
+gagcctggcaatggat
 > seq43
-gcctggcaatggat
+gagcctggcaatggat
 > seq44
-ctctggtaatgggc
+tgctctggtaatgggc
 > seq45
-ctctggtaatgggc
+tgctctggtaatgggc
 > seq46
-atccaaacatgagc
+cgatccaaacatgagc
 > seq47
-acctattaatgggt
+acacctattaatgggt
 > seq48
-ctcacgacatggcc
+cgctcacgacatggcc
 > seq49
-gccccaccatggcg
+gggccccaccatggcg
 > seq50
-ctgtcaagatgtgg
+ccctgtcaagatgtgg
 > seq51
-atccaaacatgagc
+cgatccaaacatgagc
 > seq52
-tctggaggatgtgg
+tctctggaggatgtgg
 > seq53
-cccagcctatgcat
+cacccagcctatgcat
 > seq54
-ctcacgacatggcc
+cgctcacgacatggcc
 > seq55
-gccccaccatggcg
+gggccccaccatggcg
 > seq56
-ctgtcaagatgtgg
+ccctgtcaagatgtgg
 > seq57
-gggcagccatgcct
+cggggcagccatgcct
 > seq58
-tttccactatggct
+gctttccactatggct
 > seq59
-gctccagctcggcc
+cagctccagctcggcc
 > seq60
-gccgcagcatggac
+cggccgcagcatggac
 > seq61
-agatccgcatgtca
+gaagatccgcatgtca
 > seq62
-gcttggcgatggag
+cggcttggcgatggag
 > seq63
-gagacattatgggc
+ctgagacattatgggc
 > seq64
-cagttgccatggca
+accagttgccatggca
 > seq65
-ccgtcaccatgagc
+cgccgtcaccatgagc
 > seq66
-aggctgcgatgggg
+caaggctgcgatgggg
 > seq67
-gggtggtgatgaag
+cagggtggtgatgaag
 > seq68
-aggctgcgatgggg
+caaggctgcgatgggg
 > seq69
-gggtggtgatgaag
+cagggtggtgatgaag
 > seq70
-gccccgggatggag
+gagccccgggatggag
 > seq71
-tagaattaatggaa
+tatagaattaatggaa
 > seq72
-tccgtatcatggaa
+tgtccgtatcatggaa
 > seq73
-tagaattaatggaa
+tatagaattaatggaa
 > seq74
-tccgtatcatggaa
+tgtccgtatcatggaa
 > seq75
-ctgaaatcatgccc
+ccctgaaatcatgccc
 > seq76
-agcccgcaatgtcg
+cgagcccgcaatgtcg
 > seq77
-ccacagagatgctg
+caccacagagatgctg
 > seq78
-aagagaagatgact
+tcaagagaagatgact
 > seq79
-gagtcatcatgcct
+cagagtcatcatgcct
 > seq80
-gagtcatcatgcct
+cagagtcatcatgcct
 > seq81
-tcgaggacatgccg
+attcgaggacatgccg
 > seq82
-tcgcgggcatggcg
+aatcgcgggcatggcg
 > seq83
-gacgctgcaccacg
+ctgacgctgcaccacg
 > seq84
-catccgccatgtgg
+tccatccgccatgtgg
 > seq85
-gacgctgcaccacg
+ctgacgctgcaccacg
 > seq86
-agcagtggcgcttc
+gcagcagtggcgcttc
 > seq87
-gcgttgatgacgtt
+tcgcgttgatgacgtt
 > seq88
-gattcttcctgggc
+cggattcttcctgggc
 > seq89
-gcagcctctctgcc
+ctgcagcctctctgcc
 > seq90
-gatcgcccatggag
+ccgatcgcccatggag
 > seq91
-ggttccagatgaat
+ccggttccagatgaat
 > seq92
-gtgtcgccatgggc
+tggtgtcgccatgggc
 > seq93
-gcctgaccatggac
+aggcctgaccatggac
 > seq94
-ccggagccatgcag
+ctccggagccatgcag
 > seq95
-gccgacggatgggg
+ttgccgacggatgggg
 > seq96
-ctgccgccatgtct
+ccctgccgccatgtct
 > seq97
-aacccaccatggtg
+agaacccaccatggtg
 > seq98
-gcagcaccatgagc
+tggcagcaccatgagc
 > seq99
-tggtggggatgaag
+gctggtggggatgaag
 > seq100
-gtcacggcatgggg
+cggtcacggcatgggg
 > seq101
-aggctgcgatgggg
+caaggctgcgatgggg

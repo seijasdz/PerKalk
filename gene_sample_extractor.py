@@ -12,4 +12,4 @@ def seqs_from(filename):
     return subseqs
 
 
-seqs_from('example_seq.ebi')
+#seqs_from('example_seq.ebi')

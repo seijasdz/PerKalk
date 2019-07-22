@@ -1,8 +1,8 @@
 from collections import deque
-before = 10
-after = 7
+before = 5
+after = 12
 size = before + after
-file = 'duplexW_ZE100'
+file = 'duplexW_EZ100'
 filename = file + '.txt'
 examples = 0
 count_a = [0] * size
@@ -17,9 +17,9 @@ with open(filename) as file_obj:
     with open(file + '.f', 'w') as out_file_obj:
         for line in file_obj:
             for idx, ch in enumerate(line):
-                # masdos = idx + 2 if idx + 2 < len(line) else idx
-                # masuno = idx + 2 if idx + 1 < len(line) else idx
-                # if ch != ',' and not (ch == 'a' and line[masdos] == 'p') and not (ch == 'g' and line[masuno] == 'p'):
+                masdos = idx + 4 if idx + 4 < len(line) else idx
+                masuno = idx + 2 if idx + 2 < len(line) else idx
+                #if ch != ',' and not (ch == 'a' and line[masdos] == 'p') and not (ch == 'g' and line[masuno] == 'p'):
                 if ch != ',':
                     deck.append(ch)
                     if deck[-after] == 'p':

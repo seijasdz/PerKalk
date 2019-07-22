@@ -100,17 +100,53 @@ v_lines = exon_calculator.get_corrected_lines('exonesW.txt')
 c0, c1, c2 = exon_calculator.calculate_proba(v_lines)
 
 
+matrixZE = numpy.array(matrix_from_fasta('duplexW_ZE100.f'))
+matrixEZ = numpy.array(matrix_from_fasta('duplexW_EZ100.f'))
+matrixDonor0 = numpy.array(matrix_from_fasta('donor0.f'))
+matrixDonor1 = numpy.array(matrix_from_fasta('donor1.f'))
+matrixDonor2 = numpy.array(matrix_from_fasta('donor2.f'))
+matrixAcceptor0 = numpy.array(matrix_from_fasta('acceptor0.f'))
+matrixAcceptor1 = numpy.array(matrix_from_fasta('acceptor1.f'))
+matrixAcceptor2 = numpy.array(matrix_from_fasta('acceptor2.f'))
 
-
-data_matrix = numpy.array(matrix_from_fasta('duplexW_ZE100.f'))
 # data_matrix = numpy.array(example, numpy.unicode)
 
-v_states_data = classify(data_matrix, 2)
-v_states = sequence_state_factory(v_states_data, 'start zone')
+ze_states_data = classify(matrixZE, 2)
+ze_states = sequence_state_factory(ze_states_data, 'start zone')
+
+ez_states_data = classify(matrixEZ, 2)
+ez_states = sequence_state_factory(ez_states_data, 'stop zone')
+
+donor0_data = classify(matrixDonor0, 2)
+donor0_states = sequence_state_factory(donor0_data, 'donor0')
+
+donor1_data = classify(matrixDonor1, 2)
+donor1_states = sequence_state_factory(donor1_data, 'donor1')
+
+donor2_data = classify(matrixDonor2, 2)
+donor2_states = sequence_state_factory(donor2_data, 'donor2')
+
+acceptor0_data = classify(matrixAcceptor0, 2)
+acceptor0_states = sequence_state_factory(acceptor0_data, 'acceptor0')
+
+acceptor1_data = classify(matrixAcceptor1, 2)
+acceptor1_states = sequence_state_factory(acceptor1_data, 'acceptor1')
+
+acceptor2_data = classify(matrixAcceptor2, 2)
+acceptor2_states = sequence_state_factory(acceptor2_data, 'acceptor2')
+
+
+
 
 model = HiddenMarkovModel()
 
 back = State(DiscreteDistribution(temporal_back(2)), name='back')
+
+in0 = State(DiscreteDistribution(temporal_back(2)), name='in0')
+in1 = State(DiscreteDistribution(temporal_back(2)), name='in1')
+in2 = State(DiscreteDistribution(temporal_back(2)), name='in2')
+
+
 coding_state0 = State(DiscreteDistribution(c0.p), 'coding state 0')
 coding_state1 = State(DiscreteDistribution(c1.p), 'coding state 1')
 coding_state2 = State(DiscreteDistribution(c2.p), 'coding state 2')
@@ -120,39 +156,82 @@ model.add_state(coding_state0)
 model.add_state(coding_state1)
 model.add_state(coding_state2)
 
+model.add_state(in0)
+model.add_state(in1)
+model.add_state(in2)
 
 model.add_transition(model.start, back, 1.0)
-model.add_transition(back, back, 0.999)
+model.add_transition(back, back, 0.9999)
+
+model.add_transition(in0, in0, 0.9)
+model.add_transition(in1, in1, 0.9)
+model.add_transition(in2, in2, 0.9)
 
 model.add_transition(coding_state0, coding_state1, 1.0)
 model.add_transition(coding_state1, coding_state2, 1.0)
-print(c2.trans_probs['default'], c2.trans_probs['end'])
-model.add_transition(coding_state2, coding_state0, c2.trans_probs['default'])
-model.add_transition(coding_state2, back, c2.trans_probs['end'])
+model.add_transition(coding_state2, coding_state0, 0.99)
 
+add_sequence(model, ze_states)
+add_sequence(model, ez_states)
 
-add_sequence(model, v_states)
+add_sequence(model, donor0_states)
+add_sequence(model, donor1_states)
+add_sequence(model, donor2_states)
 
-model.add_transition(back, v_states[0], 0.001)
-model.add_transition(v_states[-1], coding_state0, 1.0)
+add_sequence(model, acceptor0_states)
+add_sequence(model, acceptor1_states)
+add_sequence(model, acceptor2_states)
+
+model.add_transition(coding_state2, donor0_states[0], 0.003)
+model.add_transition(coding_state2, donor1_states[0], 0.003)
+model.add_transition(coding_state2, donor2_states[0], 0.003)
+
+model.add_transition(donor0_states[-1], in0, 1)
+model.add_transition(donor1_states[-1], in1, 1)
+model.add_transition(donor2_states[-1], in2, 1)
+
+model.add_transition(in0, acceptor0_states[0], 0.1)
+model.add_transition(in1, acceptor1_states[0], 0.1)
+model.add_transition(in2, acceptor2_states[0], 0.1)
+
+model.add_transition(acceptor0_states[-1], coding_state0, 1.0)
+model.add_transition(acceptor1_states[-1], coding_state0, 1.0)
+model.add_transition(acceptor2_states[-1], coding_state0, 1.0)
+
+model.add_transition(coding_state2, ez_states[0], 0.001)
+model.add_transition(ez_states[-1], back, 1.0)
+model.add_transition(back, ze_states[0], 0.0001)
+model.add_transition(ze_states[-1], coding_state0, 1.0)
 
 model.bake()
 
 
-string = seqs_from('sequence_body.ebi')[0][0:100000]
+seqq ="AAACGTCAGCATG GTGGTATCAG CCGGCCCTTT GTCCAGCGAG AAGGCAGAGA TGAACATTCT AGAAATCAAT GAGAAATTGC GCCCCCAGTT GGCAGAGAAG  AAACAGCAGT TCAGAAACCT CAAAGAGAAA TGTTTTCTAA CTCAACTGGC CGGCTTCCTG   GCCAACCGAC AGAAGAAATA CAGTAAGATC TATAGGCTCA CCGTCATGAA AGTGATGAAT    GATGTCCTGT CTTCTCTCTG AGACACTAAA TGCTCTCTCC ATCAAAAATA ATTTCATCCT    TCCTGTACTT CTAGGAAAAC AGAAATGGGT ATTTTAACAT TTTGTTAAAG TTGGAAGACA    GAGGTACCAA AGTATTTAGC AACTTTCCAT GTTTGCAATC AGGTGGGGGT GGGACTAGAG    TTAAACTGCC ATTTATTGAT TTCTGACACA GGCACAGAAT GACCTGTTTT CTCCAAGAGG    CTCAATCATG TTTTCAAGAA TCCTCTCTGT ACCATATAAG ATCCTGCAGA CAAATAACAT"
+seqq = seqq.replace(' ','').lower()
+print(seqq)
+
+back_text = 'agtagtagt'
+ze_text = 'gcttacttccatgggg'
+exon_text1 = 'tgcacttca'
+donor0_text = 'caggtaagcag'
+intron0_text = 'aaggttaaggt'
+acceptor0_text = 'ggttcatatttttcaggct'
+ez_text = 'gcctgatggagcct'
+
+
+#string = seqs_from('sequence_body.ebi')[0][0:100000]
+#string = back_text + ze_text + exon_text1 + donor0_text + intron0_text + acceptor0_text + 'acgttg' + ez_text
+string = seqq
 print(string)
 test_seq = list(string)
 two_seq = converter_to(test_seq, 2)
 print(two_seq)
 seq = numpy.array(two_seq, numpy.unicode_)
+print(len(seq))
+logp, path = model.viterbi(seq)
 
-hmm_predictions = model.predict(seq, algorithm='viterbi')
-
-
+print(logp)
 count = 0
-for i, pre in enumerate(hmm_predictions):
-    if 'none' not in model.states[pre].name and 'None' not in model.states[pre].name and 'back' not in model.states[pre].name:
-        print(model.states[pre].name, seq[i - 1])
-        #print(count, seq[count])
-        count += 1
-
+for i, pre in enumerate(path):
+     #if pre[1].name != 'back':
+         print(pre[1].name, seq[i - 1])

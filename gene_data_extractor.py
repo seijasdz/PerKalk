@@ -50,8 +50,10 @@ def slicer(string, divisions, complement, before=25, after=25):
 
     if complement:
         data['pure_cuts'] = correct(data['pure_cuts'])
-        data['after_zone'] = correct(data['before_zone'])
-        data['before_zone'] = correct(data['after_zone'])
+        c_after = correct(data['before_zone'])
+        c_before = correct(data['after_zone'])
+        data['after_zone'] = c_after
+        data['before_zone'] = c_before
 
     return data
 
@@ -106,7 +108,7 @@ def divider(elements, sequence, tag='mRNA'):
             complement, divisions = get_divisions(tokens[0])
             data = slicer(sequence, divisions, complement)
             if tag == 'CDS':
-                if validate_cds(data['pure_cuts']):
+                if validate_cds(data['pure_cuts']) and len(data['pure_cuts']):
                     print('len', len(data['pure_cuts']))
                     genes[tokens[1]] = data
             else:
@@ -115,7 +117,9 @@ def divider(elements, sequence, tag='mRNA'):
     print(local)
 
 
-folder_path = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
+# folder_path = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
+folder_path = '/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/'
+
 lookfor = 'CDS'
 path = Path(folder_path)
 
@@ -134,8 +138,52 @@ for folder in subfolders:
             elements = ft.findall(lookfor)
             divider(elements, file_string, lookfor)
 
-exons = 0
-for key, gene in genes.items():
-    exons += len(gene['pure_cuts'])
-print(exons)
+pure_cuts = []
+before_cuts = []
+after_cuts = []
 
+pure_cuts_c = []
+before_cuts_c = []
+after_cuts_c = []
+
+
+for key, gene in genes.items():
+    if not gene['complement']:
+        pure_cuts.append(' '.join(gene['pure_cuts']) + '\n')
+        before_cuts.append(' '.join(gene['before_zone']) + '\n')
+        after_cuts.append(' '.join(gene['after_zone']) + '\n')
+    else:
+        pure_cuts_c.append(' '.join(gene['pure_cuts']) + '\n')
+        before_cuts_c.append(' '.join(gene['before_zone']) + '\n')
+        after_cuts_c.append(' '.join(gene['after_zone']) + '\n')
+
+
+pure_cuts = list(set(pure_cuts))
+before_cuts = list(set(before_cuts))
+after_cuts = list(set(after_cuts))
+
+pure_cuts_c = list(set(pure_cuts_c))
+before_cuts_c = list(set(before_cuts_c))
+after_cuts_c = list(set(after_cuts_c))
+
+
+with open('cuts.txt', 'w') as cuts, open('cutsa.txt', 'w') as acuts, open('cutsb.txt', 'w') as bcuts:
+    for cut in pure_cuts:
+        cuts.write(cut)
+
+    for bcut in before_cuts:
+        bcuts.write(bcut)
+
+    for acut in after_cuts:
+        acuts.write(acut)
+
+
+with open('ccuts.txt', 'w') as cuts, open('ccutsa.txt', 'w') as acuts, open('ccutsb.txt', 'w') as bcuts:
+    for cut in pure_cuts_c:
+        cuts.write(cut)
+
+    for bcut in before_cuts_c:
+        bcuts.write(bcut)
+
+    for acut in after_cuts_c:
+        acuts.write(acut)

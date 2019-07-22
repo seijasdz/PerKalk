@@ -107,6 +107,7 @@ def divider(elements, sequence, tag='mRNA'):
             data = slicer(sequence, divisions, complement)
             if tag == 'CDS':
                 if validate_cds(data['pure_cuts']):
+                    print('len', len(data['pure_cuts']))
                     genes[tokens[1]] = data
             else:
                 genes[tokens[1]] = data
@@ -133,5 +134,8 @@ for folder in subfolders:
             elements = ft.findall(lookfor)
             divider(elements, file_string, lookfor)
 
-for key in genes:
-    print(key)
+exons = 0
+for key, gene in genes.items():
+    exons += len(gene['pure_cuts'])
+print(exons)
+

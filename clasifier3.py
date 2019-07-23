@@ -3,7 +3,7 @@ from pomegranate import State
 from pomegranate import DiscreteDistribution
 from pomegranate import HiddenMarkovModel
 from converter_to_two import converter_to
-from matrix_from_aln import matrix_from_fasta
+from matrix_from_aln import matrix_from_exa
 from gene_sample_extractor import seqs_from
 import itertools
 import exon_calculator
@@ -100,14 +100,14 @@ v_lines = exon_calculator.get_corrected_lines('exonesW.txt')
 c0, c1, c2 = exon_calculator.calculate_proba(v_lines)
 
 
-matrixZE = numpy.array(matrix_from_fasta('duplexW_ZE100.f'))
-matrixEZ = numpy.array(matrix_from_fasta('duplexW_EZ100.f'))
-matrixDonor0 = numpy.array(matrix_from_fasta('donor0.f'))
-matrixDonor1 = numpy.array(matrix_from_fasta('donor1.f'))
-matrixDonor2 = numpy.array(matrix_from_fasta('donor2.f'))
-matrixAcceptor0 = numpy.array(matrix_from_fasta('acceptor0.f'))
-matrixAcceptor1 = numpy.array(matrix_from_fasta('acceptor1.f'))
-matrixAcceptor2 = numpy.array(matrix_from_fasta('acceptor2.f'))
+matrixZE = numpy.array(matrix_from_exa('new_tss.exa'))
+matrixEZ = numpy.array(matrix_from_exa('new_tts.exa'))
+matrixDonor0 = numpy.array(matrix_from_exa('new_donor0.exa'))
+matrixDonor1 = numpy.array(matrix_from_exa('new_donor1.exa'))
+matrixDonor2 = numpy.array(matrix_from_exa('new_donor2.exa'))
+matrixAcceptor0 = numpy.array(matrix_from_exa('new_acceptor0.exa'))
+matrixAcceptor1 = numpy.array(matrix_from_exa('new_acceptor1.exa'))
+matrixAcceptor2 = numpy.array(matrix_from_exa('new_acceptor2.exa'))
 
 # data_matrix = numpy.array(example, numpy.unicode)
 
@@ -219,9 +219,9 @@ acceptor0_text = 'ggttcatatttttcaggct'
 ez_text = 'gcctgatggagcct'
 
 
-#string = seqs_from('sequence_body.ebi')[0][0:100000]
-#string = back_text + ze_text + exon_text1 + donor0_text + intron0_text + acceptor0_text + 'acgttg' + ez_text
-string = seqq
+string = seqs_from('sequence_body.ebi')[0][0:100000]
+# string = back_text + ze_text + exon_text1 + donor0_text + intron0_text + acceptor0_text + 'acgttg' + ez_text
+# string = seqq
 print(string)
 test_seq = list(string)
 two_seq = converter_to(test_seq, 2)
@@ -233,5 +233,5 @@ logp, path = model.viterbi(seq)
 print(logp)
 count = 0
 for i, pre in enumerate(path):
-     #if pre[1].name != 'back':
+     if pre[1].name != 'back':
          print(pre[1].name, seq[i - 1])

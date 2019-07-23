@@ -39,4 +39,15 @@ def matrix_from_fasta(filename):
     return list_of_lists
 
 
+def matrix_from_exa(filename):
+    list_of_list = []
+    with open(filename) as file_obj:
+        for line in file_obj:
+            if len(line) > 1:
+                converted = list(line[:-1])
+                print(converted)
+                list_of_list.append(converted)
+    return list_of_list
+
+
 

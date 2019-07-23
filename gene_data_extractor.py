@@ -117,7 +117,7 @@ def divider(elements, sequence, tag='mRNA'):
     print(local)
 
 
-# folder_path = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
+folder_path = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
 folder_path = '/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/'
 
 lookfor = 'CDS'

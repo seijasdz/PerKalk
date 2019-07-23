@@ -101,5 +101,45 @@ def calculate_proba(lines, order=2):
     return c0, c1, c2
 
 
-v_lines = get_corrected_lines('exonesW.txt')
-calculate_proba(v_lines)
+def calculate_proba2(filename):
+    invalid = ['a|ta', 'a|tg', 'g|ta']
+    c0 = ProbCounter()
+    c1 = ProbCounter()
+    c2 = ProbCounter(invalid)
+    c2.add_trans('end', invalid)
+    with open(filename) as file_obj:
+        for line in file_obj:
+            line2 = line.replace(' ', '').replace('\n', '').lower()
+            if not len(line2) % 3:
+                for i, base in enumerate(line2):
+                    if i > 2:
+                        state_name = line2[i] + '|' + line2[i -2] + line2[i - 1]
+                        if i % 3 == 0:
+                            c0.add(state_name)
+                        elif i % 3 == 1:
+                            c1.add(state_name)
+                        elif i % 3 == 2:
+                            c2.add(state_name)
+    c0.calc()
+    c1.calc()
+    c2.calc()
+    return c0, c1, c2
+
+
+def intron_calculator(filename):
+    emission = ProbCounter()
+    with open(filename) as file_obj:
+        for line in file_obj:
+            line2 = line.replace('\n', '').lower()
+            for i, base in enumerate(line2[:-16]):
+                if i > 7:
+                    state = base + '|' + line2[i - 2] + line2[i - 1]
+                    emission.add(state)
+    emission.calc()
+    return emission
+
+
+if __name__ == '__main__':
+   print('ho boy')
+   emissions = intron_calculator('cuts_intron.txt')
+   print(emissions.p)

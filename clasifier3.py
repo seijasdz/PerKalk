@@ -6,7 +6,7 @@ from converter_to_two import converter_to
 from matrix_from_aln import matrix_from_exa
 from gene_sample_extractor import seqs_from
 import itertools
-import exon_calculator
+import calculator
 
 
 example = [
@@ -96,8 +96,8 @@ def temporal_back(order):
     return states
 
 
-v_lines = exon_calculator.get_corrected_lines('exonesW.txt')
-c0, c1, c2 = exon_calculator.calculate_proba(v_lines)
+# v_lines = exon_calculator.get_corrected_lines('exonesW.txt')
+c0, c1, c2 = calculator.calculate_proba2('cuts.txt')
 
 
 matrixZE = numpy.array(matrix_from_exa('new_tss.exa'))
@@ -142,9 +142,12 @@ model = HiddenMarkovModel()
 
 back = State(DiscreteDistribution(temporal_back(2)), name='back')
 
-in0 = State(DiscreteDistribution(temporal_back(2)), name='in0')
-in1 = State(DiscreteDistribution(temporal_back(2)), name='in1')
-in2 = State(DiscreteDistribution(temporal_back(2)), name='in2')
+intron_distribution = calculator.intron_calculator('cuts_intron.txt')
+print(intron_distribution)
+
+in0 = State(DiscreteDistribution(intron_distribution.p), name='in0')
+in1 = State(DiscreteDistribution(intron_distribution.p), name='in1')
+in2 = State(DiscreteDistribution(intron_distribution.p), name='in2')
 
 
 coding_state0 = State(DiscreteDistribution(c0.p), 'coding state 0')
@@ -219,9 +222,9 @@ acceptor0_text = 'ggttcatatttttcaggct'
 ez_text = 'gcctgatggagcct'
 
 
-string = seqs_from('sequence_body.ebi')[0][0:100000]
+# string = seqs_from('sequence_body.ebi')[0][0:100000]
 # string = back_text + ze_text + exon_text1 + donor0_text + intron0_text + acceptor0_text + 'acgttg' + ez_text
-# string = seqq
+string = seqq
 print(string)
 test_seq = list(string)
 two_seq = converter_to(test_seq, 2)

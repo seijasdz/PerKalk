@@ -35,9 +35,10 @@ def slicer(string, divisions, complement, before=25, after=25):
         'pure_cuts': [],
         'before_zone': [],
         'after_zone': [],
+        'introns': []
     }
 
-    for div in divisions:
+    for i, div in enumerate(divisions):
         data['pure_cuts'].append(string[div[0]:div[1]])
 
         before_cut = div[0] - before if div[0] - before > 0 else 0
@@ -47,6 +48,10 @@ def slicer(string, divisions, complement, before=25, after=25):
         after_cut = div[1] + after if div[1] + after < len(string) else len(string) - 1
         after_string = string[div[0]:div[1]] + 'P' + string[div[1]:after_cut]
         data['after_zone'].append(after_string)
+
+        if i < len(divisions) - 1:
+            if div[1] < divisions[i + 1][0] and len(string[div[1]: divisions[i + 1][0]]) > 2:
+                data['introns'].append(string[div[1]: divisions[i + 1][0]])
 
     if complement:
         data['pure_cuts'] = correct(data['pure_cuts'])
@@ -141,6 +146,7 @@ for folder in subfolders:
 pure_cuts = []
 before_cuts = []
 after_cuts = []
+introns = []
 
 pure_cuts_c = []
 before_cuts_c = []
@@ -152,6 +158,7 @@ for key, gene in genes.items():
         pure_cuts.append(' '.join(gene['pure_cuts']) + '\n')
         before_cuts.append(' '.join(gene['before_zone']) + '\n')
         after_cuts.append(' '.join(gene['after_zone']) + '\n')
+        introns.append(' '.join(gene['introns']) + '\n')
     else:
         pure_cuts_c.append(' '.join(gene['pure_cuts']) + '\n')
         before_cuts_c.append(' '.join(gene['before_zone']) + '\n')
@@ -167,7 +174,7 @@ before_cuts_c = list(set(before_cuts_c))
 after_cuts_c = list(set(after_cuts_c))
 
 
-with open('cuts.txt', 'w') as cuts, open('cutsa.txt', 'w') as acuts, open('cutsb.txt', 'w') as bcuts:
+with open('cuts.txt', 'w') as cuts, open('cutsa.txt', 'w') as acuts, open('cutsb.txt', 'w') as bcuts, open('cuts_intron.txt', 'w') as intron_file:
     for cut in pure_cuts:
         cuts.write(cut)
 
@@ -176,6 +183,15 @@ with open('cuts.txt', 'w') as cuts, open('cutsa.txt', 'w') as acuts, open('cutsb
 
     for acut in after_cuts:
         acuts.write(acut)
+
+    for gene_intron in introns:
+        singles = gene_intron.split(' ')
+        for c, i in enumerate(singles):
+            if c > 2:
+                if '\n' not in i:
+                    intron_file.write(i + '\n')
+                else:
+                    intron_file.write(i)
 
 
 with open('ccuts.txt', 'w') as cuts, open('ccutsa.txt', 'w') as acuts, open('ccutsb.txt', 'w') as bcuts:

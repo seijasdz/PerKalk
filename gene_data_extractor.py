@@ -1,15 +1,8 @@
 from pathlib import Path
 from xml.etree import ElementTree
+from gene_ebi_to_string import to_string
 
 genes = {}
-
-
-def to_string(file):
-    with file.open() as file_handle:
-        string = ''
-        for line in file_handle:
-            string += ''.join(line.split()[:-1])
-        return string
 
 
 def slicer(string, divisions, complement, before=25, after=25):

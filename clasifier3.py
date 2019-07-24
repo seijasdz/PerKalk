@@ -7,6 +7,7 @@ from matrix_from_aln import matrix_from_exa
 from gene_sample_extractor import seqs_from
 import itertools
 import calculator
+import gene_ebi_to_string
 
 
 example = [
@@ -154,6 +155,8 @@ coding_state0 = State(DiscreteDistribution(c0.p), 'coding state 0')
 coding_state1 = State(DiscreteDistribution(c1.p), 'coding state 1')
 coding_state2 = State(DiscreteDistribution(c2.p), 'coding state 2')
 
+print('trans', c2.trans_probs)
+
 model.add_state(back)
 model.add_state(coding_state0)
 model.add_state(coding_state1)
@@ -164,15 +167,15 @@ model.add_state(in1)
 model.add_state(in2)
 
 model.add_transition(model.start, back, 1.0)
-model.add_transition(back, back, 0.9999)
+model.add_transition(back, back, 0.9)
 
-model.add_transition(in0, in0, 0.9)
-model.add_transition(in1, in1, 0.9)
-model.add_transition(in2, in2, 0.9)
+model.add_transition(in0, in0, 0.99)
+model.add_transition(in1, in1, 0.99)
+model.add_transition(in2, in2, 0.99)
 
 model.add_transition(coding_state0, coding_state1, 1.0)
 model.add_transition(coding_state1, coding_state2, 1.0)
-model.add_transition(coding_state2, coding_state0, 0.99)
+model.add_transition(coding_state2, coding_state0, c2.trans_probs['default'] - 0.21)
 
 add_sequence(model, ze_states)
 add_sequence(model, ez_states)
@@ -185,31 +188,31 @@ add_sequence(model, acceptor0_states)
 add_sequence(model, acceptor1_states)
 add_sequence(model, acceptor2_states)
 
-model.add_transition(coding_state2, donor0_states[0], 0.003)
-model.add_transition(coding_state2, donor1_states[0], 0.003)
-model.add_transition(coding_state2, donor2_states[0], 0.003)
+model.add_transition(coding_state2, donor0_states[0], 0.07)
+model.add_transition(coding_state2, donor1_states[0], 0.07)
+model.add_transition(coding_state2, donor2_states[0], 0.07)
 
 model.add_transition(donor0_states[-1], in0, 1)
 model.add_transition(donor1_states[-1], in1, 1)
 model.add_transition(donor2_states[-1], in2, 1)
 
-model.add_transition(in0, acceptor0_states[0], 0.1)
-model.add_transition(in1, acceptor1_states[0], 0.1)
-model.add_transition(in2, acceptor2_states[0], 0.1)
+model.add_transition(in0, acceptor0_states[0], 0.01)
+model.add_transition(in1, acceptor1_states[0], 0.01)
+model.add_transition(in2, acceptor2_states[0], 0.01)
 
 model.add_transition(acceptor0_states[-1], coding_state0, 1.0)
 model.add_transition(acceptor1_states[-1], coding_state0, 1.0)
 model.add_transition(acceptor2_states[-1], coding_state0, 1.0)
 
-model.add_transition(coding_state2, ez_states[0], 0.001)
+model.add_transition(coding_state2, ez_states[0], c2.trans_probs['end'])
 model.add_transition(ez_states[-1], back, 1.0)
-model.add_transition(back, ze_states[0], 0.0001)
+model.add_transition(back, ze_states[0], 0.1)
 model.add_transition(ze_states[-1], coding_state0, 1.0)
 
 model.bake()
 
 
-seqq ="AAACGTCAGCATG GTGGTATCAG CCGGCCCTTT GTCCAGCGAG AAGGCAGAGA TGAACATTCT AGAAATCAAT GAGAAATTGC GCCCCCAGTT GGCAGAGAAG  AAACAGCAGT TCAGAAACCT CAAAGAGAAA TGTTTTCTAA CTCAACTGGC CGGCTTCCTG   GCCAACCGAC AGAAGAAATA CAGTAAGATC TATAGGCTCA CCGTCATGAA AGTGATGAAT    GATGTCCTGT CTTCTCTCTG AGACACTAAA TGCTCTCTCC ATCAAAAATA ATTTCATCCT    TCCTGTACTT CTAGGAAAAC AGAAATGGGT ATTTTAACAT TTTGTTAAAG TTGGAAGACA    GAGGTACCAA AGTATTTAGC AACTTTCCAT GTTTGCAATC AGGTGGGGGT GGGACTAGAG    TTAAACTGCC ATTTATTGAT TTCTGACACA GGCACAGAAT GACCTGTTTT CTCCAAGAGG    CTCAATCATG TTTTCAAGAA TCCTCTCTGT ACCATATAAG ATCCTGCAGA CAAATAACAT a"
+seqq ="CGTCAGCATG GTGGTATCAG CCGGCCCTTT GTCCAGCGAG AAGGCAGAGA TGAACATTCT AGAAATCAAT GAGAAATTGC GCCCCCAGTT GGCAGAGAAG  AAACAGCAGT TCAGAAACCT CAAAGAGAAA TGTTTTCTAA CTCAACTGGC CGGCTTCCTG   GCCAACCGAC AGAAGAAATA CAGTAAGATC TATAGGCTCA CCGTCATGAA AGTGATGAAT    GATGTCCTGT CTTCTCTCTG AGACACTAAA TGCTCTCTCC ATCAAAAATA ATTTCATCCT    TCCTGTACTT CTAGGAAAAC AGAAATGGGT ATTTTAACAT TTTGTTAAAG TTGGAAGACA    GAGGTACCAA AGTATTTAGC AACTTTCCAT GTTTGCAATC AGGTGGGGGT GGGACTAGAG    TTAAACTGCC ATTTATTGAT TTCTGACACA GGCACAGAAT GACCTGTTTT CTCCAAGAGG    CTCAATCATG TTTTCAAGAA TCCTCTCTGT ACCATATAAG ATCCTGCAGA CAAATAACAT a"
 seqq = seqq.replace(' ','').lower()
 
 back_text = 'agtagtagt'
@@ -223,11 +226,12 @@ ez_text = 'gcctgatggagcct'
 
 # string = seqs_from('sequence_body.ebi')[0][0:100000]
 # string = back_text + ze_text + exon_text1 + donor0_text + intron0_text + acceptor0_text + 'acgttg' + ez_text
-string = seqq
-# print(string)
+# string = seqq
+string = gene_ebi_to_string.to_string2('sequence_body.ebi')[365070:382053]
+print(string)
 test_seq = list(string)
 two_seq = converter_to(test_seq, 2)
-# print(two_seq)
+print(two_seq)
 seq = numpy.array(two_seq, numpy.unicode_)
 print(len(seq))
 logp, path = model.viterbi(seq)
@@ -235,5 +239,13 @@ logp, path = model.viterbi(seq)
 print(logp)
 count = 0
 for i, pre in enumerate(path):
-     if pre[1].name != 'back':
-         print(pre[1].name, seq[i - 1])
+    #if pre[1].name != 'back':
+        #pass
+        print(pre[1].name, seq[i - 1])
+
+
+# map_predict = model.predict(two_seq, algorithm='map')
+
+# for pre in map_predict:
+    # if model.states[pre].name != 'back':
+        # print(model.states[pre].name)

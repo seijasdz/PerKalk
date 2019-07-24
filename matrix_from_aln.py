@@ -45,7 +45,7 @@ def matrix_from_exa(filename):
         for line in file_obj:
             if len(line) > 1:
                 converted = list(line[:-1])
-                print(converted)
+                # print(converted)
                 list_of_list.append(converted)
     return list_of_list
 

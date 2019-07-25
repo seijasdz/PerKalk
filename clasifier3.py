@@ -167,7 +167,7 @@ model.add_state(in1)
 model.add_state(in2)
 
 model.add_transition(model.start, back, 1.0)
-model.add_transition(back, back, 0.9)
+model.add_transition(back, back, 0.9999)
 
 model.add_transition(in0, in0, 0.99)
 model.add_transition(in1, in1, 0.99)
@@ -175,7 +175,7 @@ model.add_transition(in2, in2, 0.99)
 
 model.add_transition(coding_state0, coding_state1, 1.0)
 model.add_transition(coding_state1, coding_state2, 1.0)
-model.add_transition(coding_state2, coding_state0, c2.trans_probs['default'] - 0.21)
+model.add_transition(coding_state2, coding_state0, c2.trans_probs['default'] - 0.00003)
 
 add_sequence(model, ze_states)
 add_sequence(model, ez_states)
@@ -188,9 +188,9 @@ add_sequence(model, acceptor0_states)
 add_sequence(model, acceptor1_states)
 add_sequence(model, acceptor2_states)
 
-model.add_transition(coding_state2, donor0_states[0], 0.07)
-model.add_transition(coding_state2, donor1_states[0], 0.07)
-model.add_transition(coding_state2, donor2_states[0], 0.07)
+model.add_transition(coding_state2, donor0_states[0], 0.00001)
+model.add_transition(coding_state2, donor1_states[0], 0.00001)
+model.add_transition(coding_state2, donor2_states[0], 0.00001)
 
 model.add_transition(donor0_states[-1], in0, 1)
 model.add_transition(donor1_states[-1], in1, 1)
@@ -206,7 +206,7 @@ model.add_transition(acceptor2_states[-1], coding_state0, 1.0)
 
 model.add_transition(coding_state2, ez_states[0], c2.trans_probs['end'])
 model.add_transition(ez_states[-1], back, 1.0)
-model.add_transition(back, ze_states[0], 0.1)
+model.add_transition(back, ze_states[0], 0.0001)
 model.add_transition(ze_states[-1], coding_state0, 1.0)
 
 model.bake()
@@ -227,7 +227,7 @@ ez_text = 'gcctgatggagcct'
 # string = seqs_from('sequence_body.ebi')[0][0:100000]
 # string = back_text + ze_text + exon_text1 + donor0_text + intron0_text + acceptor0_text + 'acgttg' + ez_text
 # string = seqq
-string = gene_ebi_to_string.to_string2('sequence_body.ebi')[365070:382053]
+string = gene_ebi_to_string.to_string2('sequence_body.ebi')[202980:219998]
 print(string)
 test_seq = list(string)
 two_seq = converter_to(test_seq, 2)

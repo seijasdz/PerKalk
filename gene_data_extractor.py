@@ -116,9 +116,9 @@ def divider(elements, sequence, tag='mRNA'):
 
 
 folder_path = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
-folder_path = '/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/'
+# folder_path = '/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/'
 
-lookfor = 'CDS'
+lookfor = 'mRNA'
 path = Path(folder_path)
 
 subfolders = [x for x in path.iterdir() if x.is_dir()]
@@ -167,7 +167,7 @@ before_cuts_c = list(set(before_cuts_c))
 after_cuts_c = list(set(after_cuts_c))
 
 
-with open('cuts.txt', 'w') as cuts, open('cutsa.txt', 'w') as acuts, open('cutsb.txt', 'w') as bcuts, open('cuts_intron.txt', 'w') as intron_file:
+with open('mcuts.txt', 'w') as cuts, open('mcutsa.txt', 'w') as acuts, open('mcutsb.txt', 'w') as bcuts, open('mcuts_intron.txt', 'w') as intron_file:
     for cut in pure_cuts:
         cuts.write(cut)
 
@@ -187,7 +187,7 @@ with open('cuts.txt', 'w') as cuts, open('cutsa.txt', 'w') as acuts, open('cutsb
                     intron_file.write(i)
 
 
-with open('ccuts.txt', 'w') as cuts, open('ccutsa.txt', 'w') as acuts, open('ccutsb.txt', 'w') as bcuts:
+with open('mccuts.txt', 'w') as cuts, open('mccutsa.txt', 'w') as acuts, open('mccutsb.txt', 'w') as bcuts:
     for cut in pure_cuts_c:
         cuts.write(cut)
 

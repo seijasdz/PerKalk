@@ -16,7 +16,7 @@ with open(atg) as atg_file, open(gen) as cuts_file:
             if line2 in ct2:
                 found = True
                 print(ct.index('p'))
-                print(ct2[25: ct2.index(line2) + len(line2)-6])
+                print((ct2[25: ct2.index(line2) + len(line2)-6]))
         if not found:
             pass
             # print(line2)

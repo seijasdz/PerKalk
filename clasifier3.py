@@ -86,8 +86,6 @@ def foo(l):
     yield from itertools.product(*([l] * 3))
 
 
-
-# v_lines = exon_calculator.get_corrected_lines('exonesW.txt')
 c0, c1, c2 = calculator.calculate_proba2('cuts.txt')
 
 
@@ -100,7 +98,6 @@ matrixAcceptor0 = numpy.array(matrix_from_exa('new_acceptor0.exa'))
 matrixAcceptor1 = numpy.array(matrix_from_exa('new_acceptor1.exa'))
 matrixAcceptor2 = numpy.array(matrix_from_exa('new_acceptor2.exa'))
 
-# data_matrix = numpy.array(example, numpy.unicode)
 
 ze_states_data = classify(matrixZE, 2)
 ze_states = sequence_state_factory(ze_states_data, 'start zone')
@@ -128,7 +125,6 @@ acceptor2_states = sequence_state_factory(acceptor2_data, 'acceptor2')
 
 
 model = HiddenMarkovModel()
-
 
 intron_distribution = calculator.intron_calculator('cuts_intron.txt')
 back = State(DiscreteDistribution(intron_distribution.p), name='back')
@@ -195,31 +191,15 @@ model.add_transition(coding_state2, ez_states[0], 0.0000001)
 
 # FAKE
 model.add_transition(ez_states[-1], back, 1.0)
-#model.add_transition(fake_back, fake_back, 0.9)
-#model.add_transition(fake_back, model.end, 0.1)
-#FAKE
+# model.add_transition(fake_back, fake_back, 0.9)
+# model.add_transition(fake_back, model.end, 0.1)
+# FAKE
 
 model.add_transition(back, ze_states[0], 0.0001)
 model.add_transition(ze_states[-1], coding_state0, 1.0)
 
 model.bake()
 
-
-seqq ="CGTCAGCATG GTGGTATCAG CCGGCCCTTT GTCCAGCGAG AAGGCAGAGA TGAACATTCT AGAAATCAAT GAGAAATTGC GCCCCCAGTT GGCAGAGAAG  AAACAGCAGT TCAGAAACCT CAAAGAGAAA TGTTTTCTAA CTCAACTGGC CGGCTTCCTG   GCCAACCGAC AGAAGAAATA CAGTAAGATC TATAGGCTCA CCGTCATGAA AGTGATGAAT    GATGTCCTGT CTTCTCTCTG AGACACTAAA TGCTCTCTCC ATCAAAAATA ATTTCATCCT    TCCTGTACTT CTAGGAAAAC AGAAATGGGT ATTTTAACAT TTTGTTAAAG TTGGAAGACA    GAGGTACCAA AGTATTTAGC AACTTTCCAT GTTTGCAATC AGGTGGGGGT GGGACTAGAG    TTAAACTGCC ATTTATTGAT TTCTGACACA GGCACAGAAT GACCTGTTTT CTCCAAGAGG    CTCAATCATG TTTTCAAGAA TCCTCTCTGT ACCATATAAG ATCCTGCAGA CAAATAACAT a"
-seqq = seqq.replace(' ','').lower()
-
-back_text = 'agtagtagt'
-ze_text = 'gcttacttccatgggg'
-exon_text1 = 'tgcacttca'
-donor0_text = 'caggtaagcag'
-intron0_text = 'aaggttaaggt'
-acceptor0_text = 'ggttcatatttttcaggct'
-ez_text = 'gcctgatggagcct'
-
-
-# string = seqs_from('sequence_body.ebi')[0][0:100000]
-# string = back_text + ze_text + exon_text1 + donor0_text + intron0_text + acceptor0_text + 'acgttg' + ez_text
-# string = seqq
 string = gene_ebi_to_string.to_string2('sequence_body.ebi')[365000:382042]
 print(string)
 test_seq = list(string)
@@ -232,8 +212,8 @@ logp, path = model.viterbi(seq)
 print(logp)
 count = 0
 for i, pre in enumerate(path):
-    #if pre[1].name != 'back':
-        #pass
+    # if pre[1].name != 'back':
+        # pass
         print(pre[1].name, seq[i - 1])
 
 

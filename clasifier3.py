@@ -2,7 +2,7 @@ import numpy
 from pomegranate import State
 from pomegranate import DiscreteDistribution
 from pomegranate import HiddenMarkovModel
-from converter_to_two import converter_to
+from converter_to import converter_to
 from matrix_from_aln import matrix_from_exa
 from gene_sample_extractor import seqs_from
 import itertools
@@ -191,12 +191,12 @@ model.add_transition(acceptor0_states[-1], coding_state0, 1.0)
 model.add_transition(acceptor1_states[-1], coding_state0, 1.0)
 model.add_transition(acceptor2_states[-1], coding_state0, 1.0)
 
-model.add_transition(coding_state2, ez_states[0], 0.00001)
+model.add_transition(coding_state2, ez_states[0], 0.0000001)
 
 # FAKE
-model.add_transition(ez_states[-1], fake_back, 1.0)
-model.add_transition(fake_back, fake_back, 0.9)
-model.add_transition(fake_back, model.end, 0.1)
+model.add_transition(ez_states[-1], back, 1.0)
+#model.add_transition(fake_back, fake_back, 0.9)
+#model.add_transition(fake_back, model.end, 0.1)
 #FAKE
 
 model.add_transition(back, ze_states[0], 0.0001)
@@ -220,7 +220,7 @@ ez_text = 'gcctgatggagcct'
 # string = seqs_from('sequence_body.ebi')[0][0:100000]
 # string = back_text + ze_text + exon_text1 + donor0_text + intron0_text + acceptor0_text + 'acgttg' + ez_text
 # string = seqq
-string = gene_ebi_to_string.to_string2('sequence_body.ebi')[202980:220010]
+string = gene_ebi_to_string.to_string2('sequence_body.ebi')[365000:382042]
 print(string)
 test_seq = list(string)
 two_seq = converter_to(test_seq, 2)

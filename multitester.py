@@ -3,20 +3,32 @@ from xml.etree import ElementTree
 from gene_ebi_to_string import to_string
 
 
-def divider(elements, sequence):
+def divider(elements, sequence, before, after):
     def trim(element):
         return element.text.replace('\n', '').replace('\t', '')
 
-    def tokenize(string):
-        return string.split('/')
+    def clean(sections):
+        return map(
+            lambda s: s.replace('join', '').replace('(', '').replace(')', ''),
+            sections
+        )
+
+    def get_from(sequence):
+        return lambda parts: sequence[int(parts[0][0]) - 1 - before: int(parts[-1][1]) + after]
+
+    trimmed_elements = map(trim, elements)
+    tokens = map(lambda string: string.split('/'), trimmed_elements)
+    firsts = map(lambda list_e: list_e[0], tokens)
+    normals = filter(lambda s: 'complement' not in s, firsts)
+    no_letters = filter(lambda s: 'A' not in s and 'Z' not in s and 'U' not in s, normals)
+    clean_normals = clean(no_letters)
+    pre_tuples = map(lambda line: line.split(','), clean_normals)
+    tuples = map(lambda inner: list(map(lambda pre: pre.split('..'), inner)), pre_tuples)
+    full_genes = map(get_from(sequence), tuples)
+    return list(full_genes)
 
 
-    el = map(trim, elements)
-    el2 = map(tokenize, el)
-
-
-
-def extractor(folder_path, lookfor):
+def extractor(folder_path, lookfor, before, after):
     path = Path(folder_path)
     subfolders = [x for x in path.iterdir() if x.is_dir()]
 
@@ -30,9 +42,9 @@ def extractor(folder_path, lookfor):
             root = ElementTree.fromstring(fixed)
             ft = root.find('FT')
             elements = ft.findall(lookfor)
-            divider(elements, file_string)
+            print(divider(elements, file_string, before, after))
 
 
 
 if __name__ == '__main__':
-    extractor(folder_path='/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/', lookfor='mRNA')
+    extractor(folder_path='/run/media/jose/BE96A68C96A6452D/Asi/DataEx/', lookfor='CDS', before=5, after=5)

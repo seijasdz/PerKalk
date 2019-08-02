@@ -2,32 +2,9 @@ import numpy
 from pomegranate import State
 from pomegranate import DiscreteDistribution
 from pomegranate import HiddenMarkovModel
-from converter_to import converter_to
 from matrix_from_aln import matrix_from_exa
-from gene_sample_extractor import seqs_from
 import itertools
 import calculator
-import gene_ebi_to_string
-
-
-example = [
-    ['a', 'c', 't', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['a', 'c', 't', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['a', 'c', 't', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['a', 'c', 't', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['a', 'c', 't', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['a', 'c', 't', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['a', 'c', 't', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['a', 'c', 't', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['t', 'c', 'g', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['t', 'c', 'g', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['t', 'c', 'g', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['t', 'c', 'g', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['t', 'c', 'g', 'g', 't', 'g', 'c', 'a', 'a'],
-    ['t', 'c', 'g', 'a', 't', 'g', 'c', 'a', 'a'],
-    ['t', 'c', 'g', 'a', 't', 'g', 'c', 'a', 'a'],
-
-]
 
 
 class HighOrderState:
@@ -87,8 +64,6 @@ def foo(l):
 
 
 c0, c1, c2 = calculator.calculate_proba2('cuts.txt')
-
-
 matrixZE = numpy.array(matrix_from_exa('new_tss.exa'))
 matrixEZ = numpy.array(matrix_from_exa('new_tts.exa'))
 matrixDonor0 = numpy.array(matrix_from_exa('new_donor0.exa'))
@@ -189,36 +164,29 @@ model.add_transition(acceptor2_states[-1], coding_state0, 1.0)
 
 model.add_transition(coding_state2, ez_states[0], 0.0000001)
 
-# FAKE
 model.add_transition(ez_states[-1], back, 1.0)
-# model.add_transition(fake_back, fake_back, 0.9)
-# model.add_transition(fake_back, model.end, 0.1)
-# FAKE
-
 model.add_transition(back, ze_states[0], 0.0001)
 model.add_transition(ze_states[-1], coding_state0, 1.0)
 
 model.bake()
 
-string = gene_ebi_to_string.to_string2('sequence_body.ebi')[365000:382042]
-print(string)
-test_seq = list(string)
-two_seq = converter_to(test_seq, 2)
-print(two_seq)
-seq = numpy.array(two_seq, numpy.unicode_)
-print(len(seq))
-logp, path = model.viterbi(seq)
+with open('hmm_model_base.json', 'w',  encoding='utf-8') as out:
+    out.write(model.to_json())
 
-print(logp)
-count = 0
-for i, pre in enumerate(path):
+
+#string = gene_ebi_to_string.to_string2('sequence_body.ebi')[365000:382042]
+#print(string)
+#test_seq = list(string)
+#two_seq = converter_to(test_seq, 2)
+#print(two_seq)
+#seq = numpy.array(two_seq, numpy.unicode_)
+#print(len(seq))
+#logp, path = model.viterbi(seq)
+
+#print(logp)
+#count = 0
+#for i, pre in enumerate(path):
     # if pre[1].name != 'back':
         # pass
-        print(pre[1].name, seq[i - 1])
+        #print(pre[1].name, seq[i - 1])
 
-
-# map_predict = model.predict(two_seq, algorithm='map')
-
-# for pre in map_predict:
-    # if model.states[pre].name != 'back':
-        # print(model.states[pre].name)

@@ -2,6 +2,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 from gene_ebi_to_string import to_string
 from pomegranate import HiddenMarkovModel
+from converter_to import converter_to
 
 
 def divider(elements, sequence, before, after):
@@ -74,10 +75,21 @@ def extract(folder_path, lookfor, before, after):
     return streamline(divided)
 
 
-if __name__ == '__main__':
-    extract(folder_path='/run/media/jose/BE96A68C96A6452D/Asi/DataEx/', lookfor='CDS', before=0, after=0)
+def test(model):
+    def predict(data):
+        return model.viterbi(converter_to(data['gene'], 2))
+    return predict
 
+
+if __name__ == '__main__':
     with open('hmm_model_base.json') as base_model_file:
         model_json = base_model_file.read()
 
-    model = HiddenMarkovModel.from_json(model_json)
+    hmmodel = HiddenMarkovModel.from_json(model_json)
+    genes = extract(folder_path='/run/media/zippyttech/BE96A68C96A6452D/Asi/DataEx/', lookfor='CDS', before=10, after=10)
+
+    predicted = map(test(hmmodel), genes)
+    paths = map(lambda p: p[1], predicted)
+    states = map(lambda p: p[1], paths)
+    # names = map(lambda p: [1])
+    print(list(predicted))

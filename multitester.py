@@ -27,7 +27,7 @@ def divider(elements, sequence, before, after):
     tuples = map(lambda inner: list(map(lambda pre: pre.split('..'), inner)), pre_tuples)
     full_genes = map(get_from(sequence), tuples)
 
-     
+
 
 
     return list(full_genes)

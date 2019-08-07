@@ -93,23 +93,23 @@ def test(model, valid_states):
     def validator_generator(valid_values):
 
         def counter(annotated, index, count):
-            if index >= len(annotated):
-                return count
-            if annotated[index]:
-                return counter(annotated, index + 1, count + 1)
-            else:
-                return counter(annotated, index + 1, count)
+            count = 0
+            for char in annotated:
+                if any(word in char for word in valid_values):
+                    count += 1
+            return count
 
         def validator(annotated):
-            print(counter(annotated, 0, 0) / len(annotated))
+            return counter(annotated, 0, 0) / len(annotated)
         return validator
 
     def predict(data):
         logp, path = model.viterbi(converter_to(data['gene'], 2))
         corrected_cuts = map(corrector_generator(data['parts'][0][0], data['before']), data['parts'])
         annotated = map(annotator_generator(path), corrected_cuts)
+        # print(list(annotated))
         percent = map(validator_generator(valid_states), annotated)
-        list(percent)
+        print(list(percent))
 
 
     return predict
@@ -120,13 +120,16 @@ if __name__ == '__main__':
         model_json = base_model_file.read()
 
     hmmodel = HiddenMarkovModel.from_json(model_json)
-    genes = extract(folder_path='/run/media/jose/BE96A68C96A6452D/Asi/DataEx/', lookfor='CDS', before=50, after=10)
-    valid_st = ["zone", "coding"]
+    genes = extract(folder_path='/run/media/jose/BE96A68C96A6452D/Asi/Data/', lookfor='CDS', before=50, after=10)
+    valid_st = ["zone", 'coding',
+                'acceptor016', 'acceptor017', 'acceptor018',
+                'acceptor116', 'acceptor117', 'acceptor118', 'acceptor119', 'acceptor120',
+                'acceptor216', 'acceptor217', 'acceptor218', 'acceptor219',
+                'donor00', 'donor01', 'donor02',
+                'donor10', 'donor11', 'donor12', 'donor13',
+                'donor20', 'donor21', 'donor22', 'donor23', 'donor24',
+                ]
     predicted = map(test(hmmodel, valid_st), genes)
 
-
-
-    #paths = map(lambda x: x[1], predicted)
-    #states = map(lambda lista_de_tuplas: list(map(lambda tupla: tupla[1].name, lista_de_tuplas)), paths)
     xerxes = list(predicted)
     print(xerxes)

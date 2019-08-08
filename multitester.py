@@ -92,7 +92,7 @@ def test(model, valid_states):
 
     def validator_generator(valid_values):
 
-        def counter(annotated, index, count):
+        def counter(annotated):
             count = 0
             for char in annotated:
                 if any(word in char for word in valid_values):
@@ -100,7 +100,7 @@ def test(model, valid_states):
             return count
 
         def validator(annotated):
-            return counter(annotated, 0, 0) / len(annotated)
+            return counter(annotated) / len(annotated)
         return validator
 
     def predict(data):
@@ -109,10 +109,19 @@ def test(model, valid_states):
         annotated = map(annotator_generator(path), corrected_cuts)
         # print(list(annotated))
         percent = map(validator_generator(valid_states), annotated)
-        print(list(percent))
-
+        return list(percent)
 
     return predict
+
+
+def mean(genes):
+    exon_count = 0
+    tsum = 0
+    for gene in genes:
+        print(gene)
+        tsum += sum(gene)
+        exon_count += len(gene)
+    print(tsum / exon_count)
 
 
 if __name__ == '__main__':
@@ -131,5 +140,6 @@ if __name__ == '__main__':
                 ]
     predicted = map(test(hmmodel, valid_st), genes)
 
-    xerxes = list(predicted)
-    print(xerxes)
+    exon_match = list(predicted)
+    print(exon_match)
+    mean(exon_match)

@@ -11,17 +11,21 @@ def divider(elements, sequence, before, after):
 
     def clean(sections):
         return map(
-            lambda s: s.replace('join', '').replace('(', '').replace(')', ''),
+            lambda s: (s[0].replace('join', '').replace('(', '').replace(')', ''), s[1]),
             sections
         )
 
     def get_from(seq, before, after):
-        return lambda parts: {
-            'gene': seq[parts[0][0] - before: parts[-1][1] + after].lower(),
-            'parts': parts,
-            'before': before,
-            'after': after,
-        }
+        def annotate(data):
+            parts = data[0]
+            return {
+                'gene': seq[parts[0][0] - before: parts[-1][1] + after].lower(),
+                'parts': parts,
+                'before': before,
+                'after': after,
+                'name': data[1]
+            }
+        return annotate
 
     def correct_cut(cut):
         edges = cut.split('..')
@@ -29,13 +33,13 @@ def divider(elements, sequence, before, after):
 
     trimmed_elements = map(trim, elements)
     tokens = map(lambda string: string.split('/'), trimmed_elements)
-    firsts = map(lambda list_e: list_e[0], tokens)
+    main_data = map(lambda list_e: (list_e[0], list_e[1]), tokens)
 
-    normals = filter(lambda s: 'complement' not in s, firsts)
-    no_letters = filter(lambda s: 'A' not in s and 'Z' not in s and 'U' not in s, normals)
+    normals = filter(lambda s: 'complement' not in s[0], main_data)
+    no_letters = filter(lambda s: 'A' not in s[0] and 'Z' not in s[0] and 'U' not in s[0], normals)
     clean_normals = clean(no_letters)
-    pre_tuples = map(lambda line: line.split(','), clean_normals)
-    tuples = map(lambda inner: list(map(correct_cut, inner)), pre_tuples)
+    pre_tuples = map(lambda line: (line[0].split(','), line[1]), clean_normals)
+    tuples = map(lambda inner: (list(map(correct_cut, inner[0])), inner[1]), pre_tuples)
     full_genes = map(get_from(sequence, before, after), tuples)
 
     return list(full_genes)
@@ -107,9 +111,8 @@ def test(model, valid_states):
         logp, path = model.viterbi(converter_to(data['gene'], 2))
         corrected_cuts = map(corrector_generator(data['parts'][0][0], data['before']), data['parts'])
         annotated = map(annotator_generator(path), corrected_cuts)
-        # print(list(annotated))
         percent = map(validator_generator(valid_states), annotated)
-        return list(percent)
+        return list(percent), data['name']
 
     return predict
 
@@ -117,10 +120,12 @@ def test(model, valid_states):
 def mean(genes):
     exon_count = 0
     tsum = 0
+    checked = []
     for gene in genes:
-        print(gene)
-        tsum += sum(gene)
-        exon_count += len(gene)
+        if gene[1] not in checked:
+            checked.append(gene[1])
+            tsum += sum(gene[0])
+            exon_count += len(gene[0])
     print(tsum / exon_count)
 
 
@@ -141,5 +146,5 @@ if __name__ == '__main__':
     predicted = map(test(hmmodel, valid_st), genes)
 
     exon_match = list(predicted)
-    print(exon_match)
+    # print(exon_match)
     mean(exon_match)

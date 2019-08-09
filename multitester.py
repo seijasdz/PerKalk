@@ -120,13 +120,20 @@ def test(model, valid_states):
 def mean(genes):
     exon_count = 0
     tsum = 0
-    checked = []
     for gene in genes:
-        if gene[1] not in checked:
-            checked.append(gene[1])
-            tsum += sum(gene[0])
-            exon_count += len(gene[0])
+        tsum += sum(gene[0])
+        exon_count += len(gene[0])
     print(tsum / exon_count)
+
+
+def filter_repeat(genes):
+    names = []
+    filtered = []
+    for gene in genes:
+        if gene['name'] not in names:
+            filtered.append(gene)
+            names.append(gene['name'])
+    return filtered
 
 
 if __name__ == '__main__':
@@ -134,7 +141,7 @@ if __name__ == '__main__':
         model_json = base_model_file.read()
 
     hmmodel = HiddenMarkovModel.from_json(model_json)
-    genes = extract(folder_path='/run/media/jose/BE96A68C96A6452D/Asi/Data/', lookfor='CDS', before=50, after=10)
+    genes = extract(folder_path='/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/', lookfor='CDS', before=110, after=30)
     valid_st = ["zone", 'coding',
                 'acceptor016', 'acceptor017', 'acceptor018',
                 'acceptor116', 'acceptor117', 'acceptor118', 'acceptor119', 'acceptor120',
@@ -143,8 +150,16 @@ if __name__ == '__main__':
                 'donor10', 'donor11', 'donor12', 'donor13',
                 'donor20', 'donor21', 'donor22', 'donor23', 'donor24',
                 ]
-    predicted = map(test(hmmodel, valid_st), genes)
 
+    unique_genes = filter_repeat(genes)
+    predicted = map(test(hmmodel, valid_st), unique_genes)
     exon_match = list(predicted)
-    # print(exon_match)
     mean(exon_match)
+
+    only_sequence = [converter_to(x['gene'], 2) for x in unique_genes]
+    # print(only_sequence)
+    hmmodel.fit(only_sequence, n_jobs=4)
+    predicted2 = map(test(hmmodel, valid_st), unique_genes)
+    exon_match2 = list(predicted2)
+    print(exon_match2)
+    mean(exon_match2)

@@ -24,7 +24,7 @@ def load_sequences_from_fasta(filename):
     with open(filename) as file_handle:
         for line in file_handle:
             if line[0] != '>':
-                lines.append(line[0:-1])
+                lines.append(line[0:-1].lower())
 
     return lines
 

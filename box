@@ -1,0 +1,31 @@
+G
+
+---CCAAT-----------TATA-------------TSS---------GT---------AG---------GT----------AG-----------ATG-------
+                                         EXON       INTRON     EXON       INTRON           EXON
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+5UTR
+
+
+
+back             postGC             postCCAAT            postTATA
+---------GCBOX------------CCAAT-------------------TATA--------------------- Inr/TSS
+
+back                               postCCAAT            postTATA
+--------------------------CCAAT-------------------TATA--------------------- Inr/TSS
+
+back                                                    postTATA
+--------------------------------------------------TATA--------------------- Inr/TSS
+
+back             postGC                       postCCAAT
+--------GCBOX-------------CCAAT-------------------------------------------- Inr/TSS
+
+back            postGC
+--------GCBOX-------------------------------------------------------------- Inr/TSS
+
+back                                   postCCAAT
+-------------------------CCAAT--------------------------------------------- Inr/TSS

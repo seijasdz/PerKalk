@@ -196,3 +196,4 @@ if __name__ == '__main__':
     # exon_match2 = list(predicted2)
     # print(exon_match2)
     # mean(exon_match2)
+CAGCTGCGCGCGCCCCCCAGTCCCGCACCCGTTCGGCCCAGGCTAAGTTAGCCCTCACCA

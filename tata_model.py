@@ -20,27 +20,30 @@ tata_model = HiddenMarkovModel()
 
 # States
 back = State(DiscreteDistribution(intron_distribution.p), name='back')
+post_tata = State(DiscreteDistribution(intron_distribution.p), name='post')
 tata_states = sequence_state_factory(tata_data, 'zona tata')
 
 print(tata_states)
 
 # Add States
 tata_model.add_state(back)
+tata_model.add_state(post_tata)
 
 # Add Sequences States and transitions
 add_sequence(tata_model, tata_states)
 
 # Transitions
 tata_model.add_transition(tata_model.start, back, 1)
-tata_model.add_transition(back, back, 0.999)
-tata_model.add_transition(back, tata_states[0], 0.001)
-tata_model.add_transition(tata_states[-1], back, 1)
+tata_model.add_transition(back, back, 0.9999)
+tata_model.add_transition(back, tata_states[0], 0.0001)
+tata_model.add_transition(tata_states[-1], post_tata, 1)
+tata_model.add_transition(post_tata, post_tata, 1)
 
 tata_model.bake()
 
 print(tata_model.to_json())
 
-string = 'CTGTTTTCACCTCATGAGCAGTTCTGAGATTATATATAAGAGGACCCAGGAGTTACATCA'.lower()
+string = 'GAGGGCTCTGACTCGCCCAAGGCCACACAGCCTTGCGTGGGCCTTTCACATCCCACACAACAGAGGGGCATCCTCAGCCTGGTTGGCAGAGGGCAGGCAGGATAGATGGCAGAGTCTTCTCCGAGGAGAGGGGTTTTGCTCATGGAACCTCCTCCTCCACACTCACAGCCCTGGGCGAGACCTGTGGAGCAGCCGCCAACAGAGTGAGGGAGGGGGCTCGGGGCAGCTGGGGGTGACTTGAGGAAGTCCAGCTGGACTGCGAGGGGCCCCTGGGGACTGCCAGGGAGCCTCAGGACTCCCAGAGGTGCTCCAGGCACAGAGGGAGGAATGGGCCTTCCATCTCCCTCCCCCCTTCACTGCAGAGGCTGGGTCGGGCCAGGCGCCCGGGGAGGAGGCGGTGTCCCTGGCTCCCAGCCCGCCGGTGCAGCGGGGCAGGGCTGGACCAGAAGGGGTGGGGCACCGTGCCTGGTATAAGAGGCAGCCAGGGCACCGAGGCAATGAGCTATCTGCTCAGCTTAATAGCAGGACGCTGGCAACAGGCACTCCCTGCTCCAGTCCAGCCTGCGCGCTCCACCGCCGCTATGGTCTCCGTGCCTACCA'.lower()
 lists = list(string)
 two = converter_to(lists, 2)
 print(two)

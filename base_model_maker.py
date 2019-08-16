@@ -53,7 +53,7 @@ acceptor2_states = sequence_state_factory(acceptor2_data, 'acceptor2')
 hmmodel = HiddenMarkovModel()
 
 intron_distribution = calculator.intron_calculator('cuts_intron.txt')
-back = State(DiscreteDistribution(intron_distribution.p), name='back')
+back = State(DiscreteDistribution(calculator.intron_calculator('cuts_intron.txt').p), name='back')
 
 fake_back = State(DiscreteDistribution(intron_distribution.p), name='back2')
 

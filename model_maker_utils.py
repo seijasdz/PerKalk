@@ -32,6 +32,14 @@ def sequence_state_factory(states_data, name):
     return states
 
 
+def spacer_states_maker(quantity, distribution, name):
+    states = []
+    for i in range(0, quantity):
+        state = State(DiscreteDistribution(distribution), name=name + str(i))
+        states.append(state)
+    return states
+
+
 def classify(matrix, order=1):
     state_data = []
     for index, column in enumerate(matrix.T):

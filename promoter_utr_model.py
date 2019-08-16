@@ -30,8 +30,8 @@ back = State(DiscreteDistribution(no_coding.p), name='back')
 
 gc_states = sequence_state_factory(gc_data, 'GC')
 post_gc = State(DiscreteDistribution(no_coding.p), name='post_gc')
-post_gc_spacers_tss = spacer_states_maker(150, no_coding.p, 'post_gc_spacer')
-post_gc_spacers_tata = spacer_states_maker(150, no_coding.p, 'post_gc_spacer')
+post_gc_spacers_tss = spacer_states_maker(150, no_coding.p, 'post_gc_spacer_tss')
+post_gc_spacers_tata = spacer_states_maker(70, no_coding.p, 'post_gc_spacer_tata')
 
 cat_states = sequence_state_factory(cat_data, 'CAT')
 post_cat = State(DiscreteDistribution(no_coding.p), name='post_cat')
@@ -52,6 +52,7 @@ add_sequence(promoter_utr_model, gc_states)
 add_sequence(promoter_utr_model, tata_states)
 add_sequence(promoter_utr_model, post_tata_spacers)
 add_sequence(promoter_utr_model, post_gc_spacers_tss)
+add_sequence(promoter_utr_model, post_gc_spacers_tata)
 add_sequence(promoter_utr_model, post_cat_spacers)
 
 # Transitions
@@ -63,7 +64,11 @@ promoter_utr_model.add_transition(back, gc_states[0], 0.0001)
 
 promoter_utr_model.add_transition(gc_states[-1], post_gc, 1)
 promoter_utr_model.add_transition(post_gc, post_gc, 0.5)
-promoter_utr_model.add_transition(post_gc, post_gc_spacers_tss, 0.25)
+promoter_utr_model.add_transition(post_gc, post_gc_spacers_tata[0], 0.25)
+promoter_utr_model.add_transition(post_gc_spacers_tata[-1], tata_states[0], 1)
+
+promoter_utr_model.add_transition(post_gc, post_gc_spacers_tss[0], 0.25)
+promoter_utr_model.add_transition(post_gc_spacers_tss[-1], promoter_utr_model.end, 1)
 
 promoter_utr_model.add_transition(tata_states[-1], post_tata, 1)
 promoter_utr_model.add_transition(post_tata, post_tata, 0.5)
@@ -88,10 +93,6 @@ logp, path = promoter_utr_model.viterbi(seq)
 path_names = [p[1].name for p in path]
 print(path_names)
 count = 0
-for i, name in enumerate(path_names):
-    if 'tata' in name:
-        count += 1
-        print(count)
-        print(string[i+1])
+print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
 
 

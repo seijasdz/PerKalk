@@ -37,6 +37,7 @@ post_gc_spacers_tata = spacer_states_maker(70, no_coding.p, 'post_gc_spacer_tata
 cat_states = sequence_state_factory(cat_data, 'CAT')
 post_cat = State(DiscreteDistribution(no_coding.p), name='post_cat')
 post_cat_spacers_tss = spacer_states_maker(80, no_coding.p, 'post_cat_spacer')
+post_cat_spacers_tata = spacer_states_maker(30, no_coding.p, 'post cat spacer tata')
 
 tata_states = sequence_state_factory(tata_data, 'tata')
 post_tata_var_spacers = spacer_states_maker(16, no_coding.p, 'post_tata_var_spacer')
@@ -55,6 +56,7 @@ add_sequence(promoter_utr_model, post_tata_spacers)
 add_sequence(promoter_utr_model, post_gc_spacers_tss)
 add_sequence(promoter_utr_model, post_gc_spacers_tata)
 add_sequence(promoter_utr_model, post_cat_spacers_tss)
+add_sequence(promoter_utr_model, post_cat_spacers_tata)
 
 add_variable_length_sequence(promoter_utr_model, post_tata_var_spacers, post_tata_spacers[0])
 # Transitions
@@ -76,7 +78,8 @@ promoter_utr_model.add_transition(cat_states[-1], post_cat, 1)
 
 promoter_utr_model.add_transition(post_cat, post_cat, 0.5)
 promoter_utr_model.add_transition(post_cat, post_cat_spacers_tss[0], 0.431)
-promoter_utr_model.add_transition(post_cat, tata_states[0], 0.069)  # TODO cambiar por un spacer correspondiente
+promoter_utr_model.add_transition(post_cat, post_cat_spacers_tata[0], 0.069)  # TODO cambiar por un spacer correspondiente
+promoter_utr_model.add_transition(post_cat_spacers_tata[-1], tata_states[0], 1)
 
 promoter_utr_model.add_transition(post_cat_spacers_tss[-1], promoter_utr_model.end, 1)
 

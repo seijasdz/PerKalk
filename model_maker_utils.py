@@ -68,6 +68,6 @@ def add_variable_length_sequence(model, states, end_state):
 
     for index, state in enumerate(states):
         if index < len(states) - 1:
-            model.add_transition(state, states[index + 1], 0.5)
-            model.add_transition(state, end_state, 0.5)
+            model.add_transition(state, states[index + 1], 0.8)
+            model.add_transition(state, end_state, 0.2)
     model.add_transition(states[-1], end_state, 1.0)

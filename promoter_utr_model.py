@@ -30,14 +30,19 @@ promoter_utr_model = HiddenMarkovModel()
 back = State(DiscreteDistribution(no_coding.p), name='back')
 
 gc_states = sequence_state_factory(gc_data, 'GC')
-post_gc = State(DiscreteDistribution(no_coding.p), name='post_gc')
-post_gc_spacers_tss = spacer_states_maker(150, no_coding.p, 'post_gc_spacer_tss')
-post_gc_spacers_tata = spacer_states_maker(70, no_coding.p, 'post_gc_spacer_tata')
+post_gc_var_spacers_tss = spacer_states_maker(151, no_coding.p, 'post gc var spacer tss')
+post_gc_spacers_tss = spacer_states_maker(41, no_coding.p, 'post gc spacer tss')
+
+post_gc_var_spacers_tata = spacer_states_maker(151, no_coding.p, 'post gc var spacer tata')
+post_gc_spacers_tata = spacer_states_maker(18, no_coding.p, 'post gc spacer tata')
+
 
 cat_states = sequence_state_factory(cat_data, 'CAT')
-post_cat = State(DiscreteDistribution(no_coding.p), name='post_cat')
-post_cat_spacers_tss = spacer_states_maker(80, no_coding.p, 'post_cat_spacer')
-post_cat_spacers_tata = spacer_states_maker(30, no_coding.p, 'post cat spacer tata')
+post_cat_var_spacers_tss = spacer_states_maker(151, no_coding.p, 'post cat var spacer tss')
+post_cat_spacers_tss = spacer_states_maker(45, no_coding.p, 'post cat spacer tss')
+
+post_cat_var_spacers_tata = spacer_states_maker(151, no_coding.p, 'post cat var spacer tata')
+post_cat_spacers_tata = spacer_states_maker(22, no_coding.p, 'post cat spacer tata')
 
 tata_states = sequence_state_factory(tata_data, 'tata')
 post_tata_var_spacers = spacer_states_maker(16, no_coding.p, 'post_tata_var_spacer')
@@ -45,48 +50,62 @@ post_tata_spacers = spacer_states_maker(7, no_coding.p, 'post_tata_spacer')
 
 # Add States
 promoter_utr_model.add_state(back)
-promoter_utr_model.add_state(post_gc)
-promoter_utr_model.add_state(post_cat)
+
 
 # Add Sequences
-add_sequence(promoter_utr_model, gc_states)
-add_sequence(promoter_utr_model, tata_states)
-add_sequence(promoter_utr_model, cat_states)
-add_sequence(promoter_utr_model, post_tata_spacers)
-add_sequence(promoter_utr_model, post_gc_spacers_tss)
-add_sequence(promoter_utr_model, post_gc_spacers_tata)
-add_sequence(promoter_utr_model, post_cat_spacers_tss)
-add_sequence(promoter_utr_model, post_cat_spacers_tata)
 
+#GC
+
+add_sequence(promoter_utr_model, gc_states)
+
+add_sequence(promoter_utr_model, post_gc_spacers_tata)
+add_variable_length_sequence(promoter_utr_model, post_gc_var_spacers_tata, post_gc_spacers_tata[0])
+
+add_sequence(promoter_utr_model, post_gc_spacers_tss)
+add_variable_length_sequence(promoter_utr_model, post_gc_var_spacers_tss, post_gc_spacers_tss[0])
+
+
+# CAAT
+add_sequence(promoter_utr_model, cat_states)
+
+add_sequence(promoter_utr_model, post_cat_spacers_tss)
+add_variable_length_sequence(promoter_utr_model, post_cat_var_spacers_tss, post_cat_spacers_tss[0])
+
+add_sequence(promoter_utr_model, post_cat_spacers_tata)
+add_variable_length_sequence(promoter_utr_model, post_cat_var_spacers_tata, post_cat_spacers_tata[0])
+
+
+# TATA
+add_sequence(promoter_utr_model, tata_states)
+add_sequence(promoter_utr_model, post_tata_spacers)
 add_variable_length_sequence(promoter_utr_model, post_tata_var_spacers, post_tata_spacers[0])
+
+
 # Transitions
 promoter_utr_model.add_transition(promoter_utr_model.start, back, 1)
 
-promoter_utr_model.add_transition(back, back, 0.994)
-promoter_utr_model.add_transition(back, tata_states[0], 0.001)
-promoter_utr_model.add_transition(back, gc_states[0], 0.003)
-promoter_utr_model.add_transition(back, cat_states[0], 0.002)
+promoter_utr_model.add_transition(back, back, 0.99)
+promoter_utr_model.add_transition(back, tata_states[0], 0.00053)
+promoter_utr_model.add_transition(back, gc_states[0], 0.00707)
+promoter_utr_model.add_transition(back, cat_states[0], 0.0024)
 
-promoter_utr_model.add_transition(gc_states[-1], post_gc, 1)
-
-promoter_utr_model.add_transition(post_gc, post_gc, 0.5)
-promoter_utr_model.add_transition(post_gc, post_gc_spacers_tata[0], 0.17)
-promoter_utr_model.add_transition(post_gc, post_gc_spacers_tss[0], 0.18)
-promoter_utr_model.add_transition(post_gc, cat_states[0], 0.15)  # TODO cambiar por un spacer correspondiente
-
-promoter_utr_model.add_transition(cat_states[-1], post_cat, 1)
-
-promoter_utr_model.add_transition(post_cat, post_cat, 0.5)
-promoter_utr_model.add_transition(post_cat, post_cat_spacers_tss[0], 0.431)
-promoter_utr_model.add_transition(post_cat, post_cat_spacers_tata[0], 0.069)  # TODO cambiar por un spacer correspondiente
-promoter_utr_model.add_transition(post_cat_spacers_tata[-1], tata_states[0], 1)
-
-promoter_utr_model.add_transition(post_cat_spacers_tss[-1], promoter_utr_model.end, 1)
+promoter_utr_model.add_transition(gc_states[-1], post_gc_var_spacers_tata[0], 0.1)
+promoter_utr_model.add_transition(gc_states[-1], post_gc_var_spacers_tss[0], 0.9)
 
 promoter_utr_model.add_transition(post_gc_spacers_tata[-1], tata_states[0], 1)
 
 promoter_utr_model.add_transition(post_gc_spacers_tss[-1], promoter_utr_model.end, 1)
 
+
+promoter_utr_model.add_transition(cat_states[-1], post_cat_var_spacers_tss[0], 0.86)
+promoter_utr_model.add_transition(cat_states[-1], post_cat_var_spacers_tata[0], 0.14)
+
+promoter_utr_model.add_transition(post_cat_spacers_tata[-1], tata_states[0], 1)
+
+promoter_utr_model.add_transition(post_cat_spacers_tss[-1], promoter_utr_model.end, 1)
+
+
+# TATA
 promoter_utr_model.add_transition(tata_states[-1], post_tata_var_spacers[0], 1)
 
 promoter_utr_model.add_transition(post_tata_spacers[-1], promoter_utr_model.end, 1)
@@ -96,15 +115,15 @@ promoter_utr_model.bake()
 
 print(promoter_utr_model.to_json())
 
-string = """GCAGTCACTTTTCTTCTACAGCCAGAGGCTATGATGTCAGGAAGTAAATGATAGAAGATG
-TCAGCTCTCCTATCTATAACCTCAGCTTTGCAGTTTCTCTGGGGGCCTCATGCACTCTTA
-CAGCTTCTTAAACAGGAAGTAGACCTGGCAAAAAATTTAAGTGCGTTTTACACTTGATAT
-ACCACAGACTCGGCCAGAACAGTTCTAAACAGAAGACTTCACAGAAATCCTGACACTTTG
-TTTTTTGCCAAAGAACAGTGTCTTTTTCAGAAATGCTGATTTTGGGATCATGGACATTCT
-CCTTAATTTCTCCTTAGCAAGTCTGTTGGAAGGAGGAAATTGGTGCCTTTGAGCAGATTA
-TCCCCCCCACACAACAGCGCTTGATAAGGGACGGTAAGAAGCACAGGTGAGTGCTGTTAG
-AAGGTGGGGGTGGGAAAGAGGAGGAAGGCACAGGAGGAGTCAATAAGAGGTTAAATAGAA
-AGACCAGAGCAACCCGAGA"""
+string = """CCAGCTGGTCCGGTTCTCTTGGTATCCCGCTCTCTCCTGGAAAAATGGAGGCGCGAATCC
+TGCCCAATCTACCGCTCCGAGCGCACGTTCACTGCGCACGCTGAAAGGGCGCCAAGCCGA
+CCGCTGCGCTATCGATCGGTCCCACTCTCTCTTGCTTTTCTCGCCATCTTACTTACTGGC
+ACGTTCAAAGGTTAGTTCACCTCCTTGGACTTTATCTCCAATGCGTCAAGCTTGACGTCA
+AGGGGCTGTTGCTTCACCGATAAATGGCCGACCGCGGAGAGCACCCTGGGGCTGGGACTG
+CCACAGGTCTGGCTGGCCGTTGGCTCCACCACTTCCGGGTTCTTAGGGAGCAAGTGCGCC
+TGCGCGCGGTGTGCGCCCTTAAACGCGACTCAAGGCGTCGGGTTTGTTGTCAACCAATCA
+CAAGGCAGCCTCGCTCGAGCGCAGGCCAATCGGCTTTCTAGCTAGAGGGTTTAACTCCTA
+TTTAAAAAGAAGAACCTTT"""
 string = string.lower().replace('\n', '')
 print(len(string))
 lists = list(string)

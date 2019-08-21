@@ -151,7 +151,7 @@ print(path_names)
 count = 0
 print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
 
-promoter_utr_model.fit(load_long_training_examples('all_promoters_-499_5.fa', 4002))
+promoter_utr_model.fit(load_long_training_examples('representative_promo_-499_5.fa', 1002), n_jobs=4, max_iterations=100)
 
-with open('promoter_utr_model_trained.json', 'w',  encoding='utf-8') as out:
+with open('promoter_utr_model_trained_representative.json', 'w',  encoding='utf-8') as out:
     out.write(promoter_utr_model.to_json())

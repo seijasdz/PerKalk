@@ -1,6 +1,6 @@
 from pomegranate import DiscreteDistribution
 from pomegranate import State
-
+from converter_to import converter_to
 
 class HighOrderState:
     def __init__(self, columns):
@@ -71,3 +71,14 @@ def add_variable_length_sequence(model, states, end_state):
             model.add_transition(state, states[index + 1], 0.8)
             model.add_transition(state, end_state, 0.2)
     model.add_transition(states[-1], end_state, 1.0)
+
+
+def load_long_training_examples(filename, n):
+    with open(filename) as file:
+        first = file.read().replace('\n', '').replace(' ', '').split('>')[1:n]
+        second = [converter_to(f.split('.')[1].lower(), 2) for f in first]
+    return second
+
+
+if __name__ == '__main__':
+    load_long_training_examples('all_promoters_-499_5.fa', 4002)

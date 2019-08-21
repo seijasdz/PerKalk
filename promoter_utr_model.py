@@ -5,6 +5,7 @@ from model_maker_utils import classify
 from model_maker_utils import add_sequence
 from model_maker_utils import spacer_states_maker
 from model_maker_utils import add_variable_length_sequence
+from model_maker_utils import load_long_training_examples
 from converter_to import converter_to
 import calculator
 from pomegranate import State
@@ -129,17 +130,13 @@ promoter_utr_model.add_transition(no_inr_states[-1], promoter_utr_model.end, 1)
 
 promoter_utr_model.bake()
 
-print(promoter_utr_model.to_json())
+with open('promoter_utr_model_base.json', 'w',  encoding='utf-8') as out:
+    out.write(promoter_utr_model.to_json())
 
-string = """AGGATGTAGACTCGCTGAAAGTCAGCCTTGTCTGAGACAGACGCCCGCTGCCCTGCACGC
-ACCCTAGAAAGCCCTGGCTCCCATCCGGCACTTCGGCACGCATATGGCTCAAACCCATCT
-CCACAGCAACGCTGTTCCATAGAACAACAACGCAGGTCACACTTGTGACTTAACCTGTCT
-AATATCCACATGCAACAAGGGGTGTGGTGGCCCGCGCCTGTAATCCCAGCTACTTGGGAG
-GCTGAAGCAGGAGGATCATGTGGGCCCAGGAGCTCCAGACCAGCCTGGCAACCTAATGAG
-ACCCTGTCTCTGAAAAAAAAAAAAACAAGAGAGCCAGAAGAAAATTGCTTTTAATAATAC
-ATTTTATTTATCCCATGATCACCAGTGTTATTTCAACATAAAATCAATATAAAAATTGTT
-ATCGCGTTGGTTGACATCCTGTTTGCACTTGGCCTTGGAAACCTGGTGTGCGTCTCCCCC
-GTGCAGCTTTTCTCAGTTCAGACTG"""
+string = """CATTCCCAGTTCTTTACATTCATCCCTTGTTTCCAGAAAGGGCAGAGGAAGCGAGGAAAA
+AGTGCGTGGCCTGAAGTGACGCCTGGCGTTGCCCGAAGCCCGCCCAGCGCTGCCAGGTGA
+CGCCACTGCGACACAAAGGCGGGGATTGCGTAGGGAAAGGCCCTAGGCCATAAACGGGGG
+TGGGGCCTCCCCGGAGGCCAGTGCG"""
 string = string.lower().replace('\n', '')
 print(len(string))
 lists = list(string)
@@ -154,4 +151,7 @@ print(path_names)
 count = 0
 print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
 
+promoter_utr_model.fit(load_long_training_examples('all_promoters_-499_5.fa', 4002))
 
+with open('promoter_utr_model_trained.json', 'w',  encoding='utf-8') as out:
+    out.write(promoter_utr_model.to_json())

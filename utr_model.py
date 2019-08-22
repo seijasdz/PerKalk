@@ -15,7 +15,7 @@ from pomegranate import DiscreteDistribution
 from matrix_from_aln import matrix_from_exa
 
 
-with open('promoter_utr_model_trained.json') as base_model_file:
+with open('promoter_utr_model_base.json') as base_model_file:
     promoter_model_json = base_model_file.read()
 
 promoter_model = HiddenMarkovModel.from_json(promoter_model_json)
@@ -50,14 +50,15 @@ utr_model.add_transition(get_state(promoter_model, 'inr7'), exon_state, 1)
 utr_model.add_transition(get_state(promoter_model, 'no inr7'), exon_state, 1)
 
 
-utr_model.add_transition(exon_state, exon_state, 0.60)
-utr_model.add_transition(exon_state, donor_states[0], 0.000001)
-utr_model.add_transition(exon_state, utr_model.end,   0.399999)
+utr_model.add_transition(exon_state, exon_state,      0.5)
+utr_model.add_transition(exon_state, donor_states[0], 0.2)
+utr_model.add_transition(exon_state, utr_model.end,   0.3)
+
 
 utr_model.add_transition(donor_states[-1], intron_state, 1)
 
-utr_model.add_transition(intron_state, intron_state, 0.8)
-utr_model.add_transition(intron_state, intron_spacer_states[0], 0.2)
+utr_model.add_transition(intron_state, intron_state, 0.5)
+utr_model.add_transition(intron_state, intron_spacer_states[0], 0.5)
 
 utr_model.add_transition(intron_spacer_states[-1], acceptor_states[0], 1)
 
@@ -65,7 +66,7 @@ utr_model.add_transition(acceptor_states[-1], exon_state, 1)
 
 utr_model.bake()
 
-print(utr_model.states)
+# print(utr_model.states)
 
 with open('utr_model_base.json', 'w',  encoding='utf-8') as out:
     out.write(utr_model.to_json())

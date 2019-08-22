@@ -94,12 +94,12 @@ add_variable_length_sequence(promoter_utr_model, post_tata_var_spacers, post_tat
 # Transitions
 promoter_utr_model.add_transition(promoter_utr_model.start, back, 1)
 
-promoter_utr_model.add_transition(back, back, 0.99)
-promoter_utr_model.add_transition(back, tata_states[0], 0.00043)
-promoter_utr_model.add_transition(back, gc_states[0], 0.00707)
-promoter_utr_model.add_transition(back, cat_states[0], 0.0024)
-promoter_utr_model.add_transition(back, inr_states[0],  0.000031)
-promoter_utr_model.add_transition(back, no_inr_states[0],  0.000069)
+promoter_utr_model.add_transition(back, back,             0.9999)
+promoter_utr_model.add_transition(back, tata_states[0],   0.0000043)
+promoter_utr_model.add_transition(back, gc_states[0],     0.0000707)
+promoter_utr_model.add_transition(back, cat_states[0],    0.000024)
+promoter_utr_model.add_transition(back, inr_states[0],    0.00000031)
+promoter_utr_model.add_transition(back, no_inr_states[0], 0.00000069)
 
 promoter_utr_model.add_transition(gc_states[-1], post_gc_var_spacers_tata[0], 0.1)
 promoter_utr_model.add_transition(gc_states[-1], post_gc_var_spacers_tss[0], 0.9)
@@ -132,11 +132,11 @@ promoter_utr_model.bake()
 
 with open('promoter_utr_model_base.json', 'w',  encoding='utf-8') as out:
     out.write(promoter_utr_model.to_json())
-
-string = """CATTCCCAGTTCTTTACATTCATCCCTTGTTTCCAGAAAGGGCAGAGGAAGCGAGGAAAA
+"""
+string = ""CATTCCCAGTTCTTTACATTCATCCCTTGTTTCCAGAAAGGGCAGAGGAAGCGAGGAAAA
 AGTGCGTGGCCTGAAGTGACGCCTGGCGTTGCCCGAAGCCCGCCCAGCGCTGCCAGGTGA
 CGCCACTGCGACACAAAGGCGGGGATTGCGTAGGGAAAGGCCCTAGGCCATAAACGGGGG
-TGGGGCCTCCCCGGAGGCCAGTGCG"""
+# TGGGGCCTCCCCGGAGGCCAGTGCG""
 string = string.lower().replace('\n', '')
 print(len(string))
 lists = list(string)
@@ -155,3 +155,4 @@ print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(p
 
 # with open('promoter_utr_model_trained_representative.json', 'w',  encoding='utf-8') as out:
 #     out.write(promoter_utr_model.to_json())
+"""

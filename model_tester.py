@@ -2,7 +2,7 @@ from pomegranate import HiddenMarkovModel
 from converter_to import converter_to
 import numpy
 
-with open('promoter_utr_model_trained.json') as base_model_file:
+with open('utr_model_base.json') as base_model_file:
     model_json = base_model_file.read()
 
 promoter_utr_model = HiddenMarkovModel.from_json(model_json)
@@ -15,7 +15,7 @@ GAGAGGGAGAGGCAGGCAATGTCAGGGAAATTGGGCAGGCAAGACGCCAGGGACGCCACG
 TACTGCCAGGTTCTCAACGAGGTGGAGCCAAAGGGGCAGGCCCCGCGGTGCGCCCGGCGC
 TGGGCTCACGGGTTGCTGCACCCGGCCCAGGATCGCGGGCGGTGCAGACTCAGCAGGGGC
 GGGTGCAAGGACGAGGCGGGGCCTCTGCGCCCGGCCCTCTTCCCGGACTATAAAGAGAGC
-CGCCGGCTTCTGGGCTCCACCACGC"""
+CGCCGGCTTCTGGGCTCCACCACGCGGGTGCAAGGACGAGGCGGGGCCTCTGCGCCCGGCCCTCTTCCCGGACTATAAAGAGAGC"""
 string = string.lower().replace('\n', '')
 print(len(string))
 lists = list(string)

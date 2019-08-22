@@ -80,5 +80,16 @@ def load_long_training_examples(filename, n):
     return second
 
 
+class StateNotFoundException(Exception):
+    pass
+
+
+def get_state(model, name):
+    for state in model.states:
+        if state.name == name:
+            return state
+    raise StateNotFoundException('State not found ' + name)
+
+
 if __name__ == '__main__':
     load_long_training_examples('all_promoters_-499_5.fa', 4002)

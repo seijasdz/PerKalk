@@ -29,7 +29,7 @@ no_coding = calculator.intron_calculator('cuts_intron.txt')
 
 
 # Model
-promoter_utr_model = HiddenMarkovModel()
+promoter_utr_model = HiddenMarkovModel('promoter')
 
 # States
 back = State(DiscreteDistribution(no_coding.p), name='back')
@@ -151,7 +151,7 @@ print(path_names)
 count = 0
 print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
 
-promoter_utr_model.fit(load_long_training_examples('representative_promo_-499_5.fa', 1002), n_jobs=4, max_iterations=100)
+# promoter_utr_model.fit(load_long_training_examples('representative_promo_-499_5.fa', 1002), n_jobs=4, max_iterations=100)
 
-with open('promoter_utr_model_trained_representative.json', 'w',  encoding='utf-8') as out:
-    out.write(promoter_utr_model.to_json())
+# with open('promoter_utr_model_trained_representative.json', 'w',  encoding='utf-8') as out:
+#     out.write(promoter_utr_model.to_json())

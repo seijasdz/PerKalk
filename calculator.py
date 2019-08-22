@@ -139,7 +139,18 @@ def intron_calculator(filename):
     return emission
 
 
+def utr_exon_(filename):
+    emission = ProbCounter()
+    with open(filename) as file_obj:
+        for line in file_obj:
+            exon = line.split(' ')[0].split('P')[0].lower()
+            for i, base in enumerate(exon):
+                if i > 1:
+                    state = base + '|' + exon[i - 2] + exon[i - 1]
+                    emission.add(state)
+    emission.calc()
+    return emission
+
+
 if __name__ == '__main__':
-   print('ho boy')
-   emissions = intron_calculator('cuts_intron.txt')
-   print(emissions.p)
+   utr_exon_('mcutsa.txt')

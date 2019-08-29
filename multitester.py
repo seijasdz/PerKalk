@@ -166,11 +166,11 @@ def filter_repeat(genes):
 
 
 if __name__ == '__main__':
-    with open('hmm_model_base.json') as base_model_file:
+    with open('coding_model_base.json') as base_model_file:
         model_json = base_model_file.read()
 
     hmmodel = HiddenMarkovModel.from_json(model_json)
-    genes = extract(folder_path='/run/media/jose/BE96A68C96A6452D/Asi/Data/', lookfor='CDS', before=2000, after=30)
+    genes = extract(folder_path='/run/media/jose/BE96A68C96A6452D/Asi/Data/', lookfor='CDS', before=500, after=30)
     valid_st = ['start zone8', 'start zone9', 'start zone10', 'start zone11', 'start zone12',
                 'start zone13', 'start zone14', 'start one15', 'start zone16',
                 'stop zone0', 'stop zone1', 'stop zone2', 'stop zone3', 'stop zone4', 'stop zone5',

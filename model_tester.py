@@ -2,7 +2,7 @@ from pomegranate import HiddenMarkovModel
 from converter_to import converter_to
 import numpy
 
-with open('hmm_model_base.json') as base_model_file:
+with open('coding_model_base.json') as base_model_file:
     model_json = base_model_file.read()
 
 promoter_utr_model = HiddenMarkovModel.from_json(model_json)

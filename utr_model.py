@@ -50,9 +50,9 @@ utr_model.add_transition(get_state(promoter_model, 'inr7'), exon_state, 1)
 utr_model.add_transition(get_state(promoter_model, 'no inr7'), exon_state, 1)
 
 
-utr_model.add_transition(exon_state, exon_state,      0.5)
+utr_model.add_transition(exon_state, exon_state,      0.7)
 utr_model.add_transition(exon_state, donor_states[0], 0.2)
-utr_model.add_transition(exon_state, utr_model.end,   0.3)
+utr_model.add_transition(exon_state, utr_model.end,   0.1)
 
 
 utr_model.add_transition(donor_states[-1], intron_state, 1)

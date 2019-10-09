@@ -12,8 +12,9 @@ def intron_counter(seq):
             icounts += 1
     return icounts
 
-def find_gene_cut_index(path_names, last_element):
-    return [i for i, e in enumerate(path_names) if e == last_element]
+
+def find_gene_cut_index(path_names, last_elements):
+    return [i for i, e in enumerate(path_names) if e in last_elements]
 
 
 def find_intercoding_region(begins, ends, seq):
@@ -38,7 +39,7 @@ def predict_path(model, seq):
     return [p[1].name for p in path]
 
 
-with open('coding_model_base.json') as base_model_file:
+with open('coding_model_base_poly.json') as base_model_file:
     coding_model_json = base_model_file.read()
 
 with open('utr_model_base.json') as promoter_model_file:
@@ -46,10 +47,16 @@ with open('utr_model_base.json') as promoter_model_file:
 
 coding_model = HiddenMarkovModel.from_json(coding_model_json)
 promoter_utr_model = HiddenMarkovModel.from_json(promoter_utr_model_json)
-
-# string = 'ttgcggttgttttatcatgttgcaatttggttatgtcttttctaatagtgtttaaaagcaatcaaaggcaggaacttttccttttataaactattgttgagcttatattggacactgaactaagtgtcagtttacaaaaatgaataaacaaaaatcactgccagtagggaacacacagccaagatgggggagtagtaagatgtaaagagatgtaaaataatgtgatagattcggccagagttactaaagagtcagaaaagggcaagcatgtttcttccctgtcctgaagcagccaagggagaggaagatatctgttgccaatgctggggtgttggtttaggcatgtagatgctgtgatgcgcagtggaaccgttcaatgagcagacaggagaaccagctttatgcggggagggagagaattgctcccctcatcccccgtgagtcacaccctggagattataagtttaaacattttgatttcgggagattttgagttttgggcttaaaatgactgaagaaccaccaggtggatctacgtgtctcgagtccagaagtctgaatacagatttacgatttatgagcacacagaaggtggatccaagggagagattaaacagggcacagaagagtttttaaaaataatatttttcgggaaaaaaaccccaacaaaacacgattctttcagcagaaaccagaagattttctcatagactctcctacagagagccctgataaagtaataaacatgctaacagtaagaaccccaaccaatttcatagggcagtttgcggtaactactcccagtatggagcagacagtcctcttgcaaaacccgatttagcaaactttgctagctccatgtggggcctccaaaggacacagctgggcactaaatcctggctgaaaacaaaggccgatttagaggatccgtagaaacggatgcacagaatatccctcagtcttctctatgtagcaggccctccatatacgcgggttccccaagaccgaaaatattaaacaaatgaatttcttttttaaaaaaaagtacaacaaaagatagtaaaaataaaaacagtataacaattacttacatagcatttacactggattaggtgttacgaagtaatttagagactatttaaagtacacgggaggatgtgcatagttatgtgcaaatactacgccactttctatgagagacttgagcaacctggattttggtatcggcgggggccctggaccaatcccctctcagttctaccgagggagaactgttttgtttcttccagcacggctttgaccgacagtgtgttgggattcgctgacgtccatgagaaagcttggcagcatgctgagaccaattttcccagggccagaattctcctgtgtgagctaaaatacagtggctcggtccaacaaaacagagcctggagccaggaattatggcgaacctgctccctcccgtcctcccttggcgcacagatccctggcgccgccgctcttgaggtcgcctctcgcgtgtcgacctcatcgtcggaacggcgcttcctgaagctttatataagcacggctctgaatccgctcgtcgggattaaatcctgcgctggcgcgctcctgccagtctctggcctccatttgctcttcctgaggctccctccagagacctttcccttagcctcagtgcaatgccttccgggcgtcctcagaccagacacaggccaaagccactacagaatccggaagccccggttgggatctgaattctcccggggactgtggcgtagcggttaaaaaaaaaaaagagtgagagggacctgagcagagtggaggaggagggagaggaaaacagaaaagaaatgacgaaatgtcgagagggcggggacaattgagaacgcttcccgccggcgcgctttcggttttcaatctggtccgatactcttgtatatcaggggaagacggtgctcgccttgacagaagctgtctatcgggctccagcggtcatgtccggcagaggaaagggcggaaaaggcttaggcaaagggggcgctaagcgccaccgcaaggtcttgagagacaacattcagggcatcaccaagcctgccattcggcgtctagctcggcgtggcggcgttaagcggatctctggcctcatttacgaggagacccgcggtgtgctgaaggtgttcctggagaatgtgattcgggacgcagtcacctacaccgagcacgccaagcgcaagaccgtcacagccatggatgtggtgtacgcgctcaagcgccaggggcgcaccctgtacggcttcggaggctaggccgccgctccagctttgcacgtttcgatc'
-string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/14-51867364-52367363/sequence_body.ebi')[251000:330000]
-string = string.lower().replace('\n', '')
+# ENSG00000088205 13 63
+# string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/2-118389719-118889718/sequence_body.ebi')[182000:201000]
+# ENSG00000144567 8 39
+# string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/2-219985590-220485589/sequence_body.ebi')[54000:66000]
+# ENSG00000158552 6  53
+# string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/2-219985590-220485589/sequence_body.ebi')[74000:88000]
+# ENSG00000163516 13 37
+# string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/2-219985590-220485589/sequence_body.ebi')[107000:117000]
+# ENSG00000170262
+#string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/21-32666763-34362747/sequence_body.ebi')[990000:1017890]
 lists = list(string)
 two = converter_to(lists, 2)
 print(two)
@@ -60,8 +67,8 @@ path_names = predict_path(coding_model, seq)
 count = 0
 print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
 
-starts = find_gene_cut_index(path_names, 'start zone7')
-ends = find_gene_cut_index(path_names, 'stop zone9')
+starts = find_gene_cut_index(path_names, ['start zone7'])
+ends = find_gene_cut_index(path_names, ['stop zone taa9', 'stop zone tag9', 'stop zone tga9'])
 
 ext_subseq = find_intercoding_region(starts, ends, seq)
 

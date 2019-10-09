@@ -10,5 +10,3 @@ def seqs_from(filename):
             if string:
                 subseqs.append(string.lower())
     return subseqs
-
-

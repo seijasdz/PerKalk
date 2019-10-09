@@ -34,7 +34,7 @@ intron_spacer_states = spacer_states_maker(10, no_coding_dist, 'intron spacer')
 utr_model = HiddenMarkovModel('utr_model')
 
 # States
-exon_state = State(DiscreteDistribution(calculator.utr_exon_('mcutsa.txt').p), name='utr exon')
+exon_state = State(DiscreteDistribution(calculator.utr_exon_5('mcutsa.txt').p), name='utr exon')
 intron_state = State(DiscreteDistribution(no_coding_dist), name='utr intron')
 
 utr_model.add_model(promoter_model)

@@ -9,7 +9,8 @@ from model_maker_utils import sequence_state_factory
 from model_maker_utils import classify
 from model_maker_utils import add_sequence
 from model_maker_utils import spacer_states_maker
-
+from model_maker_utils import percentage_matrix_maker
+from stop_example_divider import divider as stop_divider
 
 def foo(l):
     yield from itertools.product(*([l] * 3))
@@ -17,7 +18,10 @@ def foo(l):
 
 c0, c1, c2 = calculator.calculate_proba2('cuts.txt')
 matrixZE = numpy.array(matrix_from_exa('new_tss.exa'))
-matrixEZ = numpy.array(matrix_from_exa('new_tts.exa'))
+
+# matrixEZ = numpy.array(matrix_from_exa('new_tts.exa'))
+taa_matrix, tga_matrix, tag_matrix = stop_divider('new_tts.exa')
+
 matrixDonor0 = numpy.array(matrix_from_exa('new_donor0.exa'))
 matrixDonor1 = numpy.array(matrix_from_exa('new_donor1.exa'))
 matrixDonor2 = numpy.array(matrix_from_exa('new_donor2.exa'))
@@ -26,11 +30,41 @@ matrixAcceptor1 = numpy.array(matrix_from_exa('new_acceptor1.exa'))
 matrixAcceptor2 = numpy.array(matrix_from_exa('new_acceptor2.exa'))
 
 
+polyASeqs = [
+    ('AATAAA', 592),
+    ('ATTAAA', 149),
+    ('AGTAAA', 27),
+    ('TATAAA', 32),
+    ('CATAAA', 13),
+    ('GATAAA', 13),
+    ('AATATA', 17),
+    ('AATACA', 12),
+    ('AATAGA', 7),
+    ('ACTAAA', 6),
+    ('AAGAAA', 11),
+    ('AATGAA', 8)
+]
+
+matrixPolyA = numpy.array(percentage_matrix_maker(polyASeqs))
+poly_a_signal_data = classify(matrixPolyA, 2)
+poly_a_states = sequence_state_factory(poly_a_signal_data, 'poly a zone ')
+
+utr_exon_probs = calculator.utr_exon_3('mcuts.txt').p
+
+exon3_state = State(DiscreteDistribution(utr_exon_probs), name='3utr exon')
+post_poly_spacer = spacer_states_maker(15, utr_exon_probs, 'post_poly_spacer')
+
 ze_states_data = classify(matrixZE, 2)
 ze_states = sequence_state_factory(ze_states_data, 'start zone')
 
-ez_states_data = classify(matrixEZ, 2)
-ez_states = sequence_state_factory(ez_states_data, 'stop zone')
+ez_states_taa_data = classify(numpy.array(taa_matrix), 2)
+ez_states_taa = sequence_state_factory(ez_states_taa_data, 'stop zone taa')
+
+ez_states_tga_data = classify(numpy.array(tga_matrix), 2)
+ez_states_tga = sequence_state_factory(ez_states_tga_data, 'stop zone tga')
+
+ez_states_tag_data = classify(numpy.array(tag_matrix), 2)
+ez_states_tag = sequence_state_factory(ez_states_tag_data, 'stop zone tag')
 
 donor0_data = classify(matrixDonor0, 2)
 donor0_states = sequence_state_factory(donor0_data, 'donor0')
@@ -80,35 +114,19 @@ coding_model.add_state(in0)
 coding_model.add_state(in1)
 coding_model.add_state(in2)
 
-coding_model.add_transition(coding_model.start, back, 1.0)
-
-coding_model.add_transition(back, back,         0.999999999)
-coding_model.add_transition(back, ze_states[0], 0.000000001)
-
-coding_model.add_transition(in0, in0,            0.99999)
-coding_model.add_transition(in0, in0_spacers[0], 0.00001)
-
-coding_model.add_transition(in1, in1,            0.99999)
-coding_model.add_transition(in1, in1_spacers[0], 0.00001)
-
-coding_model.add_transition(in2, in2,            0.99999)
-coding_model.add_transition(in2, in2_spacers[0], 0.00001)
-
-coding_model.add_transition(coding_state0, coding_state1, 1.0)
-coding_model.add_transition(coding_state1, coding_state2, 1.0)
-
-coding_model.add_transition(coding_state2, coding_state0,    0.9999999991)
-coding_model.add_transition(coding_state2, donor0_states[0], 0.0000000002)
-coding_model.add_transition(coding_state2, donor1_states[0], 0.0000000002)
-coding_model.add_transition(coding_state2, donor2_states[0], 0.0000000002)
-coding_model.add_transition(coding_state2, ez_states[0],     0.0000000003)
+coding_model.add_state(exon3_state)
+add_sequence(coding_model, poly_a_states)
+add_sequence(coding_model, post_poly_spacer)
 
 add_sequence(coding_model, in0_spacers)
 add_sequence(coding_model, in1_spacers)
 add_sequence(coding_model, in2_spacers)
 
 add_sequence(coding_model, ze_states)
-add_sequence(coding_model, ez_states)
+
+add_sequence(coding_model, ez_states_taa)
+add_sequence(coding_model, ez_states_tga)
+add_sequence(coding_model, ez_states_tag)
 
 add_sequence(coding_model, donor0_states)
 add_sequence(coding_model, donor1_states)
@@ -118,6 +136,30 @@ add_sequence(coding_model, acceptor0_states)
 add_sequence(coding_model, acceptor1_states)
 add_sequence(coding_model, acceptor2_states)
 
+coding_model.add_transition(coding_model.start, back, 1.0)
+
+coding_model.add_transition(back, back,         0.99)
+coding_model.add_transition(back, ze_states[0], 0.01)
+
+coding_model.add_transition(in0, in0,            0.99999999)
+coding_model.add_transition(in0, in0_spacers[0], 0.00000001)
+
+coding_model.add_transition(in1, in1,            0.99999999)
+coding_model.add_transition(in1, in1_spacers[0], 0.00000001)
+
+coding_model.add_transition(in2, in2,            0.99999999)
+coding_model.add_transition(in2, in2_spacers[0], 0.00000001)
+
+coding_model.add_transition(coding_state0, coding_state1, 1.0)
+coding_model.add_transition(coding_state1, coding_state2, 1.0)
+
+coding_model.add_transition(coding_state2, coding_state0,    0.9999998996999)
+coding_model.add_transition(coding_state2, donor0_states[0], 0.0000000001251)
+coding_model.add_transition(coding_state2, donor1_states[0], 0.0000000000800)
+coding_model.add_transition(coding_state2, donor2_states[0], 0.0000000000950)
+coding_model.add_transition(coding_state2, ez_states_taa[0], 0.0000000250000)
+coding_model.add_transition(coding_state2, ez_states_tga[0], 0.0000000520000)
+coding_model.add_transition(coding_state2, ez_states_tag[0], 0.0000000230000)
 
 coding_model.add_transition(donor0_states[-1], in0, 1)
 coding_model.add_transition(donor1_states[-1], in1, 1)
@@ -132,28 +174,20 @@ coding_model.add_transition(acceptor0_states[-1], coding_state0, 1.0)
 coding_model.add_transition(acceptor1_states[-1], coding_state0, 1.0)
 coding_model.add_transition(acceptor2_states[-1], coding_state0, 1.0)
 
-
-coding_model.add_transition(ez_states[-1], back, 1.0)
 coding_model.add_transition(ze_states[-1], coding_state0, 1.0)
+
+coding_model.add_transition(ez_states_taa[-1], exon3_state, 1.0)
+coding_model.add_transition(ez_states_tga[-1], exon3_state, 1.0)
+coding_model.add_transition(ez_states_tag[-1], exon3_state, 1.0)
+
+coding_model.add_transition(exon3_state, exon3_state,      0.9)
+coding_model.add_transition(exon3_state, poly_a_states[0], 0.1)
+
+coding_model.add_transition(poly_a_states[-1], post_poly_spacer[0], 1.0)
+coding_model.add_transition(post_poly_spacer[-1], back, 1.0)
 
 coding_model.bake()
 
-with open('coding_model_base.json', 'w',  encoding='utf-8') as out:
+with open('coding_model_base_poly.json', 'w',  encoding='utf-8') as out:
     out.write(coding_model.to_json())
 
-
-# string = gene_ebi_to_string.to_string2('sequence_body.ebi')[365000:382042]
-# print(string)
-# test_seq = list(string)
-# two_seq = converter_to(test_seq, 2)
-# print(two_seq)
-# seq = numpy.array(two_seq, numpy.unicode_)
-# print(len(seq))
-# logp, path = model.viterbi(seq)
-
-# print(logp)
-# count = 0
-# for i, pre in enumerate(path):
-    # if pre[1].name != 'back':
-    #   pass
-    #   print(pre[1].name, seq[i - 1])

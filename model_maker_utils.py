@@ -24,6 +24,14 @@ class HighOrderState:
         return states_distribution
 
 
+def percentage_matrix_maker(seqs_data):
+    matrix = []
+    for data in seqs_data:
+        for i in range(0, data[1]):
+            matrix.append(list(data[0].lower()))
+    return matrix
+
+
 def sequence_state_factory(states_data, name):
     states = []
     for index, data in enumerate(states_data):
@@ -92,4 +100,5 @@ def get_state(model, name):
 
 
 if __name__ == '__main__':
-    load_long_training_examples('all_promoters_-499_5.fa', 4002)
+    seqs = [(['a', 'a'], 90), (['a', 'b'], 10)]
+    print(percentage_matrix_maker(seqs))

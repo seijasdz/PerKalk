@@ -16,22 +16,32 @@ def second_replace(s):
     s = s.replace('W', 'T').replace('X', 'G').replace('Y', 'C').replace('Z', 'A')
     return s
 
-def intron_cut_generator(divs, before, after):
+def get_complete_cuts(divs, before, after):
     new_divs = []
     for i, div in enumerate(divs):
         if i > 0:
             intron = (divs[i - 1][1], div[0])
-            new_divs.append((intron, 'no-an'))
+            new_divs.append((intron, 'n'))
         new_divs.append((div, 'an'))
-    new_divs.insert(0, ((divs[0][0] - before, divs[0][0]), 'before'))
-    new_divs.append(((divs[-1][1], divs[-1][1] + after), 'after'))
-    print(new_divs)
+    new_divs.insert(0, ((divs[0][0] - before, divs[0][0]), 'b'))
+    new_divs.append(((divs[-1][1], divs[-1][1] + after), 'a'))
+    return new_divs
+
+def classify_every_character(complete_cuts, string):
+    clasified = []
+    for cut in complete_cuts:
+        start = cut[0][0]
+        end = cut[0][1]
+        for base in string[start:end]:
+            clasified.append((base, cut[1]))
+    print(clasified)
 
 def slicer(string, divisions, complement, before=25, after=25):
     if not complement:
         if divisions:
-            print(divisions)
-            intron_cut_generator(divisions, before, after)
+            # print(divisions)
+            all_cuts = get_complete_cuts(divisions, before, after)
+            classify_every_character(all_cuts, string)
             start = divisions[0][0] - before
             end = divisions[-1][1] + after
             section_with_gene = string[start:end]
@@ -41,7 +51,7 @@ def slicer(string, divisions, complement, before=25, after=25):
             start = divisions[0][0] - after
             end = divisions[-1][1] + before
             section_with_gene = second_replace(first_replace(reverse(string[start:end])))
-            print(section_with_gene[:28], section_with_gene[-28:])
+            # print(section_with_gene[:28], section_with_gene[-28:])
 
 def transform(section):
     tokens = section.split('..')
@@ -99,4 +109,6 @@ def test(tag, folder):
     lines = [get_lines(x['annotations'], x['file_string']) for x in datas]
 
 if __name__ == '__main__':
-    test('CDS', '/run/media/jose/BE96A68C96A6452D/Asi/Data/')
+    # route = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
+    route = '/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/'
+    test('CDS', route)

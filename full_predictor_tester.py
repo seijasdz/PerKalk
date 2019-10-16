@@ -16,42 +16,63 @@ def second_replace(s):
     s = s.replace('W', 'T').replace('X', 'G').replace('Y', 'C').replace('Z', 'A')
     return s
 
-def get_complete_cuts(divs, before, after):
+
+def get_complete_cuts(divs, before, after, complement=False):
     new_divs = []
     for i, div in enumerate(divs):
         if i > 0:
-            intron = (divs[i - 1][1], div[0])
+            if not complement:
+                intron = (divs[i - 1][1], div[0])
+            else:
+                intron = (div[1], divs[i - 1][0])
             new_divs.append((intron, 'n'))
         new_divs.append((div, 'an'))
     new_divs.insert(0, ((divs[0][0] - before, divs[0][0]), 'b'))
     new_divs.append(((divs[-1][1], divs[-1][1] + after), 'a'))
     return new_divs
 
-def classify_every_character(complete_cuts, string):
-    clasified = []
+
+def classify_characters(complete_cuts, string, complement=False):
+    parallel = {
+        'A': 'T',
+        'C': 'G',
+        'G': 'C',
+        'T': 'A'
+    }
+
+    classified = []
     for cut in complete_cuts:
         start = cut[0][0]
         end = cut[0][1]
-        for base in string[start:end]:
-            clasified.append((base, cut[1]))
-    print(clasified)
+        if not complement:
+            for base in string[start:end]:
+                classified.append((base, cut[1]))
+        else:
+            for base in string[start:end][::-1]:
+                classified.append((parallel[base], cut[1]))
+
+    if complement:
+        # print(complete_cuts)
+        print(classified)
+    return classified
+
 
 def slicer(string, divisions, complement, before=25, after=25):
     if not complement:
         if divisions:
-            # print(divisions)
-            all_cuts = get_complete_cuts(divisions, before, after)
-            classify_every_character(all_cuts, string)
+            classified_chars = classify_characters(get_complete_cuts(divisions, before, after), string)
             start = divisions[0][0] - before
             end = divisions[-1][1] + after
             section_with_gene = string[start:end]
+
             pure_cuts = [string[div[0]: div[1]] for div in divisions]
     else:
         if divisions:
             start = divisions[0][0] - after
             end = divisions[-1][1] + before
             section_with_gene = second_replace(first_replace(reverse(string[start:end])))
-            # print(section_with_gene[:28], section_with_gene[-28:])
+            classified_chars = classify_characters(get_complete_cuts(divisions, after, before, complement), string, True)
+
 
 def transform(section):
     tokens = section.split('..')
@@ -109,6 +130,6 @@ def test(tag, folder):
     lines = [get_lines(x['annotations'], x['file_string']) for x in datas]
 
 if __name__ == '__main__':
-    # route = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
-    route = '/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/'
+    route = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
+    # route = '/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/'
     test('CDS', route)

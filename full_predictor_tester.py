@@ -52,8 +52,8 @@ def classify_characters(complete_cuts, string, complement=False):
                 classified.append((parallel[base], cut[1]))
 
     if complement:
+        pass
         # print(complete_cuts)
-        print(classified)
     return classified
 
 
@@ -68,11 +68,18 @@ def slicer(string, divisions, complement, before=25, after=25):
             pure_cuts = [string[div[0]: div[1]] for div in divisions]
     else:
         if divisions:
-            start = divisions[0][0] - after
-            end = divisions[-1][1] + before
+            if len(divisions) > 1:
+                start = divisions[-1][1] - after
+                end = divisions[0][0] + before
+            else:
+                start = divisions[0][0] - after
+                end = divisions[-1][1] + before
+
             section_with_gene = second_replace(first_replace(reverse(string[start:end])))
             classified_chars = classify_characters(get_complete_cuts(divisions, after, before, complement), string, True)
-
+            print(section_with_gene)
+            print(divisions[:10])
+            print(classified_chars[:28])
 
 def transform(section):
     tokens = section.split('..')

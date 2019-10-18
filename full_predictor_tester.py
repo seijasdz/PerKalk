@@ -27,8 +27,12 @@ def get_complete_cuts(divs, before, after, complement=False):
                 intron = (div[1], divs[i - 1][0])
             new_divs.append((intron, 'n'))
         new_divs.append((div, 'an'))
-    new_divs.insert(0, ((divs[0][0] - before, divs[0][0]), 'b'))
-    new_divs.append(((divs[-1][1], divs[-1][1] + after), 'a'))
+    if not complement:
+        new_divs.insert(0, ((divs[0][0] - before, divs[0][0]), 'b'))
+        new_divs.append(((divs[-1][1], divs[-1][1] + after), 'a'))
+    else:
+        new_divs.insert(0, ((divs[0][1], divs[0][1] + before), 'b'))
+        new_divs.append(((divs[-1][0] - after, divs[-1][0]), 'a'))
     return new_divs
 
 
@@ -58,28 +62,30 @@ def classify_characters(complete_cuts, string, complement=False):
 
 
 def slicer(string, divisions, complement, before=25, after=25):
+    section_with_gene = None
+    classified_chars = None
     if not complement:
         if divisions:
-            classified_chars = classify_characters(get_complete_cuts(divisions, before, after), string)
             start = divisions[0][0] - before
             end = divisions[-1][1] + after
+            new_divs = get_complete_cuts(divisions, before, after)
             section_with_gene = string[start:end]
+            classified_chars = classify_characters(new_divs, string)
+            # pure_cuts = [string[div[0]: div[1]] for div in divisions]
 
-            pure_cuts = [string[div[0]: div[1]] for div in divisions]
     else:
         if divisions:
-            if len(divisions) > 1:
-                start = divisions[-1][1] - after
-                end = divisions[0][0] + before
-            else:
-                start = divisions[0][0] - after
-                end = divisions[-1][1] + before
-
+            start = divisions[-1][0] - after
+            end = divisions[0][1] + before
+            new_divs = get_complete_cuts(divisions, after, before, complement)
             section_with_gene = second_replace(first_replace(reverse(string[start:end])))
-            classified_chars = classify_characters(get_complete_cuts(divisions, after, before, complement), string, True)
-            print(section_with_gene)
-            print(divisions[:10])
-            print(classified_chars[:28])
+            classified_chars = classify_characters(new_divs, string, True)
+
+    return {
+        'section_with_gene': section_with_gene,
+        'classified_chars': classified_chars
+    }
+
 
 def transform(section):
     tokens = section.split('..')
@@ -107,8 +113,12 @@ def cut(element, file_string):
     cut_annotations = tokens[0]
     gene_id = tokens[1]
     complement, cut_pairs = get_divisions(cut_annotations)
-    slicer(file_string, cut_pairs, complement)
-
+    sliced = slicer(file_string, cut_pairs, complement)
+    return {
+        'gene_id': gene_id,
+        'section_with_gene': sliced['section_with_gene'],
+        'classified_chars': sliced['classified_chars']
+    }
 
 def get_lines(annotations, file_string):
     return [cut(annotation, file_string) for annotation in annotations]

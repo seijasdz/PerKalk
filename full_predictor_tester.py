@@ -1,7 +1,10 @@
 from pathlib import Path
 from xml.etree import ElementTree
 from gene_ebi_to_string import to_string
-
+from converter_to import converter_to
+import time
+import numpy
+from gene_predictor import predict_all
 
 def reverse(s):
     return s[::-1]
@@ -26,13 +29,13 @@ def get_complete_cuts(divs, before, after, complement=False):
             else:
                 intron = (div[1], divs[i - 1][0])
             new_divs.append((intron, 'n'))
-        new_divs.append((div, 'an'))
+        new_divs.append((div, 'a'))
     if not complement:
         new_divs.insert(0, ((divs[0][0] - before, divs[0][0]), 'b'))
-        new_divs.append(((divs[-1][1], divs[-1][1] + after), 'a'))
+        new_divs.append(((divs[-1][1], divs[-1][1] + after), 'f'))
     else:
         new_divs.insert(0, ((divs[0][1], divs[0][1] + before), 'b'))
-        new_divs.append(((divs[-1][0] - after, divs[-1][0]), 'a'))
+        new_divs.append(((divs[-1][0] - after, divs[-1][0]), 'f'))
     return new_divs
 
 
@@ -54,10 +57,6 @@ def classify_characters(complete_cuts, string, complement=False):
         else:
             for base in string[start:end][::-1]:
                 classified.append((parallel[base], cut[1]))
-
-    if complement:
-        pass
-        # print(complete_cuts)
     return classified
 
 
@@ -114,17 +113,15 @@ def cut(element, file_string):
     gene_id = tokens[1]
     complement, cut_pairs = get_divisions(cut_annotations)
     sliced = slicer(file_string, cut_pairs, complement)
-    return {
-        'gene_id': gene_id,
-        'section_with_gene': sliced['section_with_gene'],
-        'classified_chars': sliced['classified_chars']
-    }
+    if sliced['classified_chars']:
+        sss = [''.join(x) for x in sliced['classified_chars']]
+        return ' '.join(sss) + '-' + str(complement)
 
 def get_lines(annotations, file_string):
     return [cut(annotation, file_string) for annotation in annotations]
 
 
-def test(tag, folder):
+def get_annotated_lines(tag, folder):
     path = Path(folder)
     sub_folders = [x for x in path.iterdir() if x.is_dir()]
     datas = []
@@ -146,7 +143,34 @@ def test(tag, folder):
                 )
     lines = [get_lines(x['annotations'], x['file_string']) for x in datas]
 
+    return lines
+
+
+def get_testable_string(annotated_string):
+    l = [x[0] for x in annotated_string.lower().split()]
+    a = [x[1] for c, x in enumerate(annotated_string.split()) if c > 1]
+    two = converter_to(l, 2)
+    seq = numpy.array(two, numpy.unicode_)
+    return seq, a,''.join(l)
+
+
+
 if __name__ == '__main__':
     route = '/run/media/jose/BE96A68C96A6452D/Asi/Data/'
     # route = '/run/media/zippyttech/BE96A68C96A6452D/Asi/Data/'
-    test('CDS', route)
+
+    anno = "Cb Ab Cb Cb Tb Cb Tb Tb Cb Tb Gb Cb Cb Ab Cb Ab Ab Ab Cb Gb Tb Cb Ab Gb Cb Aa Ta Ga"
+    seq, a, string = get_testable_string(anno)
+    print(seq)
+    print(a)
+    print(string)
+
+    predict_all(seq, string)
+
+    #lines = get_annotated_lines('CDS', route)
+
+    #with open('out_CDS_annotated.txt', 'w') as o_file:
+    #    for l in lines:
+    #        for line in l:
+    #            if line:
+    #                o_file.write(line + '\n')

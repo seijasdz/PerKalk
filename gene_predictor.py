@@ -47,34 +47,20 @@ with open('utr_model_base.json') as promoter_model_file:
 
 coding_model = HiddenMarkovModel.from_json(coding_model_json)
 promoter_utr_model = HiddenMarkovModel.from_json(promoter_utr_model_json)
-# ENSG00000088205 13 63
-# string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/2-118389719-118889718/sequence_body.ebi')[182000:201000]
-# ENSG00000144567 8 39
-# string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/2-219985590-220485589/sequence_body.ebi')[54000:66000]
-# ENSG00000158552 6  53
-# string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/2-219985590-220485589/sequence_body.ebi')[74000:88000]
-# ENSG00000163516 13 37
-# string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/2-219985590-220485589/sequence_body.ebi')[107000:117000]
-# ENSG00000170262
-#string = to_string2('/run/media/jose/BE96A68C96A6452D/Asi/Data/21-32666763-34362747/sequence_body.ebi')[990000:1017890]
-lists = list(string)
-two = converter_to(lists, 2)
-print(two)
-seq = numpy.array(two, numpy.unicode_)
 
-path_names = predict_path(coding_model, seq)
 
-count = 0
-print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
+def predict_all(seq, string):
+    path_names = predict_path(coding_model, seq)
 
-starts = find_gene_cut_index(path_names, ['start zone7'])
-ends = find_gene_cut_index(path_names, ['stop zone taa9', 'stop zone tag9', 'stop zone tga9'])
+    print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
 
-ext_subseq = find_intercoding_region(starts, ends, seq)
+    starts = find_gene_cut_index(path_names, ['start zone7'])
+    ends = find_gene_cut_index(path_names, ['stop zone taa9', 'stop zone tag9', 'stop zone tga9'])
 
-for subs in ext_subseq:
-    path = predict_path(promoter_utr_model, subs)
-    print([(p, subs[i - 1]) for i, p in enumerate(path) if i - 1 < len(subs)])
+    ext_subseq = find_intercoding_region(starts, ends, seq)
 
-print(len(string))
-print(intron_counter(path_names))
+    for subs in ext_subseq:
+        path = predict_path(promoter_utr_model, subs)
+        print([(p, subs[i - 1]) for i, p in enumerate(path) if i - 1 < len(subs)])
+
+    print(intron_counter(path_names))

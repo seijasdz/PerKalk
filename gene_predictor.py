@@ -49,7 +49,7 @@ coding_model = HiddenMarkovModel.from_json(coding_model_json)
 promoter_utr_model = HiddenMarkovModel.from_json(promoter_utr_model_json)
 
 
-def predict_all(seq, string):
+def predict_all_old(seq, string):
     path_names = predict_path(coding_model, seq)
 
     print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
@@ -60,7 +60,15 @@ def predict_all(seq, string):
     ext_subseq = find_intercoding_region(starts, ends, seq)
 
     for subs in ext_subseq:
+        print('pass')
         path = predict_path(promoter_utr_model, subs)
-        print([(p, subs[i - 1]) for i, p in enumerate(path) if i - 1 < len(subs)])
+        print([(p, subs[i - 1]) for i, p in enumerate(path) if i - 1 < len(subs)], 'h')
 
-    print(intron_counter(path_names))
+    #print(intron_counter(path_names))
+
+
+def predict_all(seq, string):
+    path_names = predict_path(coding_model, seq)
+
+    print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
+    return path_names

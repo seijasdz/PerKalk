@@ -70,5 +70,5 @@ def predict_all_old(seq, string):
 def predict_all(seq, string):
     path_names = predict_path(coding_model, seq)
 
-    print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
+    # print([(string[i + 1], name, i - len(path_names) + 1) for i, name in enumerate(path_names) if i + 1 < len(string)])
     return path_names

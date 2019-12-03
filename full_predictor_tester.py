@@ -199,7 +199,7 @@ def calculate_accuracy(ann, path):
         correlation_coefficient = ((true_positives * true_negatives) - (fake_negatives * fake_positives)) / \
             sqrt((true_positives + fake_negatives) * (true_negatives + fake_positives)
                  * (true_positives + fake_positives) * (true_negatives + fake_negatives))
-        return sensitivity, specificity, correlation_coefficient
+        return sensitivity, specificity, correlation_coefficient, true_positives, true_negatives, fake_positives, fake_negatives
     except ZeroDivisionError:
         print('--invalid-- zero division cc')
 if __name__ == '__main__':
@@ -231,6 +231,10 @@ if __name__ == '__main__':
         cc_accumulator = 0
         average_specificity = 0
         average_sensitivity = 0
+        true_positive_a = 0
+        true_negative_a = 0
+        fake_positive_a = 0
+        fake_negative_a = 0
 
         for i, line in enumerate(i_file):
             parts = line.split('-')
@@ -246,9 +250,13 @@ if __name__ == '__main__':
                     sensitivity_accumulator += res[0]
                     specificity_accumulator += res[1]
                     cc_accumulator += res[2]
+                    true_positive_a += res[3]
+                    true_negative_a += res[4]
+                    fake_positive_a += res[5]
+                    fake_negative_a += res[6]
                     counts += 1
 
         average_sensitivity = sensitivity_accumulator / counts
         average_specificity = specificity_accumulator / counts
         average_cc = cc_accumulator / counts
-        print(average_sensitivity, average_specificity, average_cc)
+        print(average_sensitivity, average_specificity, average_cc, true_positive_a, true_negative_a, fake_positive_a, fake_negative_a)

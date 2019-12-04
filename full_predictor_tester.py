@@ -201,6 +201,32 @@ def calculate_accuracy(ann, path):
         'stop': zone_counter(),
     }
 
+    """-start zone
+
+start zone12
+start zone13
+start zone14
+
+-donor
+
+donor14
+donor15
+donor03
+donor04
+donor25
+donor26
+
+-accep
+
+acceptor121
+acceptor122
+acceptor019
+acceptor020
+acceptor220
+acceptor221
+
+stop zone"""
+
     for i, c in enumerate(ann):
         if c == 'b' or c == 'n' or c == 'f':
             if useful_path[i] not in an:

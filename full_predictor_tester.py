@@ -152,6 +152,15 @@ def get_annotated_lines(tag, folder, part):
     return lines
 
 
+def zone_counter():
+    return {
+        'tp': 0,
+        'tn': 0,
+        'fp': 0,
+        'fn': 0
+    }
+
+
 def get_testable_string(annotated_string):
     l = [x[0] for x in annotated_string.lower().split()]
     a = [x[1] for c, x in enumerate(annotated_string.split()) if c > 1]
@@ -180,13 +189,7 @@ def calculate_accuracy(ann, path):
           'stop zone tga8', 'stop zone tga7', 'stop zone tga6', 'stop zone tga5', 'stop zone tga4',
           'stop zone tga3', 'stop zone tga2', 'stop zone tga1', 'stop zone tga0']
 
-    def zone_counter():
-        return {
-            'tp': 0,
-            'tn': 0,
-            'fp': 0,
-            'fn': 0
-        }
+
 
     useful_path = [c for i, c in enumerate(path) if i]
     true_positives = 0
@@ -227,8 +230,44 @@ acceptor221
 
 stop zone"""
 
+    def check_if_donor(c, ann, i, words):
+        if words in ['donor15', 'donor04', 'donor26']:
+            if c == 'n' and ann[i - 2] == 'a' and ann[i - 3] == 'a':
+                return 'tp'
+            else:
+                return 'fp'
+        else:
+            if c == 'n' and ann[i - 2] == 'a' and ann[i - 3] == 'a':
+                return 'fn'
+            else:
+                return 'tn'
+
+    def check_if_acceptor(c, ann, i, words):
+        if words in ['acceptor114', 'acceptor014', 'acceptor214']:
+            if c == 'n' and ann[i + 2] == 'a':
+                return 'tp'
+            else:
+                return 'fp'
+        else:
+            if c == 'n' and ann[i + 2] == 'a':
+                return 'fn'
+            else:
+                return 'tn'
+
+    def check_if_start(c, ann, i, words):
+        if words in ['start zone8']:
+            if c == 'a' and ann[i - 1] == 'b':
+                return 'tp'
+            else:
+                return 'fp'
+        else:
+            if c == 'a' and ann[i - 1] == 'b':
+                return 'fn'
+            else:
+                return 'tn'
+
     for i, c in enumerate(ann):
-        if c == 'b' or c == 'n' or c == 'f':
+        if c == 'b' or c == 'n' or c == 'f':  # b -> background ; n -> intron; f -> after
             if useful_path[i] not in an:
                 true_negatives += 1
             else:
@@ -238,6 +277,9 @@ stop zone"""
                 true_positives += 1
             else:
                 fake_negatives += 1
+        zone_counters['donor'][check_if_donor(c, ann, i, useful_path[i])] += 1
+        zone_counters['acceptor'][check_if_acceptor(c, ann, i, useful_path[i])] += 1
+        zone_counters['start'][check_if_start(c, ann, i, useful_path[i])] += 1
 
     try:
         sensitivity = true_positives / (true_positives + fake_negatives)
@@ -245,6 +287,7 @@ stop zone"""
         correlation_coefficient = ((true_positives * true_negatives) - (fake_negatives * fake_positives)) / \
             sqrt((true_positives + fake_negatives) * (true_negatives + fake_positives)
                  * (true_positives + fake_positives) * (true_negatives + fake_negatives))
+
         return {
             'sensitivity': sensitivity,
             'specificity': specificity,
@@ -252,7 +295,8 @@ stop zone"""
             'true_positives': true_positives,
             'true_negatives': true_negatives,
             'fake_positives': fake_positives,
-            'fake_negatives': fake_negatives
+            'fake_negatives': fake_negatives,
+            'zone_counters': zone_counters
         }
     except ZeroDivisionError:
         print('--invalid-- zero division cc')
@@ -289,6 +333,11 @@ if __name__ == '__main__':
         true_negative_a = 0
         fake_positive_a = 0
         fake_negative_a = 0
+        zone_counters_a = {
+            'start': zone_counter(),
+            'donor': zone_counter(),
+            'acceptor': zone_counter(),
+        }
 
         for i, line in enumerate(i_file):
             parts = line.split('-')
@@ -300,7 +349,7 @@ if __name__ == '__main__':
                 path = predict_all(seq, string)
                 res = calculate_accuracy(a, path)
                 if res:
-                    print(gene_id, res)
+                    # print(gene_id, res)
                     sensitivity_accumulator += res['sensitivity']
                     specificity_accumulator += res['specificity']
                     cc_accumulator += res['cc']
@@ -308,9 +357,21 @@ if __name__ == '__main__':
                     true_negative_a += res['true_negatives']
                     fake_positive_a += res['fake_positives']
                     fake_negative_a += res['fake_negatives']
+                    zone_counters_a['donor']['tp'] += res['zone_counters']['donor']['tp']
+                    zone_counters_a['donor']['fp'] += res['zone_counters']['donor']['fp']
+                    zone_counters_a['donor']['fn'] += res['zone_counters']['donor']['fn']
+                    zone_counters_a['donor']['tn'] += res['zone_counters']['donor']['tn']
+                    zone_counters_a['acceptor']['tp'] += res['zone_counters']['acceptor']['tp']
+                    zone_counters_a['acceptor']['fp'] += res['zone_counters']['acceptor']['fp']
+                    zone_counters_a['acceptor']['fn'] += res['zone_counters']['acceptor']['fn']
+                    zone_counters_a['acceptor']['tn'] += res['zone_counters']['acceptor']['tn']
+                    zone_counters_a['start']['tp'] += res['zone_counters']['start']['tp']
+                    zone_counters_a['start']['fp'] += res['zone_counters']['start']['fp']
+                    zone_counters_a['start']['fn'] += res['zone_counters']['start']['fn']
+                    zone_counters_a['start']['tn'] += res['zone_counters']['start']['tn']
                     counts += 1
 
         average_sensitivity = sensitivity_accumulator / counts
         average_specificity = specificity_accumulator / counts
         average_cc = cc_accumulator / counts
-        print(average_sensitivity, average_specificity, average_cc, true_positive_a, true_negative_a, fake_positive_a, fake_negative_a)
+        print(average_sensitivity, average_specificity, average_cc, true_positive_a, true_negative_a, fake_positive_a, fake_negative_a, zone_counters_a)

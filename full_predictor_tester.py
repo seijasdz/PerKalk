@@ -173,13 +173,33 @@ def calculate_accuracy(ann, path):
           'donor00', 'donor01', 'donor02', 'acceptor016', 'acceptor017', 'acceptor018',
           'donor20', 'donor21', 'donor22', 'donor23' 'donor24',
           'acceptor216', 'acceptor217', 'acceptor218', 'acceptor219',
-          'stop zone taa0', 'stop zone taa']
+          'stop zone taa8', 'stop zone taa7', 'stop zone taa6', 'stop zone taa5', 'stop zone taa4',
+          'stop zone taa3', 'stop zone taa2', 'stop zone taa1', 'stop zone taa0',
+          'stop zone tag8', 'stop zone tag7', 'stop zone tag6', 'stop zone tag5', 'stop zone tag4',
+          'stop zone tag3', 'stop zone tag2', 'stop zone tag1', 'stop zone tag0',
+          'stop zone tga8', 'stop zone tga7', 'stop zone tga6', 'stop zone tga5', 'stop zone tga4',
+          'stop zone tga3', 'stop zone tga2', 'stop zone tga1', 'stop zone tga0']
+
+    def zone_counter():
+        return {
+            'tp': 0,
+            'tn': 0,
+            'fp': 0,
+            'fn': 0
+        }
 
     useful_path = [c for i, c in enumerate(path) if i]
     true_positives = 0
     fake_positives = 0
     true_negatives = 0
     fake_negatives = 0
+    zone_counters = {
+        'start': zone_counter(),
+        'coding': zone_counter(),
+        'donor': zone_counter(),
+        'acceptor': zone_counter(),
+        'stop': zone_counter(),
+    }
 
     for i, c in enumerate(ann):
         if c == 'b' or c == 'n' or c == 'f':
@@ -199,7 +219,15 @@ def calculate_accuracy(ann, path):
         correlation_coefficient = ((true_positives * true_negatives) - (fake_negatives * fake_positives)) / \
             sqrt((true_positives + fake_negatives) * (true_negatives + fake_positives)
                  * (true_positives + fake_positives) * (true_negatives + fake_negatives))
-        return sensitivity, specificity, correlation_coefficient, true_positives, true_negatives, fake_positives, fake_negatives
+        return {
+            'sensitivity': sensitivity,
+            'specificity': specificity,
+            'cc': correlation_coefficient,
+            'true_positives': true_positives,
+            'true_negatives': true_negatives,
+            'fake_positives': fake_positives,
+            'fake_negatives': fake_negatives
+        }
     except ZeroDivisionError:
         print('--invalid-- zero division cc')
 if __name__ == '__main__':
@@ -247,13 +275,13 @@ if __name__ == '__main__':
                 res = calculate_accuracy(a, path)
                 if res:
                     print(gene_id, res)
-                    sensitivity_accumulator += res[0]
-                    specificity_accumulator += res[1]
-                    cc_accumulator += res[2]
-                    true_positive_a += res[3]
-                    true_negative_a += res[4]
-                    fake_positive_a += res[5]
-                    fake_negative_a += res[6]
+                    sensitivity_accumulator += res['sensitivity']
+                    specificity_accumulator += res['specificity']
+                    cc_accumulator += res['cc']
+                    true_positive_a += res['true_positives']
+                    true_negative_a += res['true_negatives']
+                    fake_positive_a += res['fake_positives']
+                    fake_negative_a += res['fake_negatives']
                     counts += 1
 
         average_sensitivity = sensitivity_accumulator / counts

@@ -266,6 +266,21 @@ stop zone"""
             else:
                 return 'tn'
 
+    def check_if_stop(c, ann, i, words):
+        if words in ['stop zone tag8', 'stop zone tga8', 'stop zone taa8']:
+            if i + 1 < len(ann) and ann[i + 1] == 'f':
+                return 'tp'
+            else:
+                return 'fp'
+        else:
+            if i + 1 < len(ann) and ann[i + 1] == 'f':
+                return 'fn'
+            else:
+                return 'tn'
+
+    def check_if_exon(c, ann, i, words):
+        if words in
+
     for i, c in enumerate(ann):
         if c == 'b' or c == 'n' or c == 'f':  # b -> background ; n -> intron; f -> after
             if useful_path[i] not in an:
@@ -280,6 +295,7 @@ stop zone"""
         zone_counters['donor'][check_if_donor(c, ann, i, useful_path[i])] += 1
         zone_counters['acceptor'][check_if_acceptor(c, ann, i, useful_path[i])] += 1
         zone_counters['start'][check_if_start(c, ann, i, useful_path[i])] += 1
+        zone_counters['stop'][check_if_stop(c, ann, i, useful_path[i])] += 1
 
     try:
         sensitivity = true_positives / (true_positives + fake_negatives)
@@ -337,6 +353,7 @@ if __name__ == '__main__':
             'start': zone_counter(),
             'donor': zone_counter(),
             'acceptor': zone_counter(),
+            'stop': zone_counter(),
         }
 
         for i, line in enumerate(i_file):
@@ -361,17 +378,24 @@ if __name__ == '__main__':
                     zone_counters_a['donor']['fp'] += res['zone_counters']['donor']['fp']
                     zone_counters_a['donor']['fn'] += res['zone_counters']['donor']['fn']
                     zone_counters_a['donor']['tn'] += res['zone_counters']['donor']['tn']
+
                     zone_counters_a['acceptor']['tp'] += res['zone_counters']['acceptor']['tp']
                     zone_counters_a['acceptor']['fp'] += res['zone_counters']['acceptor']['fp']
                     zone_counters_a['acceptor']['fn'] += res['zone_counters']['acceptor']['fn']
                     zone_counters_a['acceptor']['tn'] += res['zone_counters']['acceptor']['tn']
+
                     zone_counters_a['start']['tp'] += res['zone_counters']['start']['tp']
                     zone_counters_a['start']['fp'] += res['zone_counters']['start']['fp']
                     zone_counters_a['start']['fn'] += res['zone_counters']['start']['fn']
                     zone_counters_a['start']['tn'] += res['zone_counters']['start']['tn']
+
+                    zone_counters_a['stop']['tp'] += res['zone_counters']['stop']['tp']
+                    zone_counters_a['stop']['fp'] += res['zone_counters']['stop']['fp']
+                    zone_counters_a['stop']['fn'] += res['zone_counters']['stop']['fn']
+                    zone_counters_a['stop']['tn'] += res['zone_counters']['stop']['tn']
                     counts += 1
 
         average_sensitivity = sensitivity_accumulator / counts
         average_specificity = specificity_accumulator / counts
         average_cc = cc_accumulator / counts
-        print(average_sensitivity, average_specificity, average_cc, true_positive_a, true_negative_a, fake_positive_a, fake_negative_a, zone_counters_a)
+        print(counts, average_sensitivity, average_specificity, average_cc, true_positive_a, true_negative_a, fake_positive_a, fake_negative_a, zone_counters_a)
